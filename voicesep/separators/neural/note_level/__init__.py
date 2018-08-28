@@ -9,12 +9,12 @@ from voicesep.separators.neural.note_level.neural_network import (
 
 def separate(
   score, active_voices, features, network,
-  assignment_threshold, convergence_limit, divergence_limit
+  conv_limit, div_limit, allow_cross, assignment_threshold
 ):
+  active_voices.voiceid_type = "neural"
+  active_voices.beat_horizon = score.beat_horizon
 
-  assignments = []
-
-  active_voices.update([Voice(note) for note in score[0]])
+  active_voices.update(score[0])
   for chord in score[1:]:
     active_voices.filter(chord.beat_onset)
 
@@ -28,6 +28,27 @@ def separate(
 
     voice_limits = [div_limit - voice.div_count for voice in active_subset]
     note_count = len(chord)
+
+    # Pseudo polyphony
+    for note_index, note in enumerate(chord):
+      if note.repeat_behind and note.repeat_count > 4:
+        for voice_index, voice in enumerate(active_subset):
+          if voice.note is note.repeat_behind:
+            voice_mask[note_index, :-1] = 0
+            voice_mask[:, voice_index] = 0
+            voice_mask[note_index, voice_index] = 1
+            ranks[note_index, voice_index] = 1
+            break
+
+      else:
+        for voice_index, voice in enumerate(active_subset):
+          if voice.note.repeat_ahead and voice.note.repeat_count > 4:
+            if voice.note.pitch_space < note.pitch_space:
+              voice_mask[note_index, voice_index:-1] = 0
+            else:
+              voice_mask[note_index, 0:voice_index+1] = 0
+            break
+
 
     while note_count:
       max_flat_i = np.argmax(np.multiply(ranks, voice_mask))
@@ -66,3 +87,5 @@ def separate(
         note_count -= 1
 
     active_voices.update(chord)
+
+  active_voices.clear()

@@ -95,9 +95,12 @@ class NeuralNetwork:
   def predict(self, X):
     return self.predict_model(X)
 
-  def train(self, features, labels, epochs, batch_size, cprint):
+  def train(self, dataset, epochs, batch_size, cprint):
     for neural_layer in self.neural_layers:
       neural_layer.random_weights()
+
+    data_features = dataset.features[:]
+    data_labels = dataset.labels[:]
 
     self.X.set_value(data_features, borrow=True)
     self.Y.set_value(data_labels, borrow=True)

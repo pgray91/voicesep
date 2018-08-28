@@ -2,23 +2,27 @@ import theano
 import numpy as np
 
 from voicesep.separators.neural.note_level.features.levels import (
-  data
+  note_features, voice_features, pair_features
 )
 
 class Features:
-  COUNT = features.COUNT
+  COUNT = 1 + note_features.COUNT + voice_features.COUNT + pair_features.COUNT
+  MAX_ACTIVE_VOICES = 50
+  MAX_CHORD = 10
 
-  def __init__(self, interval):
+  def __init__(self):
     self.data = np.empty(
-      (const.MAX_ACTIVE_VOICES * const.MAX_CHORD, Features.COUNT),
+      (Features.MAX_ACTIVE_VOICES * Features.MAX_CHORD, Features.COUNT),
       dtype=theano.config.floatX
     )
     self.labels = np.empty(
-      (const.MAX_ACTIVE_VOICES * const.MAX_CHORD,),
+      (Features.MAX_ACTIVE_VOICES * Features.MAX_CHORD,),
       dtype=np.int16
     )
 
-  def generate(self, chord, active_voices):
+  def generate(self, chord, active_voices, get_labels=True):
+    active_subset = active_voices.subset(chord)
+
     row = 0
     for note in chord:
       voices_found = 0
@@ -28,7 +32,11 @@ class Features:
           voices_found += 1
           self.labels[row] = 1
 
-        self.data[row, :] = data.generate(note, chord, voice, self.interval)
+        self.data[row, :] = (
+          [0] + note_features.create(note) + 
+          voice_features.create(voice) + 
+          pair_features.create(note, voice, chord)
+        )
 
         row += 1
 
@@ -42,4 +50,16 @@ class Features:
           "%d %d %s" % (note.mc_index, note.measure_index, str([n1.name for n1 in chord]))
         )
         
-    return self.data[:row, :], self.labels[:row]
+
+    # assert np.max(self.data[:row, :]) <= 1, (
+    #   "%d %d %s" % (
+    #     chord.mc_index, chord.measure_index, 
+    #     np.unravel_index(np.argmax(self.data[:row, :]), self.data[:row, :].shape)
+    #   )
+    # )
+    # assert np.min(self.data[:row, :]) >= 0, np.unravel_index(np.argmin(self.data[:row, :]), self.data[:row, :].shape)
+
+    if get_labels:
+      return self.data[:row, :], self.labels[:row]
+    else:
+      return self.data[:row, :], active_subset

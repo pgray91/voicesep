@@ -3,111 +3,137 @@ import numpy as np
 import theano
 
 class Dataset:
+  def __init__(self, data_file, mode):
+    self.fp = h5py.File("%s.hdf5" % data_file, mode)
 
-  def __init__(self, data_file):
-    
-    self.fp = h5py.File("{}.hdf5".format(data_file), "r+")
+    self.score_count = 0
+    self.features = None
+    self.labels = None
 
-  def read(self, score_names):
+  def close(self):
+    self.fp.close()
 
-    feature_groups = [self.fp[name]["features"] for name in score_names]
-    label_groups = [self.fp[name]["labels"] for name in score_names]
+  def read(self, score_list):
+    self.score_count = len(score_list)
 
-    features = Data(feature_groups)
-    labels = Data(label_groups)
-
-    return features, labels
+    self.features = MemMaps(self.fp, score_list, "features")
+    self.labels = MemMaps(self.fp, score_list, "labels")
 
   def write(self, score, active_voices, features):
+    active_voices.voiceid_type = "true"
+    active_voices.beat_horizon = score.beat_horizon
+
+    if "feature_count" not in self.fp.attrs:
+      self.fp.attrs["feature_count"] = features.COUNT
 
     group = self.fp.create_group(score.name)
 
-    features_dataset = group.create_dataset(
-      name="features",
-      shape=(0, features.COUNT),
+    features_fp = group.create_dataset(
+      "features", (0, features.COUNT), 
       maxshape=(None, features.COUNT),
       dtype=theano.config.floatX
     )
-    labels_dataset = group.create_dataset(
-      name="labels",
-      shape=(0,),
+    labels_fp = group.create_dataset(
+      "labels", (0,), 
       maxshape=(None,),
       dtype=np.int16
     )
 
-    assignments = score.separate()
-    active_voices.update(assignments[0])
-    length = 0
-    for chord, assignment in zip(score[1:], assignments[1:]):
-      active_subset = active_voices.subset(chord.beat_onset)
+    data_len = 0
+    active_voices.update(score[0])
+    for chord in score[1:]:
+      active_voices.filter(chord.beat_onset)
 
-      data, labels = features.generate(chord, active_subset, get_labels=True)
+      data, labels = features.generate(chord, active_voices, get_labels=True)
 
-      length += len(data)
-      if features_dataset.len() <= length:
-        features_dataset.resize((length * 2, features.COUNT))
-        labels_dataset.resize((length * 2,))
+      prev_data_len = data_len
+      data_len += len(data)
+      if features_fp.len() <= data_len:
+        features_fp.resize((data_len * 2, features.COUNT))
+        labels_fp.resize((data_len * 2,))
 
-      features_dataset[length - len(data):length] = data
-      labels_dataset[length - len(data):length] = labels
+      features_fp[prev_data_len:data_len] = data
+      labels_fp[prev_data_len:data_len] = labels
 
-      active_voices.update(assignment)
+      active_voices.update(chord)
 
-    features_dataset.resize((length, features.COUNT))
-    labels_dataset.resize((length,))
+    features_fp.resize((data_len, features.COUNT))
+    labels_fp.resize((data_len,))
 
-class Data():
+    active_voices.clear()
 
-  def __init__(self, groups):
-    
-    self.groups = groups
+class MemMaps():
+  def __init__(self, fp, score_list, set_id):
+    self.fp = fp
+    self.set_id = set_id
 
+    self.memmaps = [None] * len(score_list)
     start = 0
-    self.starts = [] 
-    self.stops = []
-    for group in groups:
-      self.starts.append(start)
-      self.stops.append(start + group.len())
+    for i, score in enumerate(score_list):
+      length = fp[score.name][set_id].len()
+      self.memmaps[i] = MemMap(
+        path = "%s/%s" % (score.name, set_id),
+        start = start,
+        stop = start + length,
+        length = length
+      )
+      start += length
 
-      start += group.len()
-
-    self.length = start
+    if set_id != "labels":
+      self.shape = (start, self.fp.attrs["feature_count"])
+    else:
+      self.shape = (start,)
 
   def __getitem__(self, index):
-
-    assert type(index) == "slice", "hello"
-
     start = index.start if index.start else 0
     stop = (
       index.stop 
-      if index.stop and index.stop <= self.length
-      else self.length
+      if index.stop and index.stop <= self.shape[0] 
+      else self.shape[0]
     )
 
-    data = np.empty(
-      (stop - start,) + self.shape[1]), dtype=theano.config.floatX
-    )
+    if self.set_id != "labels":
+      get_array = np.empty(
+        (stop - start, self.shape[1]), dtype=theano.config.floatX
+      )
+    else:
+      get_array = np.empty((stop - start,), dtype=theano.config.floatX)
 
     get_start = 0
-    for group, start, stop in zip(self.groups, self.starts, self.stops):
-      if start > indexstart or stop <= indexstop:
-        continue
+    i = self.memmaps.index(start)
+    while True:
+      memmap = self.memmaps[i]
 
-      mstart = max(0, indexstart - start)
-      mstop = min(stop - start, indexstop - start)
+      mstart = start - memmap.start 
+      if mstart < 0:
+        mstart = 0
 
-      data[get_start : get_start + mstop - mstart] = (
-          group[mstart:mstop]
+      mstop = stop - memmap.start 
+      if mstop > memmap.length:
+        mstop = memmap.length
+
+      get_array[get_start : get_start + mstop - mstart] = (
+        self.fp[memmap.path][mstart:mstop]
       )
 
       get_start += mstop - mstart
-      if get_start >= len(data):
+      if get_start >= len(get_array):
         break
 
-    return array
+      i += 1
+
+    return get_array
 
   def shape(self):
     return self.shape
 
   def __len__(self):
     return self.shape[0]
+
+class MemMap():
+  def __init__(self, **kwargs):
+    for key, value in kwargs.items():
+      setattr(self, key, value)
+
+  def __eq__(self, index):
+    return self.start <= index and self.stop > index
