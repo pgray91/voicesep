@@ -1,0 +1,13 @@
+*.swp
+*.log
+
+__pycache__/
+
+*.cpp
+*.h
+*.so
+
+build
+
+*.mscz,
+*.hdf5
