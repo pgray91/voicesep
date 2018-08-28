@@ -1,0 +1,5 @@
+
+Score, Precision, Recall, JI, F1, PC, TC, IC, MO
+test_score1, 0.666667, 0.500000, 0.400000, 0.571429, 3, 4, 2, True
+test_score2, 1.000000, 0.500000, 0.500000, 0.666667, 1, 2, 1, True
+e
