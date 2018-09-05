@@ -1,22 +1,24 @@
-def separate(score, active_voices):
-  assignments = []
+def separate(score):
 
-  active_voices.update([Voice(note) for note in score[0]])
-  for chord in score[1:]:
-    active_voices.filter(chord.beat_onset)
+    pairs = set()
 
-    nonoverlap = [
-      voice for voice in active_voices
-      if voice.beat_offset <= chord.beat_onset
-    ]
+    active_voices = ActiveVoices()
+    for chord in score:
 
-    assignment = [
-      Voice(note, [voice]) for note, voice in zip(chord, nonoverlap)
-    ]
-    assignment.extend([
-      Voice(note, []) for note in chord[len(nonoverlap):]
-    ])
+        left_voices = [
+            voice for voice in active_voices
+            if voice.beat_offset <= chord.beat_onset
+        ]
 
-    assignments.append(assignment)
+        right_voices = [Voice(note) for note in chord]
 
-    active_voices.update(assignment)
+        for left_voice, right_voice in zip(left_voices, right_voices):
+            connect(left_voice, right_voice)
+
+            pairs.insert((left_voice.note, right_voice.note))
+            # Consider creating a pairs class that inherits from set
+
+        for voice in right_voices:
+            active_voices.insert(voice)
+
+    return pairs
