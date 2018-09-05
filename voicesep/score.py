@@ -297,6 +297,7 @@ class Chord:
     def __init__(self, notes, **kwargs):
 
         self.notes = notes
+        # assert all of note type
 
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -338,18 +339,3 @@ class Note:
         return "Note<M{},C{}>({}{})".format(
             *self.location, self.name, self.octave
         )
-
-class Voice:
-
-    def __init__(self, note):
-
-        self.note = note
-
-        self.left = []
-        self.right = []
-
-        logger.debug("{} | initializing voice".format(self))
-
-    def __str__(self):
-        
-        return "Voice({})".format(self.note)
