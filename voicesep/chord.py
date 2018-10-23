@@ -7,7 +7,6 @@ class Chord:
     def __init__(self, notes, **kwargs):
 
         self.notes = notes
-        # assert all of note type
 
         for key, value in kwargs.items():
             setattr(self, key, value)

@@ -3,6 +3,10 @@ import logging
 import music21 as m21
 import random
 
+import Chord
+import Note
+import Voice
+
 logger = logging.getLogger(__name__)
 
 # log.conf
@@ -291,51 +295,3 @@ class Score:
 
     def __iter__(self):
         return iter(self.chords)
-
-class Chord:
-
-    def __init__(self, notes, **kwargs):
-
-        self.notes = notes
-        # assert all of note type
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
-        logger.debug("{} | initializing chord".format(self))
-
-
-    def __len__(self):
-
-        return len(self.notes)
-
-    def __getitem__(self, index):
-
-        return self.notes[index]
-
-    def __iter__(self):
-
-        return iter(self.notes)
-
-    def __str__(self):
-
-        return "Chord({})".format(", ".join(self.notes))
-
-class Note:
-
-    def __init__(self, name, octave, location, **kwargs):
-
-        self.name = name
-        self.octave = octave
-        self.location = location
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
-        logger.debug("{} | initializing note".format(self))
-
-    def __str__(self):
-
-        return "Note<M{},C{}>({}{})".format(
-            *self.location, self.name, self.octave
-        )

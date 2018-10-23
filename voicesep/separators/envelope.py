@@ -13,10 +13,9 @@ def separate(score):
         right_voices = [Voice(note) for note in chord]
 
         for left_voice, right_voice in zip(left_voices, right_voices):
-            connect(left_voice, right_voice)
+            pair = Voice.connect(left_voice, right_voice)
 
-            pairs.insert((left_voice.note, right_voice.note))
-            # Consider creating a pairs class that inherits from set
+            pairs.insert(pair)
 
         for voice in right_voices:
             active_voices.insert(voice)
