@@ -90,7 +90,7 @@ class Score:
 
                     chord_stepper = m21.chord.Chord(note_group)
           
-                    for note_index, note_part in enumerate(sorted(note_group, reverse=True)):
+                    for note_index, note_part in enumerate(reversed(note_group)):
 
                         ql_duration = F(note_part.duration.quarterLength)
                         if has_staccato:
@@ -111,11 +111,11 @@ class Score:
                             note_part.name, comparisonAttribute="step"
                         )
 
-                        for chord_step in range(1,8):
-                            if not chord_stepper.getChordStep(chord_step):
+                        for chord_step in map(chord_stepper.getChordStep, range(1,8)):
+                            if not chord_step:
                                 continue
 
-                            if chord_stepper.getChordStep(chord_step).step == note_part.step:
+                            if chord_step.step == note_part.step:
                                 break
 
                         lyric = lyrics[note_index] if lyrics else []
