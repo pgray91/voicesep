@@ -3,18 +3,11 @@ import logging
 import music21 as m21
 import random
 
-import Chord
-import Note
-import Voice
+from voicesep.chord import Chord
+from voicesep.note import Note
+from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
-
-# log.conf
-# User can set logging specifications at root level
-# In logging, add time - level - file name.function name.lline number | Score.mMeasure.cChord.nNote | Message
-
-# Split unittests into score, chord, note, voice
-# Test b
 
 # Verify pitch is in scale
 # verify lyrics and color
