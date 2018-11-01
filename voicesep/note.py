@@ -2,6 +2,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class Note:
 
     def __init__(self, name, octave, location, **kwargs):

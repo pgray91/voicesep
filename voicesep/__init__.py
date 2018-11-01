@@ -1,10 +1,8 @@
-from voicesep.score import Score
-from voicesep.active_voices import ActiveVoices
+import logging
 
-from voicesep.separators import (
-  envelope, neural, proximity
-)
+from voicesep.note import Note
 
-from voicesep import utils
-from voicesep.utils import Evaluator
-from voicesep.utils import Statistics
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
+
+__all__ = ["Note"]

@@ -3,14 +3,11 @@ import logging
 import music21 as m21
 import random
 
+from voicesep.chord import Chord
+from voicesep.note import Note
+from voicesep.voice import Voice
+
 logger = logging.getLogger(__name__)
-
-# log.conf
-# User can set logging specifications at root level
-# In logging, add time - level - file name.function name.lline number | Score.mMeasure.cChord.nNote | Message
-
-# Split unittests into score, chord, note, voice
-# Test b
 
 # Verify pitch is in scale
 # verify lyrics and color
@@ -90,7 +87,7 @@ class Score:
 
                     chord_stepper = m21.chord.Chord(note_group)
           
-                    for note_index, note_part in enumerate(sorted(note_group, reverse=True)):
+                    for note_index, note_part in enumerate(reversed(note_group)):
 
                         ql_duration = F(note_part.duration.quarterLength)
                         if has_staccato:
@@ -111,11 +108,11 @@ class Score:
                             note_part.name, comparisonAttribute="step"
                         )
 
-                        for chord_step in range(1,8):
-                            if not chord_stepper.getChordStep(chord_step):
+                        for chord_step in map(chord_stepper.getChordStep, range(1,8)):
+                            if not chord_step:
                                 continue
 
-                            if chord_stepper.getChordStep(chord_step).step == note_part.step:
+                            if chord_step.step == note_part.step:
                                 break
 
                         lyric = lyrics[note_index] if lyrics else []
@@ -291,51 +288,3 @@ class Score:
 
     def __iter__(self):
         return iter(self.chords)
-
-class Chord:
-
-    def __init__(self, notes, **kwargs):
-
-        self.notes = notes
-        # assert all of note type
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
-        logger.debug("{} | initializing chord".format(self))
-
-
-    def __len__(self):
-
-        return len(self.notes)
-
-    def __getitem__(self, index):
-
-        return self.notes[index]
-
-    def __iter__(self):
-
-        return iter(self.notes)
-
-    def __str__(self):
-
-        return "Chord({})".format(", ".join(self.notes))
-
-class Note:
-
-    def __init__(self, name, octave, location, **kwargs):
-
-        self.name = name
-        self.octave = octave
-        self.location = location
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
-        logger.debug("{} | initializing note".format(self))
-
-    def __str__(self):
-
-        return "Note<M{},C{}>({}{})".format(
-            *self.location, self.name, self.octave
-        )
