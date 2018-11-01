@@ -12,4 +12,4 @@ build
 *.mscz,
 *.hdf5
 
-pat
+pat*
