@@ -9,19 +9,17 @@ from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 
-# Verify pitch is in scale
-# verify lyrics and color
 
 class Score:
 
     QUARTER = 4
 
-    def __init__(self, name, score):
+    def __init__(self, name, sheet):
 
         self.name = name
         logger.info("{} | initializing".format(self.name))
 
-        self.score = m21.converter.parse(score)
+        self.score = m21.converter.parse(sheet)
 
         self.chords = []
 
@@ -153,138 +151,138 @@ class Score:
                     beat=beat
                 )
 
-
-    def separate(self, one_to_many):
-
-        logger.info(
-            "{} | one to {} | separating true voices".format(
-                self.name, "many" if one_to_many else "one"
-            )
-        )
-
-        assignments = []
-
-        voice_map = {}
-        voiceid_map = {}
-
-        for chord in self.chords:
-            assignment = []
-
-            for note in chord:
-                voice = Voice(note)
-
-                if one_to_many:
-                    if len(note.lyric) > 0:
-                        voiceids = note.lyric
-                        voiceid_map[note.color] = voiceids
-
-                    else:
-                        voiceids = voiceid_map[note.color]
-
-                else:
-                    voiceids = [note.color]
-
-                for voiceid in voiceids:
-                    if voiceid in voice_map:
-                        left_voice = voice_map[voiceid]
-                        if left_voice not in voice.left:
-                            voice.left.append(left_voice)
-                            left_voice.right.append(voice)
-
-                    voice_map[voiceid] = voice
-
-                assignment.append(voice)
-
-            assignments.append(assignment)
-
-        return assignments
-
-    def write(self, score_file, assignments):
-
-        logger.info("{} | {} | writing assignments to file".format(self.name, score_file))
-
-        rint = lambda: random.randint(0,255)
-        lyric_map = {}
-        color_map = {}
-        tie_map = {}
-        lyric_index = 1
-
-        chord_index = 0
-        chords = self.score.flat.notes.stream()
-        chord_groups = chords.groupElementsByOffset()
-        for chord_group in chord_groups:
-
-            note_index = 0
-            for chord_part in chord_group:
-                if chord_part.duration.isGrace:
-                    continue
-
-                assignment = assignments[chord_index]
-                show_lyrics = False
-                lyrics = []
-
-                note_group = chord_part if chord_part.isChord else [chord_part]
-
-                for note_part in sorted(note_group, reverse=True):
-
-                    if note_part.tie and note_part.tie.type != "start":
-
-                        note_part.color = tie_map[note_part.pitch.ps]
-                        lyrics.append("X")
-                        continue
-
-                    voice = assignment[note_index]
-                    note_index += 1
-
-                    note_lyric = []
-
-                    if len(voice.left) == 0:
-
-                        note_lyric.append(lyric_index)
-                        lyric_index += 1
-
-                    for left_voice in voice.left:
-
-                        note_lyric.append(
-                          lyric_map[left_voice][left_voice.right.index(voice)]
-                        )
-
-                    for _ in range(len(note_lyric), len(voice.right)):
-
-                        note_lyric.append(lyric_index)
-                        lyric_index += 1
-
-                    lyric_map[voice] = note_lyric
-
-                    note_part.color = color_map.setdefault(
-                        note_lyric[0], "#{:02X}#{:02X}#{:02X}".format(
-                            rint(), rint(), rint()
-                        )
-                    )
-                    if note_part.tie:
-                        tie_map[note_part.pitch.ps] = note_part.color
-
-                    show_lyrics = show_lyrics or (
-                      len(converged) != 1 or
-                      len(diverged) > 1 or
-                      len(converged[0].diverged(voiceid)) > 1 or
-                      (len(diverged) == 1 and len(diverged[0].converged(voiced)) > 1)
-                    )
-
-                    lyrics.append(",".join(lyric for lyric in note_lyric))
-
-              if show_lyrics:
-                  map(chord_part.addLyric, lyrics)
-
-            chord_index += note_index > 0
-
-        self.score.write(fp=score_file)
-
-    def __len__(self):
-        return len(self.chords)
-
-    def __getitem__(self, index):
-        return self.chords[index]
-
-    def __iter__(self):
-        return iter(self.chords)
+    #
+    # def separate(self, one_to_many):
+    #
+    #     logger.info(
+    #         "{} | one to {} | separating true voices".format(
+    #             self.name, "many" if one_to_many else "one"
+    #         )
+    #     )
+    #
+    #     assignments = []
+    #
+    #     voice_map = {}
+    #     voiceid_map = {}
+    #
+    #     for chord in self.chords:
+    #         assignment = []
+    #
+    #         for note in chord:
+    #             voice = Voice(note)
+    #
+    #             if one_to_many:
+    #                 if len(note.lyric) > 0:
+    #                     voiceids = note.lyric
+    #                     voiceid_map[note.color] = voiceids
+    #
+    #                 else:
+    #                     voiceids = voiceid_map[note.color]
+    #
+    #             else:
+    #                 voiceids = [note.color]
+    #
+    #             for voiceid in voiceids:
+    #                 if voiceid in voice_map:
+    #                     left_voice = voice_map[voiceid]
+    #                     if left_voice not in voice.left:
+    #                         voice.left.append(left_voice)
+    #                         left_voice.right.append(voice)
+    #
+    #                 voice_map[voiceid] = voice
+    #
+    #             assignment.append(voice)
+    #
+    #         assignments.append(assignment)
+    #
+    #     return assignments
+    #
+    # def write(self, sheet, assignments):
+    #
+    #     logger.info("{} | {} | writing assignments to file".format(self.name, sheet))
+    #
+    #     rint = lambda: random.randint(0,255)
+    #     lyric_map = {}
+    #     color_map = {}
+    #     tie_map = {}
+    #     lyric_index = 1
+    #
+    #     chord_index = 0
+    #     chords = self.score.flat.notes.stream()
+    #     chord_groups = chords.groupElementsByOffset()
+    #     for chord_group in chord_groups:
+    #
+    #         note_index = 0
+    #         for chord_part in chord_group:
+    #             if chord_part.duration.isGrace:
+    #                 continue
+    #
+    #             assignment = assignments[chord_index]
+    #             show_lyrics = False
+    #             lyrics = []
+    #
+    #             note_group = chord_part if chord_part.isChord else [chord_part]
+    #
+    #             for note_part in sorted(note_group, reverse=True):
+    #
+    #                 if note_part.tie and note_part.tie.type != "start":
+    #
+    #                     note_part.color = tie_map[note_part.pitch.ps]
+    #                     lyrics.append("X")
+    #                     continue
+    #
+    #                 voice = assignment[note_index]
+    #                 note_index += 1
+    #
+    #                 note_lyric = []
+    #
+    #                 if len(voice.left) == 0:
+    #
+    #                     note_lyric.append(lyric_index)
+    #                     lyric_index += 1
+    #
+    #                 for left_voice in voice.left:
+    #
+    #                     note_lyric.append(
+    #                       lyric_map[left_voice][left_voice.right.index(voice)]
+    #                     )
+    #
+    #                 for _ in range(len(note_lyric), len(voice.right)):
+    #
+    #                     note_lyric.append(lyric_index)
+    #                     lyric_index += 1
+    #
+    #                 lyric_map[voice] = note_lyric
+    #
+    #                 note_part.color = color_map.setdefault(
+    #                     note_lyric[0], "#{:02X}#{:02X}#{:02X}".format(
+    #                         rint(), rint(), rint()
+    #                     )
+    #                 )
+    #                 if note_part.tie:
+    #                     tie_map[note_part.pitch.ps] = note_part.color
+    #
+    #                 show_lyrics = show_lyrics or (
+    #                   len(converged) != 1 or
+    #                   len(diverged) > 1 or
+    #                   len(converged[0].diverged(voiceid)) > 1 or
+    #                   (len(diverged) == 1 and len(diverged[0].converged(voiced)) > 1)
+    #                 )
+    #
+    #                 lyrics.append(",".join(lyric for lyric in note_lyric))
+    #
+    #           if show_lyrics:
+    #               map(chord_part.addLyric, lyrics)
+    #
+    #         chord_index += note_index > 0
+    #
+    #     self.score.write(fp=sheet)
+    #
+    # def __len__(self):
+    #     return len(self.chords)
+    #
+    # def __getitem__(self, index):
+    #     return self.chords[index]
+    #
+    # def __iter__(self):
+    #     return iter(self.chords)
