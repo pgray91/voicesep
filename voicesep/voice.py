@@ -2,6 +2,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class Voice:
 
     def __init__(self, note):
@@ -11,12 +12,12 @@ class Voice:
         self.left = set()
         self.right = set()
 
-        logger.debug("")
+        logger.debug("{} | initializing voice".format(self))
 
     def append(self, voice):
 
-        self.right.insert(voice)
-        voice.left.insert(self)
+        self.right.add(voice)
+        voice.left.add(self)
 
     def __str__(self):
 
