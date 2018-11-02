@@ -28,4 +28,4 @@ class Chord:
 
     def __str__(self):
 
-        return "Chord({})".format(", ".join(self.notes))
+        return "Chord({})".format(", ".join(map(str, self.notes)))
