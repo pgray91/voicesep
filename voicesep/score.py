@@ -9,6 +9,12 @@ from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 
+# If we have divergence, verify that if we have a repeated lyric, then that voice
+# should have been sucked in
+
+# Verify if new diverging lyric, that it gets used
+
+# Verify that lyric list matches note count
 
 class Score:
 
@@ -30,13 +36,15 @@ class Score:
         ql_origin = F()
 
         tie_map = {}
+        color_map = {}
+        lyric_map = {}
 
         measures = self.score.semiFlat.getElementsByClass("Measure").stream()
-        measure_groups = [
-            m21.stream.Stream(measure_group)
-            for measure_group in measures.groupElementsByOffset()
-        ]
-        for measure_index, measure_group in enumerate(measure_groups):
+        measure_groups = map(
+            m21.stream.Stream,
+            m21.stream.iterator.OffsetIterator(measures)
+        )
+        for measure_index, measure_group in enumerate(measure_groups, start=1):
             top_measure = measure_group[0]
 
             if top_measure.getElementsByClass("TimeSignature"):
@@ -57,8 +65,8 @@ class Score:
                 scale = keysig.getScale()
 
             chords = measure_group.flat.notes.stream()
-            chord_groups = chords.groupElementsByOffset()
-            for chord_index, chord_group in enumerate(chords_groups):
+            chord_groups = m21.stream.iterator.OffsetIterator(chords)
+            for chord_index, chord_group in enumerate(chord_groups, start=1):
                 top_chord = chord_group[0]
 
                 ql_distance = top_chord.offset - ql_origin
@@ -73,15 +81,12 @@ class Score:
 
                     note_group = chord_part if chord_part.isChord else [chord_part]
 
-                    lyrics = [lyric.split(",") for lyric in chord_part.lyrics]
-
-                    has_staccato = any( 
-                        any(
-                            articulation.name == "staccato"
-                            for articulation in note_part.articulations
-                        )
-                        for note_part in [note_group[0], note_group[-1]]
+                    has_staccato = any(
+                        articulation.name == "staccato"
+                        for articulation in chord_part.articulations
                     )
+
+                    lyrics = [lyric.text.split(",") for lyric in chord_part.lyrics]
 
                     chord_stepper = m21.chord.Chord(note_group)
           
@@ -94,7 +99,7 @@ class Score:
                         duration = ql_duration * denomination / Score.QUARTER
                         offset = onset + duration
 
-                        if note.tie and note.tie.type != "start":
+                        if note_part.tie and note_part.tie.type != "start":
                             note = tie_map[note_part.pitch.ps]
                             logger.debug("{} | adjusting tied duration".format(note))
 
@@ -106,7 +111,9 @@ class Score:
                             note_part.name, comparisonAttribute="step"
                         )
 
-                        for chord_step in map(chord_stepper.getChordStep, range(1,8)):
+                        for chord_degree in range(1, 8):
+                            chord_step = chord_stepper.getChordStep(chord_degree)
+
                             if not chord_step:
                                 continue
 
@@ -121,34 +128,50 @@ class Score:
                             octave=note_part.octave,
                             location=(measure_index, chord_index),
 
-                            pitch=int(note.pitch.ps),
+                            pitch=int(note_part.pitch.ps),
 
                             duration=duration,
                             offset=offset,
 
-                            index=len(chord) - 1,
+                            index=len(notes),
 
                             degree=degree,
-                            chord_step=chord_step,
+                            chord_degree=chord_degree,
 
                             lyric=lyric,
                             color=color
                         )
                         notes.append(note)
 
+                        if color not in color_map:
+                            assert \
+                                len(lyric) != 0, \
+                                "{} | new voice missing lyric".format(note)
+
+                            color_map[color] = lyric
+
+                        elif len(lyric) != 0:
+                            assert \
+                                color_map[color] == lyric[0], \
+                                "{} | existing voice given new lyric".format(note)
+
                         if note_part.tie:
                             logger.debug("{} | inserting into tie map".format(note))
                             tie_map[note_part.pitch.ps] = note
+
+                if len(notes) == 0:
+                    continue
 
                 chord = Chord(
                     notes,
 
                     onset=onset,
 
-                    index=len(self.chords) - 1,
+                    index=len(self.chords),
 
                     beat=beat
                 )
+                self.chords.append(chord)
 
     #
     # def separate(self, one_to_many):
