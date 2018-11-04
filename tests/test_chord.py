@@ -17,9 +17,9 @@ class Test(unittest.TestCase):
             attribute=True
         )
 
-    def test_len(self):
+    def test_attribute(self):
 
-        self.assertEqual(len(self.chord), 1)
+        self.assertTrue(self.chord.attribute)
 
     def test_index(self):
 
@@ -29,13 +29,13 @@ class Test(unittest.TestCase):
 
         self.assertEqual(list(self.chord), [self.note])
 
+    def test_len(self):
+
+        self.assertEqual(len(self.chord), 1)
+
     def test_str(self):
 
         self.assertEqual(str(self.chord), "Chord({})".format(self.note))
-
-    def test_attribute(self):
-
-        self.assertTrue(self.chord.attribute)
 
 
 if __name__ == "__main__":

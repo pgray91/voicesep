@@ -14,13 +14,13 @@ class Test(unittest.TestCase):
             attribute=True
         )
 
-    def test_str(self):
-
-        self.assertEqual(str(self.note), "Note<M0,C0>(C4)")
-
     def test_attribute(self):
 
         self.assertTrue(self.note.attribute)
+
+    def test_str(self):
+
+        self.assertEqual(str(self.note), "Note<M0,C0>(C4)")
 
 
 if __name__ == "__main__":
