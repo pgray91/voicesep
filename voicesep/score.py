@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 class Score:
 
     QUARTER = 4
+    MIDDLE_C = 60
 
     def __init__(self, name, sheet):
 
@@ -20,12 +21,10 @@ class Score:
         logger.info("{} | initializing".format(self.name))
 
         self.score = m21.converter.parse(sheet)
-
         self.chords = []
 
-        timesig = self.score.flat.getElementsByClass("TimeSignature")[0]
-        keysig = self.score.flat.getElementsByClass("KeySignature")[0]
-        scale = keysig.getScale()
+        denomination = 0
+        scale = None
 
         onset_origin = F()
         ql_origin = F()
@@ -45,10 +44,11 @@ class Score:
 
                 ql_distance = top_measure.offset - ql_origin
 
-                onset_origin += ql_distance * timesig.denominator / Score.QUARTER
+                onset_origin += ql_distance * denomination / Score.QUARTER
                 ql_origin = F(top_measure.offset)
 
                 timesig = top_measure.getElementsByClass("TimeSignature")[0]
+                denomination = timesig.denominator
 
             if top_measure.getElementsByClass("KeySignature"):
                 logger.debug("m{} | changing key signature".format(measure_index))
@@ -63,7 +63,7 @@ class Score:
 
                 ql_distance = top_chord.offset - ql_origin
 
-                onset = onset_origin + ql_distance * timesig.denominator / Score.QUARTER
+                onset = onset_origin + ql_distance * denomination / Score.QUARTER
                 beat = top_chord.beat
 
                 notes = []
@@ -91,7 +91,7 @@ class Score:
                         if has_staccato:
                             ql_duration *= 0.5
 
-                        duration = ql_duration * timesig.denominator / Score.QUARTER
+                        duration = ql_duration * denomination / Score.QUARTER
                         offset = onset + duration
 
                         if note.tie and note.tie.type != "start":
@@ -147,7 +147,6 @@ class Score:
 
                     index=len(self.chords) - 1,
 
-                    # BRNG BACK BEAT STRENGTH
                     beat=beat
                 )
 
@@ -278,11 +277,11 @@ class Score:
     #
     #     self.score.write(fp=sheet)
     #
-    # def __len__(self):
-    #     return len(self.chords)
-    #
-    # def __getitem__(self, index):
-    #     return self.chords[index]
-    #
-    # def __iter__(self):
-    #     return iter(self.chords)
+    def __len__(self):
+        return len(self.chords)
+
+    def __getitem__(self, index):
+        return self.chords[index]
+
+    def __iter__(self):
+        return iter(self.chords)
