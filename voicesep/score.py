@@ -37,7 +37,6 @@ class Score:
 
         tie_map = {}
         color_map = {}
-        lyric_map = {}
 
         measures = self.score.semiFlat.getElementsByClass("Measure").stream()
         measure_groups = map(
@@ -146,14 +145,18 @@ class Score:
                         if color not in color_map:
                             assert \
                                 len(lyric) != 0, \
-                                "{} | new voice missing lyric".format(note)
+                                "{} | new voice missing id".format(note)
 
                             color_map[color] = lyric
 
                         elif len(lyric) != 0:
                             assert \
                                 color_map[color] == lyric[0], \
-                                "{} | existing voice given new lyric".format(note)
+                                "{} | existing voice given new id".format(note)
+
+                            assert \
+                                len(lyric) == len(set(lyric)), \
+                                "{} | voice id repeated in lyric".format(note)
 
                         if note_part.tie:
                             logger.debug("{} | inserting into tie map".format(note))
