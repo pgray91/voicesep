@@ -1,20 +1,15 @@
-from   fractions import Fraction as F
+from fractions import Fraction as F
 import logging
 import music21 as m21
 import random
 
+from voicesep.assignments import Assignments
 from voicesep.chord import Chord
 from voicesep.note import Note
 from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 
-# If we have divergence, verify that if we have a repeated lyric, then that voice
-# should have been sucked in
-
-# Verify if new diverging lyric, that it gets used
-
-# Verify that lyric list matches note count
 
 class Score:
 
@@ -36,7 +31,6 @@ class Score:
         ql_origin = F()
 
         tie_map = {}
-        color_map = {}
 
         measures = self.score.semiFlat.getElementsByClass("Measure").stream()
         measure_groups = map(
@@ -142,22 +136,6 @@ class Score:
                         )
                         notes.append(note)
 
-                        if color not in color_map:
-                            assert \
-                                len(lyric) != 0, \
-                                "{} | new voice missing id".format(note)
-
-                            color_map[color] = lyric
-
-                        elif len(lyric) != 0:
-                            assert \
-                                color_map[color] == lyric[0], \
-                                "{} | existing voice given new id".format(note)
-
-                            assert \
-                                len(lyric) == len(set(lyric)), \
-                                "{} | voice id repeated in lyric".format(note)
-
                         if note_part.tie:
                             logger.debug("{} | inserting into tie map".format(note))
                             tie_map[note_part.pitch.ps] = note
@@ -176,52 +154,51 @@ class Score:
                 )
                 self.chords.append(chord)
 
-    #
-    # def separate(self, one_to_many):
-    #
-    #     logger.info(
-    #         "{} | one to {} | separating true voices".format(
-    #             self.name, "many" if one_to_many else "one"
-    #         )
-    #     )
-    #
-    #     assignments = []
-    #
-    #     voice_map = {}
-    #     voiceid_map = {}
-    #
-    #     for chord in self.chords:
-    #         assignment = []
-    #
-    #         for note in chord:
-    #             voice = Voice(note)
-    #
-    #             if one_to_many:
-    #                 if len(note.lyric) > 0:
-    #                     voiceids = note.lyric
-    #                     voiceid_map[note.color] = voiceids
-    #
-    #                 else:
-    #                     voiceids = voiceid_map[note.color]
-    #
-    #             else:
-    #                 voiceids = [note.color]
-    #
-    #             for voiceid in voiceids:
-    #                 if voiceid in voice_map:
-    #                     left_voice = voice_map[voiceid]
-    #                     if left_voice not in voice.left:
-    #                         voice.left.append(left_voice)
-    #                         left_voice.right.append(voice)
-    #
-    #                 voice_map[voiceid] = voice
-    #
-    #             assignment.append(voice)
-    #
-    #         assignments.append(assignment)
-    #
-    #     return assignments
-    #
+
+    def separate(self, one_to_many):
+
+        logger.info(
+            "{} | one to {} | separating true voices".format(
+                self.name, "many" if one_to_many else "one"
+            )
+        )
+
+        assignments = Assignments()
+
+        voice_map = {}
+        voiceid_map = {}
+
+        for chord in self.chords:
+            assignment = []
+
+            for note in chord:
+                voice = Voice(note)
+
+                if one_to_many:
+                    if len(note.lyric) > 0:
+                        voiceids = note.lyric
+                        voiceid_map[note.color] = voiceids
+
+                    else:
+                        voiceids = voiceid_map[note.color]
+
+                else:
+                    voiceids = [note.color]
+
+                for voiceid in voiceids:
+                    if voiceid in voice_map:
+                        left_voice = voice_map[voiceid]
+                        if voice not in left_voice.right:
+                            left_voice.append(voice)
+
+                    voice_map[voiceid] = voice
+
+                assignment.append(voice)
+
+            assignments.append(assignment)
+
+        return assignments
+
     # def write(self, sheet, assignments):
     #
     #     logger.info("{} | {} | writing assignments to file".format(self.name, sheet))
