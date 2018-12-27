@@ -1,8 +1,18 @@
+import logging
+
+from voicesep.active_voices import ActiveVoices
+from voicesep.assignments import Assignments
+
+logger = logging.getLogger(__name__)
+
+
 def separate(score):
 
-    pairs = set()
+    logger.info("{} | envelope separation".format(score.name))
 
+    assignments = Assignments()
     active_voices = ActiveVoices()
+
     for chord in score:
 
         left_voices = [
@@ -13,11 +23,11 @@ def separate(score):
         right_voices = [Voice(note) for note in chord]
 
         for left_voice, right_voice in zip(left_voices, right_voices):
-            pair = Voice.connect(left_voice, right_voice)
+            left_voice.append(right_voice)
 
-            pairs.insert(pair)
+        assignments.append(right_voices)
 
         for voice in right_voices:
             active_voices.insert(voice)
 
-    return pairs
+    return assignments
