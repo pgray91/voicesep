@@ -6,7 +6,17 @@ from voicesep.note import Note
 from voicesep.score import Score
 from voicesep.voice import Voice
 
+from voicesep.separators import envelope
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
-__all__ = ["Assignments", "Chord", "Note", "Score", "Voice"]
+__all__ = [
+    "Assignments",
+    "Chord",
+    "Note",
+    "Score",
+    "Voice",
+
+    "envelope"
+]
