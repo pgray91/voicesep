@@ -65,7 +65,7 @@ class Network:
           outputs=y_hat_var
         )
 
-    def train(self, X, y, epochs, batch_size, verbose=0):
+    def train(self, X, y, epochs, batch_size, verbosity=0):
 
         for neural_layer in self.neural_layers:
             neural_layer.random_weights()
@@ -81,7 +81,7 @@ class Network:
 
                 cost += self.train_function(X_batch, y_batch)
 
-            if verbose and int(time.time() - checkpoint) > verbose:
+            if verbose and int(time.time() - checkpoint) > verbosity:
                 logger.info(
                     "epoch {}/{} | cost={}".format(epoch, epochs, cost / batch_count)
                 )

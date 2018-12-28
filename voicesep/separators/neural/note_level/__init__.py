@@ -1,88 +1,60 @@
 import numpy as np
-import theano
 
 from voicesep.separators.neural.note_level.features import Features
-from voicesep.separators.neural.note_level.dataset import Dataset
-from voicesep.separators.neural.network import Network
 
 def separate(
     score,
-    dataset,
-    hidden_dimensions,
-    L2_reg,
-    epochs,
-    batch_size,
+    network,
     assignment_threshold,
     convergence_limit,
     divergence_limit,
-    verbosity
+    beat_horizon
 ):
-
-    network = Network()
-
-    network.build(
-        dimensions=(Features.COUNT, hidden_dimensions, 1),
-        hidden_activations="relu",
-        output_activation="sigmoid"
-    )
-
-    network.compile(
-        cost=("binary_crossentropy", L2_reg), gradient=("adadelta", ())
-    )
-
-    network.train(dataset.X, dataset.y, epochs, batch_size, verbosity)
-
-    features = Features()
 
     assignments = Assignments()
     active_voices = ActiveVoices()
-
+    features = Features()
 
     for chord in score:
+        active_voices.filter(chord.onset, beat_horizon)
 
-        left_voices = [
-            voice for voice in active_voices
-            if len(voice.right) <= divergence_limit
-        ]
+        right_voices = [Voice(note) for note in chord]
 
-        data, active_subset = features.generate(
-            chord, left_voices, get_labels=False
-        )
-        voice_count = len(active_subset) + 1
+        data = features.generate(chord, active_voices)
+        voice_count = len(active_voices) + 1
 
         ranks = network.predict(data).reshape(len(chord), voice_count)
         voice_mask = np.ones((ranks.shape))
 
-        voice_limits = [div_limit - voice.div_count for voice in active_subset]
+        voice_limits = [divergence_limit - len(voice.right) for voice in active_voices]
         note_count = len(chord)
 
         while note_count:
-          max_flat_i = np.argmax(np.multiply(ranks, voice_mask))
-          note_index, voice_index = np.unravel_index(max_flat_i, ranks.shape)
+            max_index = np.argmax(np.multiply(ranks, voice_mask))
+            note_index, voice_index = np.unravel_index(max_index, ranks.shape)
 
-          max_prob = ranks[note_index, voice_index]
-          assert max_prob != 0
+            max_probability = ranks[note_index, voice_index]
+            assert max_probability != 0
 
-          if voice_index < voice_count - 1 and max_prob > assignment_threshold:
-            note = chord[note_index]
-            voice = active_subset[voice_index]
+            if voice_index < voice_count - 1 and max_probability >= assignment_threshold:
+                left_voice = active_voices[voice_index]
+                right_voice = right_voices[note_index]
 
-            note.neural_pairs.left.append(voice.note)
-            voice.note.neural_pairs.right.append(note)
-            voice_mask[note_index, voice_index] = 0
+                left_voice.append(right_voice)
 
-            if conv_limit > 0 and len(note.neural_pairs.left) == conv_limit:
-              voice_mask[note_index, :] = 0
-              note_count -= 1
+                voice_mask[note_index, voice_index] = 0
 
-            if div_limit > 0:
-              assert voice_limits[voice_index] != 0
-              voice_limits[voice_index] -= 1
-              if voice_limits[voice_index] == 0:
-                voice_mask[:, voice_index] = 0
+                if len(right_voice.left) == convergence_limit:
+                    voice_mask[note_index, :] = 0
+                    note_count -= 1
 
-          else:
-            voice_mask[note_index, :] = 0
-            note_count -= 1
+                if len(left_voice.right) == divergence_limit:
+                    voice_mask[:, voice_index] = 0
+
+            else:
+                voice_mask[note_index, :] = 0
+                note_count -= 1
+
+        assignments.append(right_voices)
 
         active_voices.insert(right_voices)

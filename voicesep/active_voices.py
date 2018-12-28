@@ -4,6 +4,9 @@ class ActiveVoices:
 
         self.voices = []
 
+    def filter(self, onset, beat_horizon):
+        pass
+
     def insert(self, voices):
 
         voices.sort(key=lambda voice: voice.note.pitch, reverse=True)
