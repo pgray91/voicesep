@@ -4,128 +4,145 @@ class ActiveVoices:
 
         self.voices = []
 
-    def insert(self, voice):
+    def insert(self, voices):
 
-        inserted = [True] * len(voices)
+        voices.sort(key=lambda voice: voice.note.pitch, reverse=True)
+        
+        crossed = [False] * len(voices)
         for i, voice in enumerate(voices):
-          if len(voice.converged) == 0:
-            paired[i] = False
-            continue
+            right_note = voice.note
 
-          # p_i1 = self.active_voices.index(voice1.pairs.left[-1])
-          # for voice2 in voices[i+1:]:
-          #   if len(voice2.pairs.left) == 0:
-          #     continue
-          #
-          #   p_i2 = self.active_voices.index(voice2.pairs.left[0])
-          #   if p_i1 > p_i2:
-          #     paired[i] = False
-          #     voice1.crossers.append(voice2)
-          #     voice2.crossers.append(voice1)
+            for left_voice in voice.left:
+                left_note = left_voice.note
 
-        # Separate paired and upaired voices
-        paired_voices = [v for v, p in zip(voices, paired) if p]
-        unpaired_voices = [v for v, p in zip(voices, paired) if not p]
+                visited = set()
+                for crossing_voice in self.voices:
+                    if crossing_voice.note.onset < left_note.onset or crossing_voice.note.onset > right_note.onset:
+                        continue
 
-        # Insert the paired voices
-        unpaired = [False] * len(paired_voices)
-        for ind, voice in enumerate(paired_voices):
-          i = self.active_voices.index(voice.pairs.left[0])
-          
-          j = -1
-          for left_pair in voice.pairs.left:
-            if voice.pitch_space >= left_pair.pitch_space:
-              break
-            j += 1
-            i += 1
+                    if crossing_voice in visited:
+                        continue
 
-          # if (
-          #   len(voice.pairs.left) > 1 or 
-          #   voice.pitch_space < voice.pairs.left[0].pitch_space
-          # ):
-          #   i += 1
+                    left_crossing_voices = []
+                    stack = [crossing_voice]
+                    while stack:
+                        left_crossing_voice = stack.pop()
+                        visited.add(left_crossing_voice)
 
-          while (
-            i < len(self.active_voices) and 
-            voice.beat_onset == self.active_voices[i].beat_onset and
-            voice.pairs.left[j] in self.active_voices[i].pairs.left
-          ):
-            i += 1
+                        appended = False
+                        for left_left_crossing_voice in left_crossing_voice.left:
+                            if left_left_crossing_voice.note.onset < left_note.onset:
+                                continue
 
-          if j > -1:
-            unpaired[ind] = any(
-              v.pitch_space > voice.pitch_space and v.beat_onset > voice.pairs.left[j].beat_onset
-              for v in self.active_voices[i:]
-            )
-          else:
-            unpaired[ind] = any(
-              v.pitch_space <= voice.pitch_space and v.beat_onset > voice.pairs.left[0].beat_onset
-              for v in self.active_voices[:i]
-            )
+                            stack.append(left_left_crossing_voice)
+                            appended = True
 
-          if not unpaired[ind]:
-            self.active_voices.insert(i, voice)
+                        if not appended:
+                            left_crossing_voices.append(left_crossing_voice)
 
-        unpaired_voices.extend([v for v, p in zip(paired_voices, unpaired) if p])
 
-        # Mark the blocking voices
-        for i, active_voice1 in enumerate(self.active_voices):
-          active_voice1.blocker = None
-          # I might try continuing if active_voice1.blocker is not None
+                    right_crossing_voices = []
+                    stack = [crossing_voice]
+                    while stack:
+                        right_crossing_voice = stack.pop()
+                        visited.add(right_crossing_voice)
 
-          for j in reversed(range(i)):
-            active_voice2 = self.active_voices[j]
-            if active_voice1.beat_onset <= active_voice2.beat_onset:
-              while active_voice1.pitch_space < active_voice2.pitch_space:
-                active_voice2 = active_voice2.blocker
-                if active_voice2 is None:
-                  break
+                        appended = False
+                        for right_right_crossing_voice in right_crossing_voice.left:
+                            if right_right_crossing_voice.note.onset > right_note.onset:
+                                continue
 
-              active_voice1.blocker = active_voice2
-              break
+                            stack.append(right_right_crossing_voice)
+                            appended = True
 
-            if active_voice1.pitch_space >= active_voice2.pitch_space:
-              if (
-                active_voice2.blocker is None or
-                active_voice2.blocker.beat_onset > 
-                active_voice1.beat_onset
-              ):
-                active_voice2.blocker = active_voice1
+                        if not appended:
+                            right_crossing_voices.append(right_crossing_voice)
 
-        # Flag blocked voices
-        for active_voice in self.active_voices:
-          if active_voice.blocker is not None:
-            active_voice.blocked = True
+                    for left_crossing_voice, right_crossing_voice in itertools.product(left_crossing_voices, right_crossing_voices):
+                        left_crossing_note = left_crossing_voice.note
+                        right_crossing_note = right_crossing_voice.note
+
+                        if not (
+                            left_crossing_note.onset >= left_note.onset and
+                            left_crossing_note.onset < right_note.onset and
+                            right_crossing_note.onset > left_note.onset and
+                            right_crossing_note.onset <= right_note.onset
+                        ):
+                            continue
+
+                        if not (
+                        ):
+                            continue
+
+                        crossed[i] = True
+                        break
+
+                    else:
+                        continue
+
+                    break
+
+                else:
+                    continue
+
+                break
+
+        paired_voices = [
+            voice for i, voice in enumerate(voices) if voice.left and not crossed[i]
+        ]
+        unpaired_voices = [
+            voice for i, voice in enumerate(voices) if not voice.left or crossed[i]
+        ]
 
         for voice in paired_voices:
-          i = self.active_voices.index(voice.pairs.left[0])
-          j = self.active_voices.index(voice.pairs.left[-1])
+            for i, left_voice in enumerate(self.voices):
+                if voice in left_voice.right:
+                    break
 
-          for k in range(i + 1, j):
-            if voice is self.active_voices[k]:
-              continue
+            if left_voice.note.pitch <= voice.note.pitch:
+                self.voices.insert(i, voice)
 
-            self.active_voices[k].blocked = True
+            else:
+                self.voices.insert(i + 1, voice)
 
-        # Insert the unpaired voices
+        blocked = [False] * len(self.voices)
+        for i, voice in enumerate(self.voices):
+            note = voice.note
+
+            for blocking_voice in self.voices:
+                if voice is blocking_voice:
+                    continue
+
+                right_note = blocking_voice.note
+                for left_voice in blocking_voice.left:
+                    left_note = left_voice.note
+
+                    if note.onset <= left_note.onset:
+                        if (
+                            note.pitch < left_note.pitch and
+                            note.pitch < right_note.pitch or
+                            note.pitch > left_note.pitch and
+                            note.pitch < right_note.pitch
+                        ):
+                            blocked[i] = True
+                            break
+
+                else:
+                    if note.onset < right_note.onset and note.pitch == right_note.pitch:
+                        blocked[i] = True
+                        break
+
+                    continue
+
+                break
+
         for voice in unpaired_voices:
-          for i in reversed(range(len(self.active_voices))):
-            active_voice = self.active_voices[i]
-            while active_voice.blocker is not None:
-              active_voice = active_voice.blocker
+            for i, left_voice in enumerate(self.voices):
 
-            if voice.pitch_space < active_voice.pitch_space:
-              break
-          else:
-            self.active_voices.insert(0, voice)
-            continue
+                if blocked[i]:
+                    continue
 
-          self.active_voices.insert(i + 1, voice)
+                if left_voice.note.pitch <= voice.note.pitch:
+                    break
 
-        # Sort the right pairs
-        for voice in self.active_voices:
-          active_voice.right.sort(key=lambda v : v.pitch_space, reverse=True)
-
-    def pairs(self):
-        pass
-        # perform depth first traversal over voice graph
+            self.voices.insert(i, voice)

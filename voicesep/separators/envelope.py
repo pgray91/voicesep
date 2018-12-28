@@ -17,7 +17,7 @@ def separate(score):
 
         left_voices = [
             voice for voice in active_voices
-            if voice.beat_offset <= chord.beat_onset
+            if voice.note.offset <= chord.onset and not voice.right
         ]
 
         right_voices = [Voice(note) for note in chord]
@@ -27,7 +27,6 @@ def separate(score):
 
         assignments.append(right_voices)
 
-        for voice in right_voices:
-            active_voices.insert(voice)
+        active_voices.insert(right_voices)
 
     return assignments
