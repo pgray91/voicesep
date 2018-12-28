@@ -1,8 +1,6 @@
 import voicesep.utils.constants as const
-# INCLUDE CONST INTERVAL 
-# DISCRETE
 
-def create(note, interval):
+def create(note):
 
   return [
     # Pitch

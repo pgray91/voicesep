@@ -9,7 +9,10 @@ def sgd(params, cost_var, learning_rate=1):
         for param_var in params
     ]
 
-def adadelta(params, cost_var, rho=0.95, epsilon=1e-6):
+def adadelta(params, cost_var):
+
+    rho = 0.95
+    epsilon = 1e-6
 
     updates = []
     for param_var in params:
