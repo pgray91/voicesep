@@ -217,7 +217,7 @@ class Test(unittest.TestCase):
             (self.score[2][1], self.score[3][0]),
             (self.score[2][2], self.score[3][1])
         }
-        true_pairs = self.score.separate(one_to_many=True).pairs()
+        true_pairs = self.score.separate(one_to_many=True)
 
         self.assertEqual(expected_pairs, true_pairs)
 
@@ -227,7 +227,7 @@ class Test(unittest.TestCase):
             (self.score[0][0], self.score[1][0]),
             (self.score[0][1], self.score[1][0])
         }
-        true_pairs = self.score.separate(one_to_many=True).pairs()
+        true_pairs = self.score.separate(one_to_many=True)
 
         self.assertEqual(expected_pairs, true_pairs)
 
@@ -237,7 +237,7 @@ class Test(unittest.TestCase):
             (self.score[0][0], self.score[1][0]),
             (self.score[0][0], self.score[1][1])
         }
-        true_pairs = self.score.separate(one_to_many=True).pairs()
+        true_pairs = self.score.separate(one_to_many=True)
 
         self.assertEqual(expected_pairs, true_pairs)
 
@@ -251,7 +251,7 @@ class Test(unittest.TestCase):
             (self.score[2][1], self.score[3][0]),
             (self.score[2][2], self.score[3][1])
         }
-        true_pairs = self.score.separate(one_to_many=False).pairs()
+        true_pairs = self.score.separate(one_to_many=False)
 
         self.assertEqual(expected_pairs, true_pairs)
 
