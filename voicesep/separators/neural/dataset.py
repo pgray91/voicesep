@@ -18,7 +18,7 @@ class Dataset:
 
     return features, labels
 
-  def write(self, score, active_voices, features):
+  def write(self, score, one_to_many):
 
     group = self.fp.create_group(score.name)
 
@@ -35,7 +35,7 @@ class Dataset:
       dtype=np.int16
     )
 
-    assignments = score.separate()
+    assignments = score.separate(one_to_many)
     active_voices.update(assignments[0])
     length = 0
     for chord, assignment in zip(score[1:], assignments[1:]):
@@ -51,7 +51,7 @@ class Dataset:
       features_dataset[length - len(data):length] = data
       labels_dataset[length - len(data):length] = labels
 
-      active_voices.update(assignment)
+      active_voices.insert(assignment)
 
     features_dataset.resize((length, features.COUNT))
     labels_dataset.resize((length,))
