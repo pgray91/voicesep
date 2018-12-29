@@ -10,7 +10,7 @@ def separate(score):
 
     logger.info("{} | envelope separation".format(score.name))
 
-    pairs = set()
+    assignments = Assignments()
     active_voices = ActiveVoices()
 
     for chord in score:
@@ -24,8 +24,9 @@ def separate(score):
 
         for left_voice, right_voice in zip(left_voices, right_voices):
             left_voice.link(right_voice)
-            pairs.add((left_voice.note, right_voice.note))
 
         active_voices.insert(right_voices)
 
-    return pairs
+        assignments.append(right_voices)
+
+    return assignments
