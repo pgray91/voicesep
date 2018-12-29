@@ -26,10 +26,10 @@ class Test(unittest.TestCase):
             location=(0, 0)
         )
 
-        with self.subTest("note equal"):
+        with self.subTest("equal"):
             self.assertEqual(self.note, note)
 
-        with self.subTest("note hash"):
+        with self.subTest("hash"):
             self.assertEqual(hash(self.note), hash(note))
 
     def test_not_equal(self):

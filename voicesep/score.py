@@ -164,12 +164,14 @@ class Score:
             )
         )
 
-        pairs = set()
+        assignments = Assignments()
 
         voice_map = {}
         voiceid_map = {}
 
         for chord in self.chords:
+            assignment = []
+
             for note in chord:
                 right_voice = Voice(note)
 
@@ -188,12 +190,15 @@ class Score:
                     if voiceid in voice_map:
                         left_voice = voice_map[voiceid]
                         if right_voice not in left_voice.right:
-                            left_voice.append(right_voice)
-                            pairs.add((left_voice.note, right_voice.note))
+                            left_voice.link(right_voice)
 
                     voice_map[voiceid] = right_voice
 
-        return pairs
+                assignment.append(right_voice)
+
+            assignments.append(assignment)
+
+        return assignments
 
     # def write(self, sheet, assignments):
     #
