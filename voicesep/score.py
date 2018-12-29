@@ -123,6 +123,7 @@ class Score:
 
                             pitch=int(note_part.pitch.ps),
 
+                            onset=onset,
                             duration=duration,
                             offset=offset,
 

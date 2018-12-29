@@ -14,10 +14,10 @@ class Voice:
 
         logger.debug("{} | initializing voice".format(self))
 
-    def append(self, voice):
+    def link(self, right_voice):
 
-        self.right.add(voice)
-        voice.left.add(self)
+        self.right.add(right_voice)
+        right_voice.left.add(self)
 
     def __str__(self):
 

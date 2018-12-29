@@ -6,23 +6,19 @@ class ActiveVoices:
 
     def insert(self, assignment):
 
-        crossing = [False] * len(assignment)
-        for i, right_voice in enumerate(assignment):
-            for left_voice in right_voice.left:
-                if self.crossing(left_voice.note, right_voice.note):
-                    crossing[i] = True
-                    break
+        unpaired_voices = []
+        for right_voice in assignment:
+            
+            if not right_voice.left:
+                upaired_voices.append(right_voice)
+                continue
 
-        paired_voices = [
-            voice for i, voice in enumerate(assignment)
-            if voice.left and not crossing[i]
-        ]
-        unpaired_voices = [
-            voice for i, voice in enumerate(assignment)
-            if not voice.left or crossing[i]
-        ]
-
-        for right_voice in paired_voices:
+            if any(
+                self.crossing(left_voice.note, right_voice.note)
+                for left_voice in right_voice.left
+            ):
+                upaired_voices.append(right_voice)
+                continue
 
             for left_voice in right_voice.left:
                 if left_voice.note.pitch <= right_voice.note.pitch:
@@ -67,13 +63,14 @@ class ActiveVoices:
 
         for left_voice in self.voices:
 
-            if left_voice.note is note:
-                continue
-
-            if left_voice.note.onset < note.onset:
-                continue
-
             left_note = left_voice.note
+
+            if left_note is note:
+                continue
+
+            if left_note.onset < note.onset:
+                continue
+
             if note.pitch == left_note.pitch:
                 return True
 
@@ -87,81 +84,53 @@ class ActiveVoices:
 
         return False
 
-    def crossing(self, left_note, right_note):
+    def crossing(self, left_note_a, right_note_a):
 
-        right_note = voice.note
+        for left_voice_b in self.voices:
+            left_note_b = left_voice_b.note
 
-        for left_voice in voice.left:
-            left_note = left_voice.note
-
-            visited = set()
-            for crossing_voice in self.voices:
-                if crossing_voice.note.onset < left_note.onset or crossing_voice.note.onset > right_note.onset:
-                    continue
-
-                if crossing_voice in visited:
-                    continue
-
-                left_crossing_voices = []
-                stack = [crossing_voice]
-                while stack:
-                    left_crossing_voice = stack.pop()
-                    visited.add(left_crossing_voice)
-
-                    appended = False
-                    for left_left_crossing_voice in left_crossing_voice.left:
-                        if left_left_crossing_voice.note.onset < left_note.onset:
-                            continue
-
-                        stack.append(left_left_crossing_voice)
-                        appended = True
-
-                    if not appended:
-                        left_crossing_voices.append(left_crossing_voice)
-
-
-                right_crossing_voices = []
-                stack = [crossing_voice]
-                while stack:
-                    right_crossing_voice = stack.pop()
-                    visited.add(right_crossing_voice)
-
-                    appended = False
-                    for right_right_crossing_voice in right_crossing_voice.left:
-                        if right_right_crossing_voice.note.onset > right_note.onset:
-                            continue
-
-                        stack.append(right_right_crossing_voice)
-                        appended = True
-
-                    if not appended:
-                        right_crossing_voices.append(right_crossing_voice)
-
-                for left_crossing_voice, right_crossing_voice in itertools.product(left_crossing_voices, right_crossing_voices):
-                    left_crossing_note = left_crossing_voice.note
-                    right_crossing_note = right_crossing_voice.note
-
-                    if not (
-                        left_crossing_note.onset >= left_note.onset and
-                        left_crossing_note.onset < right_note.onset and
-                        right_crossing_note.onset > left_note.onset and
-                        right_crossing_note.onset <= right_note.onset
-                    ):
-                        continue
-
-                    if not (
-                    ):
-                        continue
-
-                    crossed[i] = True
-                    break
-
-                else:
-                    continue
-
-                break
-
-            else:
+            if left_note_b is left_note_a:
                 continue
 
-            break
+            if left_note_b.onset < left_note_a.onset:
+                continue
+
+            if left_note_b.onset >= right_note_a.onset:
+                continue
+
+            if any(
+                left_voice.note.onset >= left_note_a.onset
+                for left_voice in left_voice_b.left
+            ):
+                continue
+
+            stack = [left_voice_b]
+            while stack:
+                voice_b = stack.pop()
+
+                for right_voice_b in voice_b.right:
+                    right_note_b = right_voice_b.note
+
+                    if right_note_b.onset > right_note_a.onset:
+                        continue
+
+                    if any(
+                        right_voice.note.onset <= right_note_a.onset
+                        for right_voice in right_voice_b.right
+                    ):
+                        stack.append(right_voice_b)
+                        continue
+
+                    min_pitch_a = min(left_note_a.pitch, right_note_a.pitch)
+                    max_pitch_a = max(left_note_a.pitch, right_note_a.pitch)
+
+                    min_pitch_b = min(left_note_b.pitch, right_note_b.pitch)
+                    max_pitch_b = max(left_note_b.pitch, right_note_b.pitch)
+
+                    if (
+                        min_pitch_a <= min_pitch_b < max_pitch_a and
+                        min_pitch_a < max_pitch_b <= max_pitch_a
+                    ):
+                        return True
+
+        return False
