@@ -6,15 +6,6 @@ import voicesep as vs
 
 #logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
-# beat
-# beat strength
-
-# Test simple melody separation
-# convergence
-# divergence
-# test one_to_one separation
-# Test voice connections
-
 class Test(unittest.TestCase):
 
     RED="#FF0000"

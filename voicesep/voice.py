@@ -19,6 +19,17 @@ class Voice:
         self.right.add(right_voice)
         right_voice.left.add(self)
 
+    def __eq__(self, other):
+
+        return (
+            isinstance(other, Voice) and
+            self.note == other.note
+        )
+
+    def __hash__(self):
+
+        return hash(self.note)
+
     def __str__(self):
 
         return "Voice({})".format(self.note)

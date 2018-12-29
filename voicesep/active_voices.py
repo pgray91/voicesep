@@ -71,7 +71,7 @@ class ActiveVoices:
             if left_note.onset < note.onset:
                 continue
 
-            if note.pitch == left_note.pitch:
+            if left_note.pitch == note.pitch:
                 return True
 
             for right_voice in left_voice.right:
@@ -110,6 +110,9 @@ class ActiveVoices:
 
                 for right_voice_b in voice_b.right:
                     right_note_b = right_voice_b.note
+
+                    if right_note_b is right_note_a:
+                        continue
 
                     if right_note_b.onset > right_note_a.onset:
                         continue
