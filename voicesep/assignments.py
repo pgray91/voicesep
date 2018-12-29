@@ -18,3 +18,15 @@ class Assignments:
                     pairs.add(pair)
 
         return pairs
+
+    def __len__(self):
+
+        return len(self.assignments)
+
+    def __getitem__(self, index):
+
+        return self.assignments[index]
+
+    def __iter__(self):
+
+        return iter(self.assignments)

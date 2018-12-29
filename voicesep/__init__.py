@@ -1,5 +1,6 @@
 import logging
 
+from voicesep.active_voices import ActiveVoices
 from voicesep.assignments import Assignments
 from voicesep.chord import Chord
 from voicesep.note import Note
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 __all__ = [
+    "ActiveVoices",
     "Assignments",
     "Chord",
     "Note",

@@ -14,7 +14,6 @@ class Chord:
 
         logger.debug("{} | initializing chord".format(self))
 
-
     def __len__(self):
 
         return len(self.notes)

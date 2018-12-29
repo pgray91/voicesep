@@ -18,13 +18,25 @@ class Test(unittest.TestCase):
             location=(0, 1)
         )
 
-        left_voice = vs.Voice(self.left_note)
-        right_voice = vs.Voice(self.right_note)
-        left_voice.link(right_voice)
+        self.left_voice = vs.Voice(self.left_note)
+        self.right_voice = vs.Voice(self.right_note)
+        self.left_voice.link(self.right_voice)
 
         self.assignments = vs.Assignments()
-        self.assignments.append([left_voice])
-        self.assignments.append([right_voice])
+        self.assignments.append([self.left_voice])
+        self.assignments.append([self.right_voice])
+
+    def test_index(self):
+
+        self.assertEqual(self.assignments[0], [self.left_voice])
+
+    def test_iter(self):
+
+        self.assertEqual(list(self.assignments), [[self.left_voice], [self.right_voice]])
+
+    def test_len(self):
+
+        self.assertEqual(len(self.assignments), 2)
 
     def test_pairs(self):
 

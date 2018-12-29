@@ -13,7 +13,7 @@ class Test(unittest.TestCase):
         score = vs.Score(name, sheet)
         assignments = score.separate(one_to_many=True)
 
-        self.active_voices = ActiveVoices()
+        self.active_voices = vs.ActiveVoices()
         for assignment in assignments:
             self.active_voices.insert(assignment)
 
@@ -28,6 +28,35 @@ class Test(unittest.TestCase):
             self.voices[1],
             self.voices[5],
             self.voices[3]
+        ]
+        true_order = list(self.active_voices)
+
+        self.assertEqual(expected_order, true_order)
+
+    def test_insertion_crossing_voice(self):
+
+        expected_order = [
+            self.voices[0],
+            self.voices[1],
+            self.voices[5],
+            self.voices[4],
+            self.voices[6],
+            self.voices[3],
+            self.voices[2]
+        ]
+        true_order = list(self.active_voices)
+         
+        self.assertEqual(expected_order, true_order)
+
+    def test_insertion_empty_voice(self):
+
+        expected_order = [
+            self.voices[0],
+            self.voices[2],
+            self.voices[4],
+            self.voices[5],
+            self.voices[3],
+            self.voices[1]
         ]
         true_order = list(self.active_voices)
 
