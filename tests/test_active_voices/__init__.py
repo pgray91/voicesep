@@ -19,7 +19,28 @@ class Test(unittest.TestCase):
 
         self.voices = [voice for assignment in assignments for voice in assignment]
 
-    def test_insertion_simple(self):
+    def test_insertion_blocking_complex(self):
+
+        expected_order = [
+            self.voices[10],
+            self.voices[5],
+            self.voices[11],
+            self.voices[7],
+            self.voices[6],
+            self.voices[0],
+            self.voices[1],
+            self.voices[3],
+            self.voices[4],
+            self.voices[2],
+            self.voices[9],
+            self.voices[12],
+            self.voices[8]
+        ]
+        true_order = list(self.active_voices)
+
+        self.assertEqual(expected_order, true_order)
+
+    def test_insertion_blocking_simple(self):
 
         expected_order = [
             self.voices[2],
@@ -31,6 +52,19 @@ class Test(unittest.TestCase):
         ]
         true_order = list(self.active_voices)
 
+        self.assertEqual(expected_order, true_order)
+
+
+    def test_insertion_convergence(self):
+
+        expected_order = [
+            self.voices[0],
+            self.voices[1],
+            self.voices[3],
+            self.voices[2]
+        ]
+        true_order = list(self.active_voices)
+         
         self.assertEqual(expected_order, true_order)
 
     def test_insertion_crossing_voice(self):
@@ -48,6 +82,19 @@ class Test(unittest.TestCase):
          
         self.assertEqual(expected_order, true_order)
 
+    def test_insertion_divergence(self):
+
+        expected_order = [
+            self.voices[1],
+            self.voices[0],
+            self.voices[2],
+            self.voices[3]
+        ]
+        true_order = list(self.active_voices)
+         
+        self.assertEqual(expected_order, true_order)
+
+
     def test_insertion_empty_voice(self):
 
         expected_order = [
@@ -61,6 +108,7 @@ class Test(unittest.TestCase):
         true_order = list(self.active_voices)
 
         self.assertEqual(expected_order, true_order)
+
 
 
 if __name__ == "__main__":
