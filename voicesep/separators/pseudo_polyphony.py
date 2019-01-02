@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def run(self, chord, active_voices, assignment):
+def run(self, chord, active_voices, assignment, score):
 
     logger.info("{} separation".format(__name__))
 

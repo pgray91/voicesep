@@ -5,7 +5,7 @@ import random
 import theano
 
 from voicesep.active_voices import ActiveVoices
-from voicesep.separators.neural.features import Features
+from voicesep.separators.neural.note_level import features
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +27,8 @@ class Dataset:
 
         features_dataset = group.create_dataset(
             name="features",
-            shape=(0, features.COUNT),
-            maxshape=(None, features.COUNT),
+            shape=(0, features.count()),
+            maxshape=(None, features.count()),
             dtype=theano.config.floatX
         )
 
@@ -40,17 +40,21 @@ class Dataset:
         )
 
         active_voices = ActiveVoices()
-        features = Features()
 
         length = 0
         for chord, assignment in zip(score, assignments):
             active_voices.filter(beat_horizon)
 
-            data = features.generate(chord, active_voices)
+            data = []
+            for note in chord:
+                for voice in active_voices:
+                    data.append(features.generate(note, chord, voice))
+
+                data.append(features.generate(note, chord, None))
 
             length += len(data)
             if features_data.len() <= length:
-                features_dataset.resize((length * 2, features.COUNT))
+                features_dataset.resize((length * 2, features.count()))
                 labels_dataset.resize((length * 2,))
 
             features_dataset[length - len(data):length] = data
@@ -85,7 +89,7 @@ class Dataset:
 
         length = stop - start
 
-        features = np.empty((length, features.COUNT), dtype=theano.config.floatX)
+        features = np.empty((length, features.count()), dtype=theano.config.floatX)
         labels = np.empty((length,), dtype=np.int16)
 
         get_start = 0

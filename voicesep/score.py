@@ -155,51 +155,6 @@ class Score:
                 )
                 self.chords.append(chord)
 
-
-    def separate(self, one_to_many):
-
-        logger.info(
-            "{} | one to {} | separating true voices".format(
-                self.name, "many" if one_to_many else "one"
-            )
-        )
-
-        assignments = Assignments()
-
-        voice_map = {}
-        voiceid_map = {}
-
-        for chord in self.chords:
-            assignment = []
-
-            for note in chord:
-                right_voice = Voice(note)
-
-                if one_to_many:
-                    if len(note.lyric) > 0:
-                        voiceids = note.lyric
-                        voiceid_map[note.color] = voiceids
-
-                    else:
-                        voiceids = voiceid_map[note.color]
-
-                else:
-                    voiceids = [note.color]
-
-                for voiceid in voiceids:
-                    if voiceid in voice_map:
-                        left_voice = voice_map[voiceid]
-                        if right_voice not in left_voice.right:
-                            left_voice.link(right_voice)
-
-                    voice_map[voiceid] = right_voice
-
-                assignment.append(right_voice)
-
-            assignments.append(assignment)
-
-        return assignments
-
     # def write(self, sheet, assignments):
     #
     #     logger.info("{} | {} | writing assignments to file".format(self.name, sheet))
