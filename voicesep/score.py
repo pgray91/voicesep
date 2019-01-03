@@ -3,7 +3,6 @@ import logging
 import music21 as m21
 import random
 
-from voicesep.assignments import Assignments
 from voicesep.chord import Chord
 from voicesep.note import Note
 from voicesep.voice import Voice

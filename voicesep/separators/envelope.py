@@ -16,5 +16,3 @@ def run(self, chord, active_voices, assignment):
 
     for left_voice, right_voice in zip(left_voices, right_voices):
         left_voice.link(right_voice)
-
-    assignments.append(right_voices)

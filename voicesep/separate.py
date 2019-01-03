@@ -1,7 +1,6 @@
 import logging
 
 from voicesep.active_voices import ActiveVoices
-from voicesep.assignments import Assignments
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +9,7 @@ def separate(score, separators, beat_horizon):
 
     logger.info("{} | separation".format(score.name))
 
-    assignments = Assignments()
+    assignments = []
     active_voices = ActiveVoices()
 
     for chord in score:
