@@ -16,7 +16,7 @@ class Dataset:
     def __init__(self, path):
 
         stamp = int(time.time())
-        self.fp = h5py.File("{}/{}.{}.hdf5".format(path, "note_level", stamp), "w+")
+        self.fp = h5py.File("{}/note_level.{}.hdf5".format(path, stamp), "w+")
         self.length = 0
 
     def __del__(self):

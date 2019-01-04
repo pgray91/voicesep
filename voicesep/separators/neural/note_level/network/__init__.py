@@ -4,10 +4,10 @@ import theano
 import theano.tensor as T
 import time
 
-from voicesep.separators.neural.network import activations
-from voicesep.separators.neural.network import costs
-from voicesep.separators.neural.network import gradients
-from voicesep.separators.neural.network.layer import Layer
+from voicesep.separators.neural import activations
+from voicesep.separators.neural import costs
+from voicesep.separators.neural import gradients
+from voicesep.separators.neural.note_level.network.layer import Layer
 
 logger = logging.getLogger(__name__)
 
