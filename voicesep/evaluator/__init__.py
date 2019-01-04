@@ -33,23 +33,25 @@ class Evaluator:
     def write(self, path):
 
         stamp = int(time.time())
-        for pair_filter in self.results:
-            with open("{}/{}.{}.csv".format(path, pair_filter, stamp), "w") as fp:
-                csv_writer = csv.writer(fp)
+        with open("{}/results.{}.csv".format(path, stamp), "w") as fp:
+            csv_writer = csv.writer(fp)
 
-                csv_writer.writerow(
-                    [
-                        "score",
-                        "jaccard index",
-                        "precision",
-                        "recall",
-                        "f1",
-                        "true count",
-                        "predicted count",
-                        "intersect count",
-                    ]
-                )
-                
+            csv_writer.writerow(
+                [
+                    "score",
+                    "jaccard index",
+                    "precision",
+                    "recall",
+                    "f1",
+                    "true count",
+                    "predicted count",
+                    "intersect count",
+                    "pair filter"
+                ]
+            )
+
+            for pair_filter in self.results:
+
                 true_count = sum(
                     result.true_count() for result in self.results[pair_filter]
                 )
@@ -72,6 +74,7 @@ class Evaluator:
                             result.f1(),
                             result.true_count(),
                             result.predicted_count(),
-                            result.intersect_count()
+                            result.intersect_count(),
+                            pair_filter
                         ]
                     )
