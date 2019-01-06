@@ -30,14 +30,16 @@ def adadelta(params, cost_var, rho=0.95, epsilon=1e-6):
             np.zeros(
                 param_var.get_value(borrow=True).shape,
                 dtype=theano.config.floatX
-            )
+            ),
+            borrow=True
         )
 
         delta_var = theano.shared(
             np.zeros(
                 param_var.get_value(borrow=True).shape,
                 dtype=theano.config.floatX
-            )
+            ),
+            borrow=True
         )
 
         accu_update_var = (

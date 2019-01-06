@@ -6,7 +6,7 @@ import theano
 import time
 
 from voicesep.active_voices import ActiveVoices
-from voicesep.separators.neural.note_level import features
+from voicesep.separators.neural.features import Features
 
 logger = logging.getLogger(__name__)
 
