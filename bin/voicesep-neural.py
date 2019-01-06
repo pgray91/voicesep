@@ -4,6 +4,13 @@ import logging
 
 import voicesep as vs
 
+# args
+# ----------
+# dataset
+# train
+# neural
+#   note_level
+#   chord_level
 
 def main():
 
@@ -22,21 +29,26 @@ def main():
     with open(args.parameters) as fp:
         parameters = json.load(fp)
 
+
+    dimensions = parameters["dimensions"]
+    hidden_activations = parameters["hidden_activations"]
+    output_activations = parameters["output_activations"]
+
+    network = vs.separators.neural.note_level.Network()
+
+    network.build(dimensions, hidden_activations, output_activations)
+
+    cost = parameters["cost"]
+    L2_reg = parameters["L2_reg"]
+    gradient_type = parameters["gradient_type"]
+    gradient_args = parameters["gradient_args"]
+
+    network.compile(cost, L2_reg, gradient_type, gradient_args)
+
     for score_file in parameters["scores_path"]:
         score = vs.Score(score_file)
 
-        separators = []
-        for separator in parameters["separators"]:
-            name = next(iter(separator))
-            args = separator[name]
-
-            if overrides:
-                override_args = override[name]
-
-                for key, value in override_args.items():
-                    args[key] = value
-
-            separators.append((name, args))
+        dataset = None
 
         beat_horizon = parameters["beat_horizon"]
 

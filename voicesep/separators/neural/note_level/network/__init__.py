@@ -41,7 +41,7 @@ class Network:
             )
         )
 
-    def compile(self, cost, gradient):
+    def compile(self, cost_type, L2_reg, gradient_type, gradient_args):
 
         cost_type, L2_reg = cost
         gradient_type, gradient_args = gradient
