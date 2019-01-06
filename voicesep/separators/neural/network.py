@@ -18,7 +18,7 @@ class Network:
         logger.debug("initializing")
 
         self.X_var = T.matrix("X", dtype=theano.config.floatX)
-        self.y_var = T.matrix("y", dtype=theano.config.floatX)
+        self.y_var = T.vector("y", dtype=theano.config.floatX)
         self.neural_layers = []
         self.params = []
 
@@ -51,7 +51,7 @@ class Network:
         y_hat_var = self.neural_layers[-1].y_hat_var
 
         cost_function = getattr(costs, cost_type)
-        cost_var = cost_function(self.y_var, y_hat_var)
+        cost_var = cost_function(self.y_hat_var, y_var)
         cost_var += L2_reg * sum(
             T.sum(T.pow(neural_layer.W_var, 2))
             for neural_layer in self.neural_layers

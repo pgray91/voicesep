@@ -6,6 +6,8 @@ import unittest
 import voicesep as vs
 
 
+# for layer test set_weights size aassert
+
 class Test(unittest.TestCase):
 
     def test_binary_crossentropy(self):

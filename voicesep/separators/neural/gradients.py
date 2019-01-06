@@ -53,9 +53,11 @@ def adadelta(params, cost_var, rho=0.95, epsilon=1e-6):
         )
 
         updates.extend(
-            (accu_var, accu_update_var),
-            (delta_var, delta_update_var),
-            (param_var, param_var - param_update_var)
+            [
+                (accu_var, accu_update_var),
+                (delta_var, delta_update_var),
+                (param_var, param_var - param_update_var)
+            ]
         )
 
     return updates

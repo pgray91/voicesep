@@ -3,7 +3,7 @@ import numpy as np
 import theano
 import theano.tensor as T
 
-from voicesep.separation.neural import activations
+from voicesep.separators.neural import activations
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ class Layer:
 
         self.params = (self.W_var, self.b_var)
 
-        self.y_hat_var = getattr(activation, activations)(
+        self.y_hat_var = getattr(activations, activation)(
             T.dot(X_var, self.W_var) + self.b_var
         )
 

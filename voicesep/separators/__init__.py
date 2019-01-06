@@ -1,13 +1,6 @@
-import abc
+from voicesep.separators import neural
+from voicesep.separators.envelope import Envelope
+from voicesep.separators.separator import Separator
 
 
-class Separator(abc.ABC):
-
-    def __init__(self, score):
-
-        self.score = score
-
-    @abc.abstractmethod
-    def run(self, chord, active_voices, assignment):
-
-        pass
+__all__ = ["neural", "Envelope", "Separator"]

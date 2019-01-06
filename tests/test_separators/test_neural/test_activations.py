@@ -9,12 +9,12 @@ class Test(unittest.TestCase):
 
     def setUp(self):
 
-        name = self._testMethodName.split("_")[1]
+        name = self._testMethodName.split("_", 1)[1]
 
-        X = T.dvectors("X")
-        function_var = getattr(vs.separators.neural.activations, name)(X)
+        X_var = T.dvectors("X")
+        function_var = getattr(vs.separators.neural.activations, name)(X_var)
 
-        self.function = theano.function([X], function_var)
+        self.function = theano.function([X_var], function_var)
 
     def test_linear(self):
 
