@@ -4,16 +4,19 @@ import theano
 import theano.tensor as T
 import time
 
-from voicesep.separators.neural import activations
 from voicesep.separators.neural import costs
 from voicesep.separators.neural import gradients
-from voicesep.separators.neural.note_level.network.layer import Layer
+from voicesep.separators.neural.network.layer import Layer
 
 logger = logging.getLogger(__name__)
+
 
 class Network:
 
     def __init__(self):
+
+        logger.debug("initializing")
+
         self.X_var = T.matrix("X", dtype=theano.config.floatX)
         self.y_var = T.matrix("y", dtype=theano.config.floatX)
         self.neural_layers = []
@@ -24,27 +27,26 @@ class Network:
         next_input = self.X_var
         for i in range(len(dimensions) - 2):
             self.neural_layers.append(
-                NeuralLayer(
+                Layer(
                     next_input,
-                    dimensions[i:i+2],
-                    getattr(activations, hidden_activations)
+                    dimensions[i],
+                    dimensions[i+1],
+                    hidden_activations
                 )
             )
             self.params.extend(self.neural_layers[-1].params)
             next_input = self.neural_layers[-1].y_hat_var
 
         self.neural_layers.append(
-            NeuralLayer(
+            Layer(
                 next_input,
-                dimensions[-2:],
-                getattr(activations, output_activation)
+                dimensions[-2],
+                dimensions[-1],
+                output_activation
             )
         )
 
     def compile(self, cost_type, L2_reg, gradient_type, gradient_args):
-
-        cost_type, L2_reg = cost
-        gradient_type, gradient_args = gradient
 
         y_hat_var = self.neural_layers[-1].y_hat_var
 
@@ -56,12 +58,12 @@ class Network:
         )
 
         gradient_function = getattr(gradients, gradient_type)
-        gradients = gradient_function(self.params, cost_var, *gradient_args)
+        updates = gradient_function(self.params, cost_var, *gradient_args)
 
         self.train_function = theano.function(
             inputs=[self.X_var, self.y_var],
             outputs=cost_var,
-            updates=gradients
+            updates=updates
         )
 
         self.predict_function = theano.function(
@@ -85,7 +87,7 @@ class Network:
 
                 cost += self.train_function(X_batch, y_batch)
 
-            if verbose and int(time.time() - checkpoint) > verbosity:
+            if verbosity and int(time.time() - checkpoint) > verbosity:
                 logger.info(
                     "epoch {}/{} | cost={}".format(epoch, epochs, cost / batch_count)
                 )
