@@ -1,7 +1,21 @@
-import theano
 import theano.tensor as T
 
-linear = lambda X: X
-sigmoid = T.nnet.sigmoid
-relu = T.nnet.relu
-softmax = T.nnet.softmax
+
+def linear(X):
+
+    return X
+
+
+def sigmoid(X):
+
+    return T.nnet.sigmoid(X)
+
+
+def relu(X):
+
+    return T.nnet.relu(X)
+
+
+def softmax(X):
+
+    return T.nnet.softmax(X)
