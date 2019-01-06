@@ -8,13 +8,14 @@ setup(
     author="Patrick Gray",
     author_email="pgray9189@gmail.com",
     license="",
-    packages=find_packages()
+    packages=["voicesep"],
+    python_requres=">=3.7.0",
     install_requres=[
         "h5py",
         "music21",
         "numpy",
         "theano"
-    ]
+    ],
     test_suite="nose.collector",
     tests_require=["nose"]
 )
