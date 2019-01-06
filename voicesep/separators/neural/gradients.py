@@ -2,57 +2,58 @@ import numpy as np
 import theano
 import theano.tensor as T
 
-def sgd(params, cost_var, learning_rate=1):
+
+def sgd(params, cost_var, learning_rate=1.0):
+
+    grads = [T.grad(cost_var, param_var) for param_var in params]
 
     return [
-        (param_var, param_var - learning_rate * T.grad(cost_var, param_var))
-        for param_var in params
+        (param_var, param_var - learning_rate * grad_var)
+        for param_var, grad_var in zip(params, grads)
     ]
 
-def adadelta(params, cost_var):
 
-    rho = 0.95
-    epsilon = 1e-6
+def adadelta(params, cost_var, rho=0.95, epsilon=1e-6):
+
+    """
+        Zeiler, M. D. 2012.
+        ADADELTA: An adaptive learning rate method.
+        arXiv:1212.5701.
+    """
+
+    grads = [T.grad(cost_var, param_var) for param_var in params]
 
     updates = []
-    for param_var in params:
+    for param_var, grad_var in zip(params, grads):
 
-        gparam_var = T.grad(cost_var, param_var)
-
-        param_sq = theano.shared(
-            value=np.zeros(
+        accu_var = theano.shared(
+            np.zeros(
                 param_var.get_value(borrow=True).shape,
                 dtype=theano.config.floatX
-            ),
-            borrow=True
+            )
         )
 
-        delta_sq = theano.shared(
-            value=np.zeros(
+        delta_var = theano.shared(
+            np.zeros(
                 param_var.get_value(borrow=True).shape,
                 dtype=theano.config.floatX
-            ),
-            borrow=True
+            )
         )
 
+        accu_update_var = (
+            rho * accu_var + (1 - rho) * grad_var ** 2
+        )
+        param_update_var = (
+            T.sqrt((delta_var + epsilon) / (accu_update_var + epsilon)) * grad_var
+        )
+        delta_update_var = (
+            rho * delta_var + (1 - rho) * param_update_var ** 2
+        )
 
-        agrad = rho * param_sq + (1 - rho) * gparam_var ** 2
-        delta = T.sqrt((delta_sq + epsilon) / (agrad + epsilon)) * gparam_var
-        accudelta = rho * delta_sq + (1 - rho) * delta ** 2
+        updates.extend(
+            (accu_var, accu_update_var),
+            (delta_var, delta_update_var),
+            (param_var, param_var - param_update_var)
+        )
 
-        updates.append((param_var, param_var - delta))
-        updates.append((gparam_var, param_var - delta))
-        updates.append((gparam_var, param_var - delta))
-
-
-
-
-  deltas_sq_next = [
-    rho * dsq + (1 - rho) * d ** 2 
-    for dsq, d in zip(deltas_sq, deltas)
-  ]
-
-  gparam_sq_updates = list(zip(gparams_sq, gparams_sq_next))
-  delta_sq_updates = list(zip(deltas_sq, deltas_sq_next))
-  param_updates = [(p, p - d) for p, d in zip(params, deltas)]
-  return gparam_sq_updates + delta_sq_updates + param_updates
+    return updates
