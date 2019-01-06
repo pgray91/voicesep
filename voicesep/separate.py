@@ -10,7 +10,10 @@ def separate(score, separators, beat_horizon):
     logger.info("{} | separation".format(score.name))
 
     for separator, args in separators:
-        separator = locals("voicesep.separators.{}"separator)(*args)
+        separator = locals("voicesep.separators.{}".format(
+            "".join(name.title() for name in separator.split("_"))
+        )
+        )(*args)
 
     assignments = []
     active_voices = ActiveVoices()

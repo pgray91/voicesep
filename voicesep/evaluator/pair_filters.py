@@ -8,244 +8,247 @@ def pairs(assignment):
 
     return pairs
 
-def all(true_assignment, predicted_assignment):
+def all(benchmark_assignment, actual_assignment):
 
-    return pairs(true_assignment), pairs(predicted_assignment)
+    return pairs(benchmark_assignment), pairs(actual_assignment)
 
-def exclude_rests(true_assignment, predicted_assignment):
+def exclude_rests(benchmark_assignment, actual_assignment):
 
-    true_pairs = [
-        pair for pair in pairs(true_assignment)
+    benchmark_pairs = [
+        pair for pair in pairs(benchmark_assignment)
         if pair[0].beat_offset >= pair[1].beat_onset
     ]
 
-    predicted_pairs = [
-        pair for pair in pairs(predicted_assignment)
+    actual_pairs = [
+        pair for pair in pairs(actual_assignment)
         if pair[0].beat_offset >= pair[1].beat_onset
     ]
 
-    return true_pairs, predicted_pairs
+    return benchmark_pairs, actual_pairs
 
-def joint_many(true_assignment, predicted_assignment):
+def joint_many(benchmark_assignment, actual_assignment):
 
-    for true_voice, predicted_voice in zip(true_assignment, predicted_assignment):
+    assignment = zip(benchmark_assignment, actual_assignment)
+    for benchmark_voice, actual_voice in assignment:
 
-        if len(true_voice.left) > 1 or len(predicted_voice.left) > 1:
+        if len(benchmark_voice.left) > 1 or len(actual_voice.left) > 1:
             break
 
-        if len(true_voice.left) == 1 and len(next(true_voice.left).right) > 1:
+        if len(benchmark_voice.left) == 1 and len(next(benchmark_voice.left).right) > 1:
             break
 
-        if len(predicted_voice.left) == 1 and len(next(predicted_voice.left).right) > 1:
-            break
-
-    else:
-        return set(), set()
-
-    return pairs(true_assignment), pairs(predicted_assignment)
-
-def true_joint_many(true_assignment, predicted_assignment):
-
-    for true_voice in true_assignment:
-
-        if len(true_voice.left) > 1:
-            break
-
-        if len(true_voice.left) == 1 and len(next(true_voice.left).right) > 1:
+        if len(actual_voice.left) == 1 and len(next(actual_voice.left).right) > 1:
             break
 
     else:
         return set(), set()
 
-    return pairs(true_assignment), pairs(predicted_assignment)
+    return pairs(benchmark_assignment), pairs(actual_assignment)
 
-def predicted_joint_many(true_assignment, predicted_assignment):
+def benchmark_joint_many(benchmark_assignment, actual_assignment):
 
-    for predicted_voice in predicted_assignment:
+    for benchmark_voice in benchmark_assignment:
 
-        if len(predicted_voice.left) > 1:
+        if len(benchmark_voice.left) > 1:
             break
 
-        if len(predicted_voice.left) == 1 and len(next(predicted_voice.left).right) > 1:
+        if len(benchmark_voice.left) == 1 and len(next(benchmark_voice.left).right) > 1:
             break
 
     else:
         return set(), set()
 
-    return pairs(true_assignment), pairs(predicted_assignment)
+    return pairs(benchmark_assignment), pairs(actual_assignment)
 
-def joint_one(true_assignment, predicted_assignment):
+def actual_joint_many(benchmark_assignment, actual_assignment):
 
-    for true_voice in true_assignment:
+    for actual_voice in actual_assignment:
 
-        if len(true_voice.left) == 0:
+        if len(actual_voice.left) > 1:
+            break
+
+        if len(actual_voice.left) == 1 and len(next(actual_voice.left).right) > 1:
+            break
+
+    else:
+        return set(), set()
+
+    return pairs(benchmark_assignment), pairs(actual_assignment)
+
+def joint_one(benchmark_assignment, actual_assignment):
+
+    for benchmark_voice in benchmark_assignment:
+
+        if len(benchmark_voice.left) == 0:
             continue
 
-        if len(true_voice.left) == 1 and len(next(true_voice).left.right) == 1:
+        if len(benchmark_voice.left) == 1 and len(next(benchmark_voice).left.right) == 1:
             continue
 
         break
 
     else:
-        return pairs(true_assignment), pairs(predicted_assignment)
+        return pairs(benchmark_assignment), pairs(actual_assignment)
 
-    for predicted_voice in predicted_assignment:
+    for actual_voice in actual_assignment:
 
-        if len(predicted_voice.left) == 0:
+        if len(actual_voice.left) == 0:
             continue
 
-        if len(predicted_voice.left) == 1 and len(next(predicted_voice).left.right) == 1:
+        if len(actual_voice.left) == 1 and len(next(actual_voice).left.right) == 1:
             continue
 
         break
 
     else:
-        return pairs(true_assignment), pairs(predicted_assignment)
+        return pairs(benchmark_assignment), pairs(actual_assignment)
 
     return set(), set()
 
 
-def true_joint_one(true_assignment, predicted_assignment):
+def benchmark_joint_one(benchmark_assignment, actual_assignment):
 
-    for true_voice in true_assignment:
+    for benchmark_voice in benchmark_assignment:
 
-        if len(true_voice.left) == 0:
+        if len(benchmark_voice.left) == 0:
             continue
 
-        if len(true_voice.left) == 1 and len(next(true_voice).left.right) == 1:
-            continue
-
-        break
-
-    else:
-        return pairs(true_assignment), pairs(predicted_assignment)
-
-    return set(), set()
-
-
-def predicted_joint_one(true_assignment, predicted_assignment):
-
-    for predicted_voice in predicted_assignment:
-
-        if len(predicted_voice.left) == 0:
-            continue
-
-        if len(predicted_voice.left) == 1 and len(next(predicted_voice).left.right) == 1:
+        if len(benchmark_voice.left) == 1 and len(next(benchmark_voice).left.right) == 1:
             continue
 
         break
 
     else:
-        return pairs(true_assignment), pairs(predicted_assignment)
+        return pairs(benchmark_assignment), pairs(actual_assignment)
 
     return set(), set()
 
-def many(true_assignment, predicted_assignment):
 
-    true_many = []
-    predicted_many = []
+def actual_joint_one(benchmark_assignment, actual_assignment):
 
-    for true_voice, predicted_voice in zip(true_assignment, predicted_assignment):
+    for actual_voice in actual_assignment:
 
-        elif len(true_voice.left) > 1 or len(predicted_voice.left) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        if len(actual_voice.left) == 0:
+            continue
 
-        elif len(true_voice.left) == 1 and len(next(true_pairs).left.right) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        if len(actual_voice.left) == 1 and len(next(actual_voice).left.right) == 1:
+            continue
 
-        elif len(predicted_voice.left) == 1 and len(next(predicted_voice).left.right) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        break
+
+    else:
+        return pairs(benchmark_assignment), pairs(actual_assignment)
+
+    return set(), set()
+
+def many(benchmark_assignment, actual_assignment):
+
+    benchmark_many = []
+    actual_many = []
+
+    assignment = zip(benchmark_assignment, actual_assignment)
+    for benchmark_voice, actual_voice in assignment:
+
+        elif len(benchmark_voice.left) > 1 or len(actual_voice.left) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
+
+        elif len(benchmark_voice.left) == 1 and len(next(benchmark_pairs).left.right) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
+
+        elif len(actual_voice.left) == 1 and len(next(actual_voice).left.right) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
    
-    return pairs(true_many), pairs(predicted_many)
+    return pairs(benchmark_many), pairs(actual_many)
 
-def true_many(true_assignment, predicted_assignment):
+def benchmark_many(benchmark_assignment, actual_assignment):
 
-    true_many = []
-    predicted_many = []
+    benchmark_many = []
+    actual_many = []
 
-    for true_voice in true_assignment:
+    for benchmark_voice in benchmark_assignment:
 
-        if len(true_voice.left) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        if len(benchmark_voice.left) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
 
-        elif len(true_voice.left) == 1 and len(next(true_pairs).left.right) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        elif len(benchmark_voice.left) == 1 and len(next(benchmark_pairs).left.right) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
    
-    return pairs(true_many), pairs(predicted_many)
+    return pairs(benchmark_many), pairs(actual_many)
 
-def predicted_many(true_assignment, predicted_assignment):
+def actual_many(benchmark_assignment, actual_assignment):
 
-    true_many = []
-    predicted_many = []
+    benchmark_many = []
+    actual_many = []
 
-    for predicted_voice in predicted_assignment:
+    for actual_voice in actual_assignment:
 
-        if len(predicted_voice.left) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        if len(actual_voice.left) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
 
-        elif len(predicted_voice.left) == 1 and len(next(predicted_voice).left.right) > 1:
-            true_many.append(true_voice)
-            predicted_many.append(predicted_voice)
+        elif len(actual_voice.left) == 1 and len(next(actual_voice).left.right) > 1:
+            benchmark_many.append(benchmark_voice)
+            actual_many.append(actual_voice)
    
-    return pairs(true_many), pairs(predicted_many)
+    return pairs(benchmark_many), pairs(actual_many)
 
-def one(true_assignment, predicted_assignment):
+def one(benchmark_assignment, actual_assignment):
 
-    true_one = []
-    predicted_one = []
+    benchmark_one = []
+    actual_one = []
 
-    for true_voice, predicted_voice in zip(true_assignment, predicted_assignment):
+    assignment = zip(benchmark_assignment, actual_assignment)
+    for benchmark_voice, actual_voice in assignment:
 
-        if len(true_voice.left) == 0 or len(predicted_voice.left) == 0:
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        if len(benchmark_voice.left) == 0 or len(actual_voice.left) == 0:
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-        elif len(true_voice.left) == 1 and len(next(true_voice).left.right) == 1
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        elif len(benchmark_voice.left) == 1 and len(next(benchmark_voice).left.right) == 1
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-        elif len(predicted_voice.left) == 1 and len(next(predicted_voice).left.right) == 1
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        elif len(actual_voice.left) == 1 and len(next(actual_voice).left.right) == 1
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-    return pairs(true_one), pairs(predicted_one)
+    return pairs(benchmark_one), pairs(actual_one)
 
-def true_one(true_assignment, predicted_assignment):
+def benchmark_one(benchmark_assignment, actual_assignment):
 
-    true_one = []
-    predicted_one = []
+    benchmark_one = []
+    actual_one = []
 
-    for true_voice in true_assignment:
+    for benchmark_voice in benchmark_assignment:
 
-        if len(true_voice.left) == 0:
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        if len(benchmark_voice.left) == 0:
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-        elif len(true_voice.left) == 1 and len(next(true_voice).left.right) == 1
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        elif len(benchmark_voice.left) == 1 and len(next(benchmark_voice).left.right) == 1
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-    return pairs(true_one), pairs(predicted_one)
+    return pairs(benchmark_one), pairs(actual_one)
 
-def predicted_one(true_assignment, predicted_assignment):
+def actual_one(benchmark_assignment, actual_assignment):
 
-    true_one = []
-    predicted_one = []
+    benchmark_one = []
+    actual_one = []
 
-    for predicted_voice in predicted_assignment:
+    for actual_voice in actual_assignment:
 
-        if len(predicted_voice.left) == 0:
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        if len(actual_voice.left) == 0:
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-        elif len(predicted_voice.left) == 1 and len(next(predicted_voice).left.right) == 1
-            true_one.append(true_voice)
-            predicted_one.append(predicted_voice)
+        elif len(actual_voice.left) == 1 and len(next(actual_voice).left.right) == 1
+            benchmark_one.append(benchmark_voice)
+            actual_one.append(actual_voice)
 
-    return pairs(true_one), pairs(predicted_one)
+    return pairs(benchmark_one), pairs(actual_one)

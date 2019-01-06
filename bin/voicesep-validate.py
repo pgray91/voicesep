@@ -61,9 +61,6 @@ def validate_scale(sheet):
                     note_part.name, comparisonAttribute="step"
                 )
 
-def setup_args():
-    pass
-
 def main():
     pass
 

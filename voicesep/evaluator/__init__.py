@@ -10,25 +10,25 @@ class Evaluator:
 
         self.results = {}
 
-    def update(self, score, true_assignments, predicted_assignments, pair_filter):
+    def update(self, score, benchmark_assignments, actual_assignments, pair_filter):
 
-        true_count = 0
-        predicted_count = 0
+        benchmark_count = 0
+        actual_count = 0
         intersect_count = 0
 
-        assignments = zip(true_assignments, predicted_assignments)
-        for true_assignment, predicted_assignment in assignments:
-            true_pairs, predicted_pairs = getattr(pair_filter, pair_filters)(
-                true_assignment, predicted_assignment
+        assignments = zip(benchmark_assignments, actual_assignments)
+        for benchmark_assignment, actual_assignment in assignments:
+            benchmark_pairs, actual_pairs = getattr(pair_filter, pair_filters)(
+                benchmark_assignment, actual_assignment
             )
 
-            true_count += len(true_pairs)
-            predicted_count += len(predicted_pairs)
-            intersect_count += len(set(true_pairs) & set(predicted_pairs))
+            benchmark_count += len(benchmark_pairs)
+            actual_count += len(actual_pairs)
+            intersect_count += len(set(benchmark_pairs) & set(actual_pairs))
 
-        result = Result(score, true_count, predicted_count, intersect_count)
+        result = Result(score, benchmark_count, actual_count, intersect_count)
 
-        self.results[pair_filter].append(result)
+        self.results.getitem(pair_filter, []).append(result)
 
     def write(self, path):
 
@@ -43,8 +43,8 @@ class Evaluator:
                     "precision",
                     "recall",
                     "f1",
-                    "true count",
-                    "predicted count",
+                    "benchmark count",
+                    "actual count",
                     "intersect count",
                     "pair filter"
                 ]
@@ -52,17 +52,22 @@ class Evaluator:
 
             for pair_filter in self.results:
 
-                true_count = sum(
-                    result.true_count() for result in self.results[pair_filter]
+                benchmark_count = sum(
+                    result.benchmark_count() for result in self.results[pair_filter]
                 )
-                predicted_count = sum(
-                    result.predicted_count() for result in self.results[pair_filter]
+                actual_count = sum(
+                    result.actual_count() for result in self.results[pair_filter]
                 )
                 intersect_count = sum(
                     result.intersect_count() for result in self.results[pair_filter]
                 )
 
-                total = Result("[TOTAL]", true_count, predicted_count, intersect_count)
+                total = Result(
+                    "[TOTAL]",
+                    benchmark_count,
+                    actual_count,
+                    intersect_count
+                )
 
                 for result in self.results[pair_filter] + [total]:
                     csv_writer.writerow(
@@ -72,8 +77,8 @@ class Evaluator:
                             result.precision(),
                             result.recall(),
                             result.f1(),
-                            result.true_count(),
-                            result.predicted_count(),
+                            result.benchmark_count(),
+                            result.actual_count(),
                             result.intersect_count(),
                             pair_filter
                         ]

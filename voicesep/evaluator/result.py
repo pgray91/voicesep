@@ -1,23 +1,23 @@
 class Result:
 
-    def __init__(self, name, true_count, predicted_count, intersect_count):
+    def __init__(self, name, benchmark_count, actual_count, intersect_count):
 
         self.name = name
-        self.true_count = true_count
-        self.predicted_count = predicted_count
+        self.benchmark_count = benchmark_count
+        self.actual_count = actual_count
         self.intersect_count = instersect_count
 
     def name(self):
 
         return self.name
 
-    def true_count(self):
+    def benchmark_count(self):
 
-        return self.true_count
+        return self.benchmark_count
 
-    def predicted_count(self):
+    def actual_count(self):
 
-        return self.predicted_count
+        return self.actual_count
 
     def intersect_count(self):
 
@@ -26,27 +26,27 @@ class Result:
     def precision(self):
 
         numerator = self.intersect_count
-        denominator = self.predicted_count
+        denominator = self.actual_count
 
         return -1 if denominator == 0 else numerator / denominator
 
     def recall(self):
 
         numerator = self.intersect_count
-        denominator = self.true_count
+        denominator = self.benchmark_count
 
         return -1 if denominator == 0 else numerator / denominator
 
     def jaccard_index(self):
 
         numerator = self.intersect_count
-        denominator = self.predicted_count + self.true_count - self.intersect_count
+        denominator = self.actual_count + self.benchmark_count - self.intersect_count
 
         return -1 if denominator == 0 else numerator / denominator
 
     def f1(self):
 
         numerator = 2 * self.intersect_count
-        denominator = true_count + predicted_count
+        denominator = benchmark_count + actual_count
 
         return -1 if denominator == 0 else numerator / denominator
