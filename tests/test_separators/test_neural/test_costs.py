@@ -11,15 +11,15 @@ class Test(unittest.TestCase):
 
         name = self._testMethodName.split("_", 1)[1]
 
-        y_hat_var = T.dscalar("y_hat")
         y_var = T.dscalar("y")
-        function_var = getattr(vs.separators.neural.costs, name)(y_hat_var, y_var)
+        y_hat_var = T.dscalar("y_hat")
+        function_var = getattr(vs.separators.neural.costs, name)(y_var, y_hat_var)
 
-        self.function = theano.function([y_hat_var, y_var], function_var)
+        self.function = theano.function([y_var, y_hat_var], function_var)
 
     def test_binary_crossentropy(self):
 
-        self.assertAlmostEqual(self.function(0.7, 0.8), 0.526134, places=5)
+        self.assertAlmostEqual(self.function(0.8, 0.7), 0.526134, places=5)
 
 
 if __name__ == "__main__":

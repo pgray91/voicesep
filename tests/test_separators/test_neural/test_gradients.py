@@ -21,10 +21,10 @@ class Test(unittest.TestCase):
             activation="linear"
         )
 
-        y_hat_var = layer.y_hat_var
         y_var = T.wmatrix("y")
+        y_hat_var = layer.y_hat_var
         cost_var = (
-            vs.separators.neural.costs.binary_crossentropy(y_hat_var, y_var)
+            vs.separators.neural.costs.binary_crossentropy(y_var, y_hat_var)
         )
 
         updates = getattr(vs.separators.neural.gradients, name)(layer.params, cost_var)
