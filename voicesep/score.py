@@ -15,9 +15,9 @@ class Score:
     QUARTER = 4
     MIDDLE_C = 60
 
-    def __init__(self, name, sheet):
+    def __init__(self, sheet):
 
-        self.name = name
+        self.name = os.splitext(os.path.basename(sheet))[0]
         logger.info("{} | initializing".format(self.name))
 
         self.score = m21.converter.parse(sheet)

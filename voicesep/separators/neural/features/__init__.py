@@ -1,27 +1,34 @@
 import logging
 
-from voicesep.chord import Chord
-from voicesep.note import Note
-from voicesep.voice import Voice
-from voicesep.separators.neural.note_level.features import chord_data
-from voicesep.separators.neural.note_level.features import note_data
-from voicesep.separators.neural.note_level.features import pair_data
-from voicesep.separators.neural.note_level.features import voice_data
+from voicesep.separators.neural.features import finder
 
+from voicesep.separators.neural.features import chord_level
+from voicesep.separators.neural.features import note_level
+from voicesep.separators.neural.features import pair_level
+from voicesep.separators.neural.features import voice_level
+
+levels = [
+    module for name, module in inspect.getmembers(__name__, predicate=inspect.ismodule)
+    if name.endswith(level)
+]
 
 def generate(self, note, chord, voice):
 
-    return [
-        *note_data.generate(note),
-        *chord_data.generate(note),
-        *voice_data.generate(note),
-        *pair_data.generate(note),
-    ]
+    data = []
+    for level in levels:
+        data.extend(finder.generate(level, note, chord, voice))
+
+    return data
 
 def count():
 
-    note = Note() 
-    chord = Chord()
-    voice = Voice()
+    return sum(finder.count(level) for level in levels)
 
-    return len(generate(note, chord, voice))
+__all__ = [
+    "finder",
+
+    "chord_level",
+    "note_level",
+    "pair_level",
+    "voice_level",
+]

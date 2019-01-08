@@ -3,7 +3,6 @@ import logging
 import numpy as np
 import random
 import theano
-import time
 
 from voicesep.active_voices import ActiveVoices
 from voicesep.separators.neural.features import Features
@@ -13,17 +12,16 @@ logger = logging.getLogger(__name__)
 
 class Dataset:
 
-    def __init__(self, path):
+    def __init__(self, name):
 
-        stamp = int(time.time())
-        self.fp = h5py.File("{}/note_level.{}.hdf5".format(path, stamp), "w+")
+        self.fp = h5py.File("{}.hdf5".format(path), "w+")
         self.length = 0
 
     def __del__(self):
 
         self.fp.close()
 
-    def shuffle(self):
+    def sort(self, score_list):
 
         random.shuffle(self.groups)
 
