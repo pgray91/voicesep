@@ -3,7 +3,7 @@ import numpy as np
 import theano
 import theano.tensor as T
 
-from voicesep.separators.neural import activations
+from voicesep.separators.neural.network import activations
 
 logger = logging.getLogger(__name__)
 

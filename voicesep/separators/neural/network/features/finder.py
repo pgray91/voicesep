@@ -1,11 +1,13 @@
 import inspect
 
+from voicesep.separators.neural.network.features.feature import Feature
+
 
 def find(module):
 
-    return (
-        feature for _, feature in inspect.getmembers(level)
-        if Feature in inspect.getmro(feature)
+    return ( 
+        feature for _, feature in inspect.getmembers(module, predicate=inspect.isclass)
+        if Feature in inspect.getmro(feature) and feature != Feature
     )
 
 def generate(module, **kwargs):

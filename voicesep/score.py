@@ -1,6 +1,7 @@
 from fractions import Fraction as F
 import logging
 import music21 as m21
+import os
 import random
 
 from voicesep.chord import Chord
@@ -17,7 +18,7 @@ class Score:
 
     def __init__(self, sheet):
 
-        self.name = os.splitext(os.path.basename(sheet))[0]
+        self.name = os.path.splitext(os.path.basename(sheet))[0]
         logger.info("{} | initializing".format(self.name))
 
         self.score = m21.converter.parse(sheet)

@@ -16,10 +16,10 @@ def separate(score, separators, beat_horizon):
         )(*args)
 
     assignments = []
-    active_voices = ActiveVoices()
+    active_voices = ActiveVoices(beat_horizon)
 
     for chord in score:
-        active_voices.filter(chord.onset, beat_horizon)
+        active_voices.filter(chord.onset)
 
         logger.info("{} | {} active voices".format(chord, len(active_voices)))
 

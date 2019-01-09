@@ -21,59 +21,20 @@ class Dataset:
 
         self.fp.close()
 
-    def sort(self, score_list):
+    def sort(self, corpus):
 
         random.shuffle(self.groups)
 
-    def write(self, score, assignments, beat_horizon):
+    def write(self, score, beat_horizon):
 
         group = self.fp.create_group(score.name)
 
-        features_dataset = group.create_dataset(
-            name="features",
-            shape=(0, features.count()),
-            maxshape=(None, features.count()),
-            dtype=theano.config.floatX
-        )
+        separators = [
+            ("true", one_to_many)
+            ("neural.dataset.writer", x)
+        ]
+        separate(score, separators, beat_horizon)
 
-        labels_dataset = group.create_dataset(
-            name="labels",
-            shape=(0,),
-            maxshape=(None,),
-            dtype=np.int16
-        )
-
-        active_voices = ActiveVoices()
-
-        length = 0
-        for chord, assignment in zip(score, assignments):
-            active_voices.filter(beat_horizon)
-
-            data = []
-            for note in chord:
-                for voice in active_voices:
-                    data.append(features.generate(note, chord, voice))
-
-                data.append(features.generate(note, chord, None))
-
-            length += len(data)
-            if features_data.len() <= length:
-                features_dataset.resize((length * 2, features.count()))
-                labels_dataset.resize((length * 2,))
-
-            features_dataset[length - len(data):length] = data
-
-            labels_slice = labels_dataset[length - len(data):length]
-            for i, note, voices  in enumerate(zip(chord, assignment)):
-                for j, voice in enumerate(active_voices):
-                    labels_slice[i * len(active_voices) + j] = voice in voices.left
-
-                labels_slice[i * len(active_voices) + j + 1] = len(voice.left) == 0
-
-            active_voices.insert(assignment)
-
-        self.groups.append(group)
-        self.length += length
 
     def __getitem__(self, index):
 

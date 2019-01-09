@@ -4,9 +4,12 @@ import theano
 import theano.tensor as T
 import time
 
-from voicesep.separators.neural import costs
-from voicesep.separators.neural import gradients
-from voicesep.separators.neural.layer import Layer
+from voicesep.separators.neural.network import activations
+from voicesep.separators.neural.network import costs
+from voicesep.separators.neural.network import features
+from voicesep.separators.neural.network import gradients
+
+from voicesep.separators.neural.network.layer import Layer
 
 logger = logging.getLogger(__name__)
 
@@ -86,19 +89,18 @@ class Network:
           outputs=y_hat_var
         )
 
-    def train(self, X, y, epochs, batch_size, verbosity=0):
+    def train(self, dataset, epochs, batch_size, verbosity=0):
 
         for layer in self.layers:
             layer.random_weights()
 
-        batch_count = (len(X) - 1) // batch_size + 1
+        batch_count = (len(dataset) - 1) // batch_size + 1
 
         checkpoint = time.time()
         for epoch in range(1, epochs + 1):
             cost = 0
             for i in range(batch_count):
-                X_batch = X[i * batch_size: (i + 1) * batch_size]
-                y_batch = y[i * batch_size: (i + 1) * batch_size]
+                X_batch, y_batch = dataset[i * batch_size: (i + 1) * batch_size]
 
                 cost += self.train_function(X_batch, y_batch)
 
@@ -137,3 +139,12 @@ class Network:
                 W, b = layer.get_weights()
                 np.save(fp, W)
                 np.save(fp, b)
+
+__all__ = [
+    "activations",
+    "costs",
+    "features",
+    "gradients",
+    
+    "layer"
+]

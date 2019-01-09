@@ -1,5 +1,5 @@
-from voicesep.score import Score
-from voicesep.separators.neural.features.feature import Feature
+from voicesep.separators.neural.network.features import constants
+from voicesep.separators.neural.network.features.feature import Feature
 
 
 class ChordPosition(Feature):
@@ -10,7 +10,7 @@ class ChordPosition(Feature):
 
     def range():
 
-        return range(Score.MAX_CHORD_LENGTH)
+        return range(constants.MAX_CHORD_LENGTH)
 
 class DurationRange(Feature):
 
@@ -23,7 +23,7 @@ class DurationRange(Feature):
 
     def range():
 
-        return range(0, Score.MAX_DURATION, Feature.INTERVAL)
+        return range(0, constants.MAX_DURATION, constants.INTERVAL)
 
 class PitchRange(Feature):
 
@@ -36,4 +36,4 @@ class PitchRange(Feature):
 
     def range():
 
-        return range(Score.MIN_PITCH, Score.MAX_PITCH, Feature.INTERVAL)
+        return range(constants.MIN_PITCH, constants.MAX_PITCH, constants.INTERVAL)

@@ -3,7 +3,7 @@ import abc
 
 class Feature(abc.ABC):
 
-    @abstractmethod
+    @abc.abstractmethod
     def generate(**kwargs):
 
         pass
