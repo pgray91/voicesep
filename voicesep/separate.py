@@ -1,3 +1,4 @@
+import importlib
 import logging
 
 from voicesep.active_voices import ActiveVoices
@@ -5,15 +6,13 @@ from voicesep.active_voices import ActiveVoices
 logger = logging.getLogger(__name__)
 
 
-def separate(score, separators, beat_horizon):
+def separate(score, separator_configs, beat_horizon):
 
-    logger.info("{} | separation".format(score.name))
+    logger.debug("{} | separation".format(score.name))
 
-    for separator, args in separators:
-        separator = locals("voicesep.separators.{}".format(
-            "".join(name.title() for name in separator.split("_"))
-        )
-        )(*args)
+    for name, args in separator_configs:
+        Separator = importlib.import_module("voicesep.separators.{}".format(name))
+        separators.append(Separator(score, *args))
 
     assignments = []
     active_voices = ActiveVoices(beat_horizon)
@@ -21,7 +20,7 @@ def separate(score, separators, beat_horizon):
     for chord in score:
         active_voices.filter(chord.onset)
 
-        logger.info("{} | {} active voices".format(chord, len(active_voices)))
+        logger.debug("{} | {} active voices".format(chord, len(active_voices)))
 
         assignment = [None] * len(chord)
         for separator in separators:

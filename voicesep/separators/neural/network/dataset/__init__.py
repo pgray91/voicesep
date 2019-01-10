@@ -4,8 +4,7 @@ import numpy as np
 import random
 import theano
 
-from voicesep.active_voices import ActiveVoices
-from voicesep.separators.neural.features import Features
+from voicesep.separators.neural.network import features
 
 logger = logging.getLogger(__name__)
 
@@ -14,8 +13,7 @@ class Dataset:
 
     def __init__(self, name):
 
-        self.fp = h5py.File("{}.hdf5".format(path), "w+")
-        self.length = 0
+        self.fp = h5py.File("{}.hdf5".format(name), "a")
 
     def __del__(self):
 
@@ -23,18 +21,22 @@ class Dataset:
 
     def sort(self, corpus):
 
-        random.shuffle(self.groups)
+        self.groups = sorted(
+            self.groups,
+            key=lambda group: corpus.index(os.path.basename(group.name))
+        )
 
-    def write(self, score, beat_horizon):
+    def write(self, score, beat_horizon, one_to_many):
 
         group = self.fp.create_group(score.name)
 
         separators = [
-            ("true", one_to_many)
-            ("neural.dataset.writer", x)
+            ("true", one_to_many),
+            ("neural.network.dataset.writer", group)
         ]
         separate(score, separators, beat_horizon)
 
+        self.groups.append(group)
 
     def __getitem__(self, index):
 
@@ -54,8 +56,8 @@ class Dataset:
 
         length = stop - start
 
-        features = np.empty((length, features.count()), dtype=theano.config.floatX)
-        labels = np.empty((length,), dtype=np.int16)
+        X = np.empty((length, features.count()), dtype=theano.config.floatX)
+        y = np.empty((length,), dtype=np.int16)
 
         get_start = 0
         current_start = 0
@@ -71,15 +73,11 @@ class Dataset:
 
             get_stop = get_start + group_stop - group_start
 
-            features[get_start:get_stop] = group["features"][group_start:group_stop]
-            labels[get_start:get_stop] = group["labels"][group_start:group_stop]
+            X[get_start:get_stop] = group["features"][group_start:group_stop]
+            y[get_start:get_stop] = group["labels"][group_start:group_stop]
 
             get_start = get_stop
             if get_start >= length:
                 break
 
-        return features, labels
-
-    def __len__(self):
-        
-        return self.length
+        return X, y

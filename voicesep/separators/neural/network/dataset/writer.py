@@ -7,19 +7,19 @@ class Writer(Separator):
 
     def __init__(self, score, group):
 
-        super(score)
+        super().__init__(score)
 
         self.group = group
         self.length = 0
 
-        features_dataset = self.group.create_dataset(
+        self.features_dataset = self.group.create_dataset(
             name="features",
             shape=(0, features.count()),
             maxshape=(None, features.count()),
             dtype=theano.config.floatX
         )
 
-        labels_dataset = group.create_dataset(
+        self.labels_dataset = self.group.create_dataset(
             name="labels",
             shape=(0,),
             maxshape=(None,),
@@ -27,8 +27,9 @@ class Writer(Separator):
         )
 
     def __del__(self):
-        pass
 
+        self.features_dataset.resize((self.length, features.count()))
+        self.labels_dataset.resize((self.length,))
 
     def run(self, chord, active_voices, assignment):
 
@@ -39,21 +40,16 @@ class Writer(Separator):
 
             data.append(features.generate(note, chord, None, active_voices))
 
-        length += len(data)
-        if features_data.len() <= length:
-            features_dataset.resize((length * 2, features.count()))
-            labels_dataset.resize((length * 2,))
+        self.length += len(data)
+        if self.features_dataset.len() <= self.length:
+            self.features_dataset.resize((self.length * 2, features.count()))
+            self.labels_dataset.resize((self.length * 2,))
 
-        features_dataset[length - len(data):length] = data
+        self.features_dataset[self.length - len(data):self.length] = data
 
-        labels_slice = labels_dataset[length - len(data):length]
+        labels_slice = self.labels_dataset[self.length - len(data):self.length]
         for i, note, voices  in enumerate(zip(chord, assignment)):
             for j, voice in enumerate(active_voices):
                 labels_slice[i * len(active_voices) + j] = voice in voices.left
 
             labels_slice[i * len(active_voices) + j + 1] = len(voice.left) == 0
-
-            active_voices.insert(assignment)
-
-        self.groups.append(group)
-        self.length += length
