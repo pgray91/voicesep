@@ -9,7 +9,7 @@ class Envelope(Separator):
 
     def __init__(self, score):
 
-        super(score)
+        super.__init__(score)
 
     def run(self, chord, active_voices, assignment):
 

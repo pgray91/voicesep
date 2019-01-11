@@ -20,7 +20,7 @@ class Benchmark(Separator):
 
     def run(self, chord, active_voices, assignment):
 
-        logger.info("{} | separating".format(chord))
+        logger.debug("{} | separating".format(chord))
 
         for i, note in enumerate(chord):
             right_voice = Voice(note)

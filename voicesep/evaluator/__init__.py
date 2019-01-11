@@ -16,7 +16,7 @@ class Evaluator:
 
         logger.debug("{} | initializing")
 
-    def update(self, score, benchmark_assignments, actual_assignments, pair_filter):
+    def update(self, name, benchmark_assignments, actual_assignments, pair_filter):
 
         benchmark_count = 0
         actual_count = 0
@@ -32,7 +32,7 @@ class Evaluator:
             actual_count += len(actual_pairs)
             intersect_count += len(set(benchmark_pairs) & set(actual_pairs))
 
-        result = Result(score, benchmark_count, actual_count, intersect_count)
+        result = Result(name, benchmark_count, actual_count, intersect_count)
 
         self.results.getitem(pair_filter, []).append(result)
 

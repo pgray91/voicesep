@@ -14,7 +14,7 @@ class NoteLevel(Separator):
         divergence_limit=None
     ):
 
-        super(score)
+        super().__init__(score)
 
         self.network = Network().open(network)
         self.assignment_threshold = assignment_threshold

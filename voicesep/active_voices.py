@@ -3,7 +3,7 @@ class ActiveVoices:
     def __init__(self, beat_horizon):
 
         self.voices = []
-        self.inactive = {}
+        self.inactive = set()
 
         self.beat_horizon = beat_horizon
 
@@ -72,11 +72,13 @@ class ActiveVoices:
             return
 
         self.voices = [
-            voice for voice in self.voices if voice.onset >= onset - self.beat_horizon
+            voice for voice in self.voices
+            if voice.note.onset >= onset - self.beat_horizon
         ]
 
         self.inactive = {
-            voice for voice in self.inactive if voice.onset >= onset - self.beat_horizon
+            voice for voice in self.inactive
+            if voice.note.onset >= onset - self.beat_horizon
         }
 
     def deactivate(self, voice):
@@ -170,8 +172,7 @@ class ActiveVoices:
 
     def __getitem__(self, index):
 
-        index += sum(index >= self.voices.index(voice) for voice in self.inactive)
-        return self.voices[index]
+        return tuple(iter(self))[index]
 
     def __iter__(self):
 
