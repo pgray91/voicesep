@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class True(Separator):
+class Benchmark(Separator):
 
     def __init__(self, score, one_to_many):
 
