@@ -1,5 +1,6 @@
-import logging
-import sys
+# import logging
+import os
+# import sys
 import unittest
 
 import voicesep as vs
@@ -9,15 +10,14 @@ import voicesep as vs
 class Test(unittest.TestCase):
 
     RED="#FF0000"
-    GREEN="#00FF00"
-    BLUE="#0000FF"
 
     def setUp(self):
 
+        path = os.path.dirname(os.path.abspath(__file__))
         name = self._testMethodName
-        sheet = "{}.musicxml".format(name)
+        sheet = "{}/{}.musicxml".format(path, name)
 
-        self.score = vs.Score(name, sheet)
+        self.score = vs.Score(sheet)
 
     def test_chord_index(self):
 
@@ -87,6 +87,10 @@ class Test(unittest.TestCase):
 
         chord = self.score[0]
         self.assertEqual(chord.onset, 1)
+
+    def test_name(self):
+
+        self.assertEqual(self.score.name, "test_name")
 
     def test_note_chord_degree(self):
 

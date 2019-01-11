@@ -7,15 +7,17 @@ class True(Separator):
 
     def __init__(self, score, one_to_many):
 
-        super(score)
+        super().__init__(score)
 
         self.one_to_many = one_to_many
         self.voice_map = {}
         self.voiceid_map = {}
 
+        logger.debug("{} | initialization".format(__name__))
+
     def run(self, chord, active_voices, assignment):
 
-        logger.info("{} separation".format(__name__))
+        logger.info("{} | separating".format(chord))
 
         for i, note in enumerate(chord):
             right_voice = Voice(note)

@@ -12,7 +12,7 @@ class Chord:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        logger.debug("{} | initializing chord".format(self))
+        logger.debug("{} | initializing".format(self))
 
     def __len__(self):
 

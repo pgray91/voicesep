@@ -7,13 +7,23 @@ class Test(unittest.TestCase):
 
     def setUp(self):
 
+        path = os.path.dirname(os.path.abspath(__file__))
         name = self._testMethodName
-        sheet = "{}.musicxml".format(name)
+        sheet = "{}/{}.musicxml".format(path, name)
 
         score = vs.Score(name, sheet)
-        assignments = score.separate(one_to_many=True)
+        waterfall = [
+            {
+                "True": {
+                    "one_to_may": True
+                }
+            }
+        ]
+        beat_horizon = None
 
-        self.active_voices = vs.ActiveVoices()
+        assignments = vs.separate(score, waterfall, beat_horizon)
+
+        self.active_voices = vs.ActiveVoices(beat_horizon)
         for assignment in assignments:
             self.active_voices.insert(assignment)
 

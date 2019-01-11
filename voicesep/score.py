@@ -19,7 +19,7 @@ class Score:
     def __init__(self, sheet):
 
         self.name = os.path.splitext(os.path.basename(sheet))[0]
-        logger.info("{} | initializing".format(self.name))
+        logger.debug("{} | initializing".format(self.name))
 
         self.score = m21.converter.parse(sheet)
         self.chords = []

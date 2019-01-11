@@ -6,13 +6,17 @@ from voicesep.active_voices import ActiveVoices
 logger = logging.getLogger(__name__)
 
 
-def separate(score, separator_configs, beat_horizon):
+def separate(score, waterfall, beat_horizon):
 
     logger.debug("{} | separation".format(score.name))
 
-    for name, args in separator_configs:
+    separators = []
+    for request in waterfall:
+        name = next(iter(request))
+        kwargs = request[name]
+
         Separator = importlib.import_module("voicesep.separators.{}".format(name))
-        separators.append(Separator(score, *args))
+        separators.append(Separator(score, **kwargs))
 
     assignments = []
     active_voices = ActiveVoices(beat_horizon)

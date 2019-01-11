@@ -12,7 +12,7 @@ class Voice:
         self.left = set()
         self.right = set()
 
-        logger.debug("{} | initializing voice".format(self))
+        logger.debug("{} | initializing".format(self))
 
     def link(self, right_voice):
 

@@ -1,9 +1,11 @@
 class ActiveVoices:
 
-    def __init__(self):
+    def __init__(self, beat_horizon):
 
         self.voices = []
         self.inactive = {}
+
+        self.beat_horizon = beat_horizon
 
     def insert(self, assignment):
 
@@ -64,14 +66,17 @@ class ActiveVoices:
 
             self.voices.insert(i, right_voice)
 
-    def filter(self, onset, beat_horizon):
+    def filter(self, onset):
+
+        if not self.beat_horizon:
+            return
 
         self.voices = [
-            voice for voice in self.voices if voice.onset >= onset - beat_horizon
+            voice for voice in self.voices if voice.onset >= onset - self.beat_horizon
         ]
 
         self.inactive = {
-            voice for voice in self.inactive if voice.onset >= onset - beat_horizon
+            voice for voice in self.inactive if voice.onset >= onset - self.beat_horizon
         }
 
     def deactivate(self, voice):

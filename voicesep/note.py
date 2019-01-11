@@ -14,7 +14,7 @@ class Note:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        logger.debug("{} | initializing note".format(self))
+        logger.debug("{} | initializing".format(self))
 
     def __eq__(self, other):
 
