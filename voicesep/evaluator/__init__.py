@@ -1,14 +1,20 @@
 import csv
+import logging
 import time
 
 from voicesep.evaluator import pair_filters
 from voicesep.evaluator.result import Result
+
+logger = logging.getLogger(__name__)
+
 
 class Evaluator:
 
     def __init__(self):
 
         self.results = {}
+
+        logger.debug("{} | initializing")
 
     def update(self, score, benchmark_assignments, actual_assignments, pair_filter):
 

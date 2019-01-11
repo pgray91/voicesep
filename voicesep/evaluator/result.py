@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 class Result:
 
     def __init__(self, name, benchmark_count, actual_count, intersect_count):
@@ -7,21 +12,7 @@ class Result:
         self.actual_count = actual_count
         self.intersect_count = instersect_count
 
-    def name(self):
-
-        return self.name
-
-    def benchmark_count(self):
-
-        return self.benchmark_count
-
-    def actual_count(self):
-
-        return self.actual_count
-
-    def intersect_count(self):
-
-        return self.intersect_count
+        logger.debug("{} | initializing".format(name))
 
     def precision(self):
 

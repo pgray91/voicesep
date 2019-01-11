@@ -2,6 +2,7 @@ import importlib
 import logging
 
 from voicesep.active_voices import ActiveVoices
+from voicesep.separators import *
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +16,7 @@ def separate(score, waterfall, beat_horizon):
         name = next(iter(request))
         kwargs = request[name]
 
-        Separator = importlib.import_module("voicesep.separators.{}".format(name))
+        Separator = globals()[name]
         separators.append(Separator(score, **kwargs))
 
     assignments = []
