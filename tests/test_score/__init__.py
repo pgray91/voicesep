@@ -1,15 +1,12 @@
-# import logging
 import os
-# import sys
 import unittest
 
 import voicesep as vs
 
-#logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 class Test(unittest.TestCase):
 
-    RED="#FF0000"
+    RED = "#FF0000"
 
     def setUp(self):
 
@@ -125,22 +122,22 @@ class Test(unittest.TestCase):
     def test_note_location(self):
 
         note = self.score[0][0]
-        self.assertEqual(note.location, (1,1))
+        self.assertEqual(note.location, (1, 1))
 
     def test_note_location_in_chord(self):
 
         note = self.score[0][1]
-        self.assertEqual(note.location, (1,1))
+        self.assertEqual(note.location, (1, 1))
 
     def test_note_location_in_second_chord_in_second_measure(self):
 
         note = self.score[2][0]
-        self.assertEqual(note.location, (2,2))
+        self.assertEqual(note.location, (2, 2))
 
     def test_note_location_following_two_tied_notes(self):
 
         note = self.score[1][0]
-        self.assertEqual(note.location, (1,3))
+        self.assertEqual(note.location, (1, 3))
 
     def test_note_lyric(self):
 
