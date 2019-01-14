@@ -58,7 +58,7 @@ class NoteLevel(Separator):
                 right_voice = right_voices[note_index]
                 left_voice = active_voices[voice_index]
 
-                left_voice.append(right_voice)
+                left_voice.link(right_voice)
 
                 voice_mask[note_index, voice_index] = 0
 
