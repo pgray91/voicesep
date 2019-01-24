@@ -21,7 +21,6 @@ class Network:
         logger.debug("initializing")
 
         self.X_var = T.matrix("X", dtype=theano.config.floatX)
-        self.y_var = T.vector("y", dtype=theano.config.floatX)
 
         self.dimensions = ()
         self.hidden_activations = None
@@ -64,7 +63,7 @@ class Network:
         y_hat_var = self.layers[-1].y_hat_var.flatten()
 
         cost_function = getattr(costs, cost_type)
-        cost_var = cost_function(self.y_var, y_hat_var)
+        cost_var, cost_args = cost_function(y_hat_var)
         cost_var += L2_reg * sum(
             T.sum(T.pow(layer.W_var, 2))
             for layer in self.layers
@@ -79,7 +78,7 @@ class Network:
         updates = gradient_function(params, cost_var, *gradient_args)
 
         self.train_function = theano.function(
-            inputs=[self.X_var, self.y_var],
+            inputs=[self.X_var, *cost_args],
             outputs=cost_var,
             updates=updates
         )
@@ -100,9 +99,9 @@ class Network:
         for epoch in range(1, epochs + 1):
             cost = 0
             for i in range(batch_count):
-                X_batch, y_batch = dataset[i * batch_size: (i + 1) * batch_size]
+                batches = dataset[i * batch_size: (i + 1) * batch_size]
 
-                cost += self.train_function(X_batch, y_batch)
+                cost += self.train_function(*batches)
 
             if verbosity and int(time.time() - checkpoint) > verbosity:
                 logger.info(
