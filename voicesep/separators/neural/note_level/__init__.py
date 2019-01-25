@@ -24,9 +24,9 @@ class NoteLevel(Separator):
     def run(self, chord, active_voices, assignment):
 
         features = Features(chord, active_voices)
-        all_assignments = cross(chord, active_voices)
+        assignments = assignments.cross(chord, active_voices)
 
-        data = features.pair_level(all_assignments)
+        data = features.pair_level(assignments)
 
         note_count = len(chord)
         voice_count = len(active_voices) + 1
