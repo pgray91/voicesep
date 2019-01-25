@@ -1,7 +1,4 @@
 import logging
-import multiprocessing as mp
-
-from voicesep.separators.neural.note_level import features
 
 
 class ChordLevel(Separator):
@@ -22,32 +19,29 @@ class ChordLevel(Separator):
 
     def run(self, chord, active_voices, assignment):
 
-        max_combination = None
+        max_assignment = None
         max_rank = 0
-        combination_generator = combinations.generate(
+
+        features = Features(chord, active_voices)
+
+        assignment_generator = assignments.generate(
             chord,
             active_voices,
             assignment,
             self.convergence_limit,
             self.divergence_limit,
-            part
         )
-        for combination in combination_generator:
+        for predicted_assignment in assignment_generator:
 
-            data = features.generate(chord, combination, active_voices)
+            data = features.generate(predicted_assignment)
             rank = network.predict(data)
 
             if rank > max_rank:
                 max_rank = rank
-                max_combination = combination
+                max_assignment = predicted_assignment
 
-        for i, note, voices in enumerate(zip(chord, max_combination)):
+        for i, note, voices in enumerate(zip(chord, max_assignment)):
             if assignment[i]:
                 continue
 
-            right_voice = Voice(note)
-
-            for left_voice in voices:
-                left_voice.link(right_voice)
-
-            assignment[i] = right_voice
+            assignment[i] = (note, voices)

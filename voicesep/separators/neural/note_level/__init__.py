@@ -23,14 +23,10 @@ class NoteLevel(Separator):
 
     def run(self, chord, active_voices, assignment):
 
-        right_voices = [Voice(note) for note in chord]
+        features = Features(chord, active_voices)
+        all_assignments = cross(chord, active_voices)
 
-        data = []
-        for note in chord:
-            for voice in active_voice:
-                data.append(features.generate(note, chord, voice))
-
-            data.append(features.generate(note, chord, None))
+        data = features.pair_level(all_assignments)
 
         note_count = len(chord)
         voice_count = len(active_voices) + 1
@@ -47,6 +43,8 @@ class NoteLevel(Separator):
                 divergence_limit is None or
                 len(voice.right) < divergence_limit
             )
+
+        right_voices = [Voice(note) for note in chord]
 
         while note_count:
             max_index = np.argmax(np.multiply(ranks, voice_mask))

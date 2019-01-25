@@ -150,7 +150,7 @@ class Network:
 
     def predict(self, X):
 
-        return self.predict_function(X)
+        return self.predict_function(*X)
 
     def read(self, name):
 
