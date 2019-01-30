@@ -33,6 +33,34 @@ class Writer(Separator):
 
     def run(self, chord, active_voices, assignment):
 
+        features = Features(chord, active_voices)
+
+        assignment_generator = assignments.generate(
+            chord,
+            active_voices,
+            assignment,
+            self.convergence_limit,
+            self.divergence_limit,
+        )
+
+        pair_data = []
+        for predicted_assignment in assignment_generator:
+
+            pair_data.append(features.pair_data(predicted_assignment))
+
+            data = features.generate(predicted_assignment)
+            rank = network.predict(data)
+
+            if rank > max_rank:
+                max_rank = rank
+                max_assignment = predicted_assignment
+
+        for i, note, voices in enumerate(zip(chord, max_assignment)):
+            if assignment[i]:
+                continue
+
+            assignment[i] = (note, voices)
+
         data = []
         for note in chord:
             for voice in active_voices:

@@ -65,7 +65,7 @@ class Network:
             y_hat_var = (
                 y_hat_var.reshape(
                     (
-                        input_size // depth,
+                        y_hat_var.shape[0] // depth,
                         depth,
                         output_size
                     )

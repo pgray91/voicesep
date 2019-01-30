@@ -87,9 +87,16 @@ class Features:
 
         return features.finder.generate(assignment_level, assignment)
 
+    @staticmethod
     def count():
 
         return sum(features.finder.count(level) for level in levels)
+
+    @staticmethod
+    def pad(data, count):
+
+        for _ in range(count):
+            data.append(data[-1])
 
 
 __all__ = [

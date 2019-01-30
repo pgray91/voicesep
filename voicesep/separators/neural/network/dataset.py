@@ -56,13 +56,14 @@ class Dataset:
 
         length = stop - start
 
+        inputs = []
         X = np.empty((length, features.count()), dtype=theano.config.floatX)
         y = np.empty((length,), dtype=np.int16)
 
         get_start = 0
         current_start = 0
         for group in self.groups:
-            current_stop = current_start + len(group["features"])
+            current_stop = current_start + len(group["inputs0"])
 
             if start >= current_stop:
                 current_start = current_stop
@@ -73,11 +74,11 @@ class Dataset:
 
             get_stop = get_start + group_stop - group_start
 
-            X[get_start:get_stop] = group["features"][group_start:group_stop]
-            y[get_start:get_stop] = group["labels"][group_start:group_stop]
+            for inputs in inputs:
+                inputs[get_start:get_stop] = group["inputs{}".format(i)][group_start:group_stop]
 
             get_start = get_stop
             if get_start >= length:
                 break
 
-        return X, y
+        return inputs
