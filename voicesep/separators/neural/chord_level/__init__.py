@@ -14,6 +14,7 @@ class ChordLevel(Separator):
         super().__init__(score)
 
         self.network = Network().open(network)
+
         dimensions = self.network.dimensions
         self.depths = dimensions[i][2] 
 
@@ -24,7 +25,7 @@ class ChordLevel(Separator):
 
         max_assignment = None
         max_rank = 0
-        pair_depth, convergence_depth, divergence_depth = depth 
+        pair_depth, convergence_depth, divergence_depth = self.depths
 
         features = Features(chord, active_voices)
 
@@ -33,7 +34,7 @@ class ChordLevel(Separator):
             active_voices,
             assignment,
             self.convergence_limit,
-            self.divergence_limit,
+            self.divergence_limit
         )
         for predicted_assignment in assignment_generator:
 

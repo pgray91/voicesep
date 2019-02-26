@@ -1,6 +1,7 @@
 import numpy as np
 
-from voicesep.separators.neural.note_level import features
+from voicesep.separators.neural.network import features
+from voicesep.separators.neural.chord_level import assignments
 
 
 class Writer(Separator):
@@ -38,28 +39,25 @@ class Writer(Separator):
         assignment_generator = assignments.generate(
             chord,
             active_voices,
-            assignment,
+            None, # empty assignment
             self.convergence_limit,
             self.divergence_limit,
+            self.assignment_limit
         )
 
-        pair_data = []
         for predicted_assignment in assignment_generator:
 
-            pair_data.append(features.pair_data(predicted_assignment))
+            pair_data = features.pair_data(predicted_assignment)
+            Features.pad(pair_data, pair_depth)
 
-            data = features.generate(predicted_assignment)
-            rank = network.predict(data)
+            convergence_data = features.convergence_data(predicted_assignment)
+            Features.pad(convergence_data, convergence_depth)
 
-            if rank > max_rank:
-                max_rank = rank
-                max_assignment = predicted_assignment
+            divergence_data = features.divergence_data(predicted_assignment)
+            Features.pad(divergence_data, divergence_depth)
 
-        for i, note, voices in enumerate(zip(chord, max_assignment)):
-            if assignment[i]:
-                continue
+            assignment_data = features.assignment_data(predicted_assignment)
 
-            assignment[i] = (note, voices)
 
         data = []
         for note in chord:
