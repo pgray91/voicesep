@@ -31,13 +31,15 @@ def separate(score, waterfall, beat_horizon):
         for separator in separators:
             separator.run(chord, active_voices, assignment)
 
-        right_voices = []
-        for note, left_voices in assignment:
-            right_voices.append(Voice(note))
-            for left_voice in voices:
-                left_voice.link(right_voices[-1])
+        # right_voices = []
+        # for note, left_voices in assignment:
+        #     right_voices.append(Voice(note))
+        #     for left_voice in left_voices:
+        #         left_voice.link(right_voices[-1])
 
-        active_voices.insert(right_voices)
+        # active_voices.insert(right_voices)
+
+        active_voices.insert(assignment)
 
         assignments.append(assignment)
 

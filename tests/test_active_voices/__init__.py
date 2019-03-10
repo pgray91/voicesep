@@ -50,10 +50,29 @@ class Test(unittest.TestCase):
         voice = self.active_voices[2]
         self.assertFalse(self.active_voices.blocked(voice.note))
 
-    def test_crossing(self):
+    def test_crossing_offset(self):
 
-        voice = self.active_voices[2]
-        self.assertFalse(self.active_voices.blocked(voice.note))
+        left_voice = self.active_voices[5]
+        right_voice = self.active_voices[3]
+        self.assertTrue(self.active_voices.crossing(left_voice.note, right_voice.note))
+
+    def test_crossing_onset(self):
+
+        left_voice = self.active_voices[1]
+        right_voice = self.active_voices[2]
+        self.assertTrue(self.active_voices.crossing(left_voice.note, right_voice.note))
+
+    def test_crossing_single(self):
+
+        left_voice = self.active_voices[2]
+        right_voice = self.active_voices[0]
+        self.assertTrue(self.active_voices.crossing(left_voice.note, right_voice.note))
+
+    def test_crossing_not(self):
+
+        left_voice = self.active_voices[4]
+        right_voice = self.active_voices[5]
+        self.assertFalse(self.active_voices.crossing(left_voice.note, right_voice.note))
 
     def test_deactivate(self):
 

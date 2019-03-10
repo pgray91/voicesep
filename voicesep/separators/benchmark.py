@@ -1,7 +1,7 @@
 import logging
 
 from voicesep.separators.separator import Separator
-from voicesep import Voice
+from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 
