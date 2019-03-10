@@ -11,7 +11,7 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         self.X_var = T.dmatrix("X")
-        self.layer = vs.separators.neural.Layer(
+        self.layer = vs.separators.neural.network.Layer(
             self.X_var,
             input_size=1,
             output_size=1,

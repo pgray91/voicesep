@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
         name = self._testMethodName.split("_", 1)[1]
 
         X_var = T.dvectors("X")
-        function_var = getattr(vs.separators.neural.activations, name)(X_var)
+        function_var = getattr(vs.separators.neural.network.activations, name)(X_var)
 
         self.function = theano.function([X_var], function_var)
 
@@ -27,10 +27,6 @@ class Test(unittest.TestCase):
     def test_relu(self):
 
         self.assertAlmostEqual(float(self.function([-0.7])), 0.0)
-
-    def test_softmax(self):
-
-        self.assertAlmostEqual(float(self.function([0.7])), 1.0)
 
 
 if __name__ == "__main__":

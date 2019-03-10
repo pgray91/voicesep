@@ -4,7 +4,7 @@ from voicesep.separators.neural.network.features.feature import Feature
 
 class ChordLength(Feature):
 
-    def generate(chord, **kwargs):
+    def generate(chord):
 
         return [len(chord) == i for i in ChordLength.range()]
 

@@ -14,8 +14,3 @@ def sigmoid(X):
 def relu(X):
 
     return T.nnet.relu(X)
-
-
-def softmax(X):
-
-    return T.nnet.softmax(X)

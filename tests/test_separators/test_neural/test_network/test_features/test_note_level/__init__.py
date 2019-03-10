@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
 
     def test_chord_position(self):
 
-        data = [0] * 10
+        data = [0] * vs.separators.neural.network.features.constants.MAX_CHORD_LENGTH
         data[0] = 1
 
         self.assertEqual(self.data, data)

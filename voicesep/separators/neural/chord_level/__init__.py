@@ -8,7 +8,8 @@ class ChordLevel(Separator):
         score,
         network,
         convergence_limit=None,
-        divergence_limit=None
+        divergence_limit=None,
+        assignments=""
     ):
 
         super().__init__(score)
@@ -20,6 +21,8 @@ class ChordLevel(Separator):
 
         self.convergence_limit = convergence_limit
         self.divergence_limit = divergence_limit
+
+        self.assignments = Assignments(assignments)
 
     def run(self, chord, active_voices, assignment):
 

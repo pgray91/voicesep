@@ -39,6 +39,9 @@ class Network:
         self.output_activation = output_activation
         self.layers = []
 
+        self.train_function = None
+        self.predict_function = None
+
         convolutional_inputs = []
         convolutional_size = 0
         for i, convolution in enumerate(dimensions):
@@ -76,16 +79,15 @@ class Network:
             convolutional_inputs.append(y_hat_var)
             convolutional_size += output_size
 
-        dimensions = dimensions[i:]
+        dimensions = list(dimensions[i:])
         dimensions[0] += convolutional_size
-        
+
         activations = [hidden_activations] * (len(dimensions) - 2) + [output_activation]
 
         self.X_vars.append(
             T.matrix("X_var{}".format(i + 1), dtype=theano.config.floatX)
         )
-
-        next_input = T.concatenate([self.X_vars[-1], *convolutional_inputs], axis=1)
+        next_input = T.concatenate([*convolutional_inputs, self.X_vars[-1]], axis=1)
         for i in range(len(dimensions) - 1):
             self.layers.append(
                 Layer(
@@ -99,7 +101,7 @@ class Network:
 
     def compile(self, cost_type, cost_args, gradient_type, gradient_args, L2_reg):
 
-        y_hat_var = self.layers[-1].y_hat_var.flatten()
+        y_hat_var = self.layers[-1].y_hat_var
 
         cost_function = getattr(costs, cost_type)
         cost_var, cost_inputs = cost_function(y_hat_var, *cost_args)
@@ -138,9 +140,9 @@ class Network:
         for epoch in range(1, epochs + 1):
             cost = 0
             for i in range(batch_count):
-                batches = dataset[i * batch_size: (i + 1) * batch_size]
-
-                cost += self.train_function(*batches)
+                cost += self.train_function(
+                    *dataset[i * batch_size: (i + 1) * batch_size]
+                )
 
             if verbosity and int(time.time() - checkpoint) > verbosity:
                 logger.info(
@@ -178,11 +180,13 @@ class Network:
                 np.save(fp, W)
                 np.save(fp, b)
 
+
 __all__ = [
     "activations",
     "costs",
     "features",
     "gradients",
     
-    "Layer"
+    "Layer",
+    "Network"
 ]

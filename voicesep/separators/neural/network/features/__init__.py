@@ -1,15 +1,31 @@
-from voicesep.separators.neural.network.features.feature import Feature
+import logging
 
 from voicesep.separators.neural.network.features import constants
 from voicesep.separators.neural.network.features import finder
 
 from voicesep.separators.neural.network.features import chord_level
+from voicesep.separators.neural.network.features import convergence_level
+from voicesep.separators.neural.network.features import divergence_level
 from voicesep.separators.neural.network.features import note_level
 from voicesep.separators.neural.network.features import pair_level
 from voicesep.separators.neural.network.features import voice_level
 
+from voicesep.separators.neural.network.features.feature import Feature
+
+logger = logging.getLogger(__name__)
+
 
 class Features:
+
+    class Level:
+
+        ASSIGNMENT = "assignment_level",
+        CHORD = "chord_level",
+        CONVERGENCE = "convergence_level",
+        DIVERGENCE = "divergence_level",
+        NOTE = "note_level",
+        PAIR = "pair_level",
+        VOICE = "voice_level"
 
     def __init__(self, chord, active_voices):
 
@@ -18,10 +34,10 @@ class Features:
 
         self.voices = list(active_voices) + [None]
 
-        self.chord_datum = features.finder.generate(chord_level, chord)
+        self.chord_datum = finder.generate(chord_level, chord)
 
         self.note_data = [
-            features.finder.generate(
+            finder.generate(
                 note_level,
                 note
             )
@@ -29,7 +45,7 @@ class Features:
         ]
 
         self.voice_data = [
-            features.finder.generate(
+            finder.generate(
                 voice_level,
                 voice,
                 active_voices
@@ -38,13 +54,15 @@ class Features:
         ]
 
         self.pair_data = [
-            features.finder.generate(
+            finder.generate(
                 pair_level,
                 note,
                 voice,
                 active_voices
             )
         ]
+
+        logger.debug("initializing")
 
     def pair_level(self, assignment):
 
@@ -64,7 +82,7 @@ class Features:
 
         data = []
         for note, voices in assignment:
-            convergence_data = features.finder.generate(
+            convergence_data = finder.generate(
                 convergence_level,
                 note,
                 voices,
@@ -85,12 +103,14 @@ class Features:
 
     def assignment_level(self, assignment):
 
-        return features.finder.generate(assignment_level, assignment)
+        return finder.generate(assignment_level, assignment)
 
     @staticmethod
-    def count():
+    def count(levels=None):
 
-        return sum(features.finder.count(level) for level in levels)
+        levels = levels or Features.LEVELS
+
+        return sum(finder.count(level) for level in levels)
 
     @staticmethod
     def pad(data, count):
@@ -100,13 +120,15 @@ class Features:
 
 
 __all__ = [
-    "Feature",
-
     "constants",
     "finder",
 
     "chord_level",
+    "convergence_level",
+    "divergence_level",
     "note_level",
     "pair_level",
-    "voice_level"
+    "voice_level",
+
+    "Feature"
 ]

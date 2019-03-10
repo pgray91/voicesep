@@ -14,23 +14,24 @@ class Test(unittest.TestCase):
 
         X_var = T.matrix("X", dtype=theano.config.floatX)
 
-        layer = vs.separators.neural.Layer(
+        layer = vs.separators.neural.network.Layer(
             X_var,
             input_size=1,
             output_size=1,
             activation="linear"
         )
 
-        y_var = T.wmatrix("y")
         y_hat_var = layer.y_hat_var
-        cost_var = (
-            vs.separators.neural.costs.binary_crossentropy(y_var, y_hat_var)
+        cost_var, cost_inputs = (
+            vs.separators.neural.network.costs.binary_crossentropy(y_hat_var)
         )
 
-        updates = getattr(vs.separators.neural.gradients, name)(layer.params, cost_var)
+        updates = getattr(vs.separators.neural.network.gradients, name)(
+            layer.params, cost_var
+        )
 
-        function = theano.function(
-            inputs=[X_var, y_var],
+        cost = theano.function(
+            inputs=[X_var, *cost_inputs],
             outputs=cost_var,
             updates=updates
         )
@@ -41,7 +42,7 @@ class Test(unittest.TestCase):
 
         X = np.array([[0.7]], dtype=theano.config.floatX)
         y = np.array([[1]], dtype=np.int16)
-        function(X, y)
+        cost(X, y)
 
     def test_sgd(self):
 

@@ -4,7 +4,7 @@ from voicesep.separators.neural.network.features.feature import Feature
 
 class ChordPosition(Feature):
 
-    def generate(note, **kwargs):
+    def generate(note):
 
         return [note.index == i for i in ChordPosition.range()]
 
@@ -14,11 +14,11 @@ class ChordPosition(Feature):
 
 class DurationRange(Feature):
 
-    def generate(note, **kwargs):
+    def generate(note):
 
         return [
-            lower <= note.duration < upper
-            for lower, upper in DurationRange.range()
+            lower <= note.duration < lower + constants.INTERVAL
+            for lower in DurationRange.range()
         ]
 
     def range():
@@ -27,11 +27,11 @@ class DurationRange(Feature):
 
 class PitchRange(Feature):
 
-    def generate(note, **kwargs):
+    def generate(note):
 
         return [
-            lower <= note.pitch < upper
-            for lower, upper in PitchRange.range()
+            lower <= note.pitch < lower + constants.INTERVAL
+            for lower in PitchRange.range()
         ]
 
     def range():

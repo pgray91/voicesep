@@ -5,8 +5,8 @@ import unittest
 
 import voicesep as vs
 
-
 module = sys.modules[__name__]
+
 
 class Test(unittest.TestCase, vs.separators.neural.network.features.Feature):
 

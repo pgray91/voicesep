@@ -4,16 +4,20 @@ import numpy as np
 import random
 import theano
 
-from voicesep.separators.neural.network import features
-
 logger = logging.getLogger(__name__)
 
 
 class Dataset:
 
-    def __init__(self, name):
+    class Writer:
+        
+        NOTE_LEVEL = "note_level"
+        CHORD_LEVEL = "chord_level"
 
-        self.fp = h5py.File("{}.hdf5".format(name), "a")
+    def __init__(self, name, writer):
+
+        self.fp = h5py.File("{}.hdf5".format(name), "w")
+        self.writer = writer
 
     def __del__(self):
 
@@ -32,7 +36,7 @@ class Dataset:
 
         separators = [
             ("true", one_to_many),
-            ("neural.network.dataset.writer", group)
+            ("neural.{}.writer".format(self.writer), group)
         ]
         separate(score, separators, beat_horizon)
 
@@ -49,21 +53,22 @@ class Dataset:
             stop = index + 1
 
         if start >= stop:
-            raise IndexError()
+            raise IndexError("only forward indexing allowed")
 
         if start >= self.length:
-            raise IndexError()
+            raise IndexError("start index exceeds length of dataset")
 
         length = stop - start
 
-        inputs = []
-        X = np.empty((length, features.count()), dtype=theano.config.floatX)
-        y = np.empty((length,), dtype=np.int16)
+        inputs = {
+            name: np.empty((length, *input_.shape()[1:]), dtype=input_.dtype)
+            for name, input_ in self.groups[0].items()
+        }
 
         get_start = 0
         current_start = 0
         for group in self.groups:
-            current_stop = current_start + len(group["inputs0"])
+            current_stop = current_start + len(group["input0"])
 
             if start >= current_stop:
                 current_start = current_stop
@@ -74,8 +79,10 @@ class Dataset:
 
             get_stop = get_start + group_stop - group_start
 
-            for inputs in inputs:
-                inputs[get_start:get_stop] = group["inputs{}".format(i)][group_start:group_stop]
+            for i in range(len(group)):
+                name = "input{}".format(i)
+                # flatten to 2d
+                inputs[name] = group[name][group_start:group_stop]
 
             get_start = get_stop
             if get_start >= length:
