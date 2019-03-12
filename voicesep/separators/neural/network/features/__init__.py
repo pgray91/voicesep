@@ -17,6 +17,15 @@ logger = logging.getLogger(__name__)
 
 class Features:
 
+    class Level:
+
+        CHORD = chord_level
+        NOTE = note_level
+        VOICE = voice_level
+        PAIR = pair_level
+        CONVERGENCE = convergence_level
+        DIVERGENCE = divergence_level
+
     def __init__(self, chord, active_voices):
 
         self.chord = chord
@@ -39,7 +48,7 @@ class Features:
             for voice in self.voices:
                 self.pair_data.append(
                     finder.generate(
-                        pair_level,
+                        Features.Level.PAIR,
                         note,
                         voice,
                         active_voices
@@ -50,7 +59,7 @@ class Features:
 
     def level(self, level):
 
-        if level == pair_level:
+        if level == Features.Level.PAIR:
 
             data = []
             for i in range(len(self.chord)):
@@ -95,13 +104,13 @@ class Features:
     @staticmethod
     def count(level):
 
-        if level == pair_level:
+        if level == Features.Level.PAIR:
 
             levels = [
-                pair_level,
-                note_level,
-                voice_level,
-                chord_level
+                Features.Level.PAIR,
+                Features.Level.NOTE,
+                Features.Level.VOICE,
+                Features.Level.CHORD
             ]
 
         # elif level == convergence_level:

@@ -37,7 +37,7 @@ class Writer(Separator):
 
         features = Features(chord, active_voices)
 
-        data = features.level(Features.PAIR_LEVEL)
+        data = features.level(Features.Level.PAIR)
 
         self.length += len(data)
         if self.features_dataset.len() <= self.length:
