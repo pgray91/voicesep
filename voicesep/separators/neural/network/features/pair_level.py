@@ -104,4 +104,4 @@ class Cross(Feature):
         if not voice:
             return [False]
 
-        return [active_voices.cross(voice.note, note)]
+        return [active_voices.crossing(voice.note, note)]

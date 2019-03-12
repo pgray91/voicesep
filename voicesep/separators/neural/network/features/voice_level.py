@@ -21,7 +21,7 @@ class AveragePitchRange(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(ActivePitchRange.range()))
+            return [0] * len(list(AveragePitchRange.range()))
 
         beat_horizon = active_voices.beat_horizon or constants.BEAT_HORIZON
         pitch = 0

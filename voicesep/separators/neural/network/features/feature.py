@@ -4,7 +4,7 @@ import abc
 class Feature(abc.ABC):
 
     @abc.abstractmethod
-    def generate(**kwargs):
+    def generate(*args, **kwargs):
 
         pass
 

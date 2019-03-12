@@ -17,16 +17,6 @@ logger = logging.getLogger(__name__)
 
 class Features:
 
-    class Level:
-
-        ASSIGNMENT = "assignment_level",
-        CHORD = "chord_level",
-        CONVERGENCE = "convergence_level",
-        DIVERGENCE = "divergence_level",
-        NOTE = "note_level",
-        PAIR = "pair_level",
-        VOICE = "voice_level"
-
     def __init__(self, chord, active_voices):
 
         self.chord = chord
@@ -41,12 +31,12 @@ class Features:
 
         self.voice_data = [
             finder.generate(voice_level, voice, active_voices)
-            for voice in voices
+            for voice in self.voices
         ]
 
         self.pair_data = []
         for note in chord:
-            for voice in voices:
+            for voice in self.voices:
                 self.pair_data.append(
                     finder.generate(
                         pair_level,
@@ -60,7 +50,7 @@ class Features:
 
     def level(self, level):
 
-        if level == Features.Level.PAIR:
+        if level == pair_level:
 
             data = []
             for i in range(len(self.chord)):
@@ -69,7 +59,7 @@ class Features:
                         self.chord_datum +
                         self.note_data[i] +
                         self.voice_data[j] +
-                        self.pair_data[i][j]
+                        self.pair_data[i * len(self.chord) + j]
                     )
 
             return data
@@ -105,35 +95,35 @@ class Features:
     @staticmethod
     def count(level):
 
-        if level == Features.Level.PAIR:
+        if level == pair_level:
 
             levels = [
-                Features.Level.PAIR,
-                Features.Level.NOTE,
-                Features.Level.CHORD,
-                Features.Level.VOICE
+                pair_level,
+                note_level,
+                voice_level,
+                chord_level
             ]
 
-        elif level == Features.Level.CONVERGENCE:
-
-            levels = [
-                Features.Level.CONVERGENCE,
-                Features.Level.NOTE,
-                Features.Level.CHORD
-            ]
-
-        elif level == Features.Level.DIVERGENCE:
-
-            levels = [
-                Features.Level.DIVERGENCE,
-                Features.Level.VOICE,
-                Features.Level.CHORD
-            ]
-
-        elif level == Features.Level.ASSIGNMENT:
-
-            levels = [Features.Level.ASSIGNMENT]
-
+        # elif level == convergence_level:
+        #
+        #     levels = [
+        #         Features.Level.CONVERGENCE,
+        #         Features.Level.NOTE,
+        #         Features.Level.CHORD
+        #     ]
+        #
+        # elif level == divergence_level:
+        #
+        #     levels = [
+        #         Features.Level.DIVERGENCE,
+        #         Features.Level.VOICE,
+        #         Features.Level.CHORD
+        #     ]
+        #
+        # elif level == Features.Level.ASSIGNMENT:
+        #
+        #     levels = [Features.Level.ASSIGNMENT]
+        #
         else:
             
             levels = [level]

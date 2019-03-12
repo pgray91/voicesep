@@ -10,11 +10,11 @@ def find(module):
         if Feature in inspect.getmro(feature) and feature != Feature
     )
 
-def generate(module, **kwargs):
+def generate(module, *args, **kwargs):
 
     data = []
     for feature in find(module):
-        data.extend(feature.generate(**kwargs))
+        data.extend(feature.generate(*args, **kwargs))
 
     return data
 

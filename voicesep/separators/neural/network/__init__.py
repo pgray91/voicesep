@@ -9,6 +9,7 @@ from voicesep.separators.neural.network import costs
 from voicesep.separators.neural.network import features
 from voicesep.separators.neural.network import gradients
 
+from voicesep.separators.neural.network.features import Features
 from voicesep.separators.neural.network.layer import Layer
 
 logger = logging.getLogger(__name__)
@@ -187,6 +188,7 @@ __all__ = [
     "features",
     "gradients",
     
+    "Features",
     "Layer",
     "Network"
 ]
