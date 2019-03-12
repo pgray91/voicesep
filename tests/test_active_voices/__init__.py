@@ -208,6 +208,10 @@ class Test(unittest.TestCase):
 
         self.assertEqual(expected_order, true_order)
 
+    def test_index(self):
+
+        self.assertEqual(self.active_voices.index(self.voices[4]), 8)
+
 
 if __name__ == "__main__":
     unittest.main()
