@@ -4,6 +4,7 @@ class ActiveVoices:
 
         self.voices = []
         self.inactive = set()
+        self.watch = set()
 
         self.beat_horizon = beat_horizon
 
@@ -66,6 +67,11 @@ class ActiveVoices:
 
             self.voices.insert(i, right_voice)
 
+        for voice in list(self.watch):
+            if voice in self.voices:
+                self.watch.remove(voice)
+                self.inactive.add(voice)
+
     def filter(self, onset):
 
         if not self.beat_horizon:
@@ -84,6 +90,7 @@ class ActiveVoices:
     def deactivate(self, voice):
 
         if voice not in self.voices:
+            self.watch.add(voice)
             return
 
         self.inactive.add(voice)

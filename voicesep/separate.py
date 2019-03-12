@@ -3,6 +3,7 @@ import logging
 
 from voicesep.active_voices import ActiveVoices
 from voicesep.separators import *
+from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +31,10 @@ def separate(score, waterfall, beat_horizon):
         assignment = [None] * len(chord)
         for separator in separators:
             separator.run(chord, active_voices, assignment)
+
+        for i in range(len(assignment)):
+            if assignment[i] is None:
+                assignment[i] = Voice(chord[i])
 
         # right_voices = []
         # for note, left_voices in assignment:
