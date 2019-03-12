@@ -6,6 +6,9 @@ class ActiveVoicesPosition(Feature):
 
     def generate(voice, active_voices):
 
+        if not voice:
+            return [0] * len(list(ActiveVoicesPosition.range()))
+
         return [active_voices.index(voice) == i for i in ActiveVoicesPosition.range()]
 
     def range():
@@ -17,11 +20,15 @@ class AveragePitchRange(Feature):
 
     def generate(voice, active_voices):
 
+        if not voice:
+            return [0] * len(list(ActivePitchRange.range()))
+
+        beat_horizon = active_voices.beat_horizon or constants.BEAT_HORIZON
         pitch = 0
         count = 0
         direction = "left"
-        horizon = voice.note.onset - active_voices.beat_horizon
-        for left_voice in iterate(voice, direction, horizon):
+        distance = voice.note.onset - beat_horizon
+        for left_voice in iterate(voice, direction, distance):
             pitch += voice.note.pitch
             count += 1
 
@@ -39,12 +46,18 @@ class Blocked(Feature):
 
     def generate(voice, active_voices):
 
+        if not voice:
+            return [0]
+
         return [active_voices.blocked(voice.note)]
 
 
 class ChordPosition(Feature):
 
     def generate(voice, active_voices):
+
+        if not voice:
+            return [0] * len(list(ChordPosition.range()))
 
         return [voice.note.index == i for i in ChordPosition.range()]
 
@@ -57,6 +70,9 @@ class Divergence(Feature):
 
     def generate(voice, active_voices):
 
+        if not voice:
+            return [0] * len(list(Divergence.range()))
+
         return [len(voice.right) == i for i in Divergence.range()]
 
     def range():
@@ -67,6 +83,9 @@ class Divergence(Feature):
 class DurationRange(Feature):
 
     def generate(voice, active_voices):
+
+        if not voice:
+            return [0] * len(list(DurationRange.range()))
 
         return [
             lower <= voice.note.duration < lower + constants.INTERVAL
@@ -82,9 +101,13 @@ class NoteCount(Feature):
 
     def generate(voice, active_voices):
 
+        if not voice:
+            return [0] * len(list(NoteCount.range()))
+
+        beat_horizon = active_voices.beat_horizon or constants.BEAT_HORIZON
         direction = "left"
-        horizon = voice.note.onset - active_voices.beat_horizon
-        count = sum(1 for _ in iterate(voice, direction, horizon))
+        distance = voice.note.onset - beat_horizon
+        count = sum(1 for _ in iterate(voice, direction, distance))
 
         return [count == i for i in NoteCount.range()]
 
@@ -97,6 +120,9 @@ class PitchRange(Feature):
 
     def generate(voice, active_voices):
 
+        if not voice:
+            return [0] * len(list(PitchRange.range()))
+
         return [
             lower <= voice.note.pitch < lower + constants.INTERVAL
             for lower in PitchRange.range()
@@ -107,7 +133,17 @@ class PitchRange(Feature):
         return range(constants.MIN_PITCH, constants.MAX_PITCH, constants.INTERVAL)
 
 
-def iterate(voice, direction, horizon):
+class Empty(Feature):
+
+    def generate(voice, active_voices):
+
+        if not voice:
+            return [1]
+
+        return [0]
+
+
+def iterate(voice, direction, distance):
 
     stack = [voice]
     while stack:
@@ -116,7 +152,7 @@ def iterate(voice, direction, horizon):
 
         for next_voice in getattr(voice, direction):
             if (
-                direction == "left" and next_voice.note.onset > horizon or
-                direction == "right" and next_voice.note.onset < horizon
+                direction == "left" and next_voice.note.onset > distance or
+                direction == "right" and next_voice.note.onset < distance
             ):
                 stack.append(next_voice)

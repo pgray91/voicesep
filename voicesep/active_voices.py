@@ -1,6 +1,6 @@
 class ActiveVoices:
 
-    def __init__(self, beat_horizon):
+    def __init__(self, beat_horizon=None):
 
         self.voices = []
         self.inactive = set()
@@ -172,6 +172,10 @@ class ActiveVoices:
                     return True
 
         return False
+
+    def index(self, voice):
+
+        return list(self).index(voice)
 
     def __len__(self):
 

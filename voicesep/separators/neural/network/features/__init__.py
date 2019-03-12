@@ -30,92 +30,120 @@ class Features:
     def __init__(self, chord, active_voices):
 
         self.chord = chord
-        self.active_voices = active_voices
-
         self.voices = list(active_voices) + [None]
 
         self.chord_datum = finder.generate(chord_level, chord)
 
         self.note_data = [
-            finder.generate(
-                note_level,
-                note
-            )
+            finder.generate(note_level, note)
             for note in chord
         ]
 
         self.voice_data = [
-            finder.generate(
-                voice_level,
-                voice,
-                active_voices
-            )
+            finder.generate(voice_level, voice, active_voices)
             for voice in voices
         ]
 
-        self.pair_data = [
-            finder.generate(
-                pair_level,
-                note,
-                voice,
-                active_voices
-            )
-        ]
+        self.pair_data = []
+        for note in chord:
+            for voice in voices:
+                self.pair_data.append(
+                    finder.generate(
+                        pair_level,
+                        note,
+                        voice,
+                        active_voices
+                    )
+                )
 
         logger.debug("initializing")
 
-    def pair_level(self, assignment):
+    def level(self, level):
 
-        data = []
-        for note, voices in assignment:
-            for voice in voices:
-                data.append(
-                    self.chord_datum +
-                    self.note_data[i] +
-                    self.voice_data[i] +
-                    self.pair_data[i]
-                )
+        if level == Features.Level.PAIR:
 
-        return data
+            data = []
+            for i in range(len(self.chord)):
+                for j in range(len(self.voices)):
+                    data.append(
+                        self.chord_datum +
+                        self.note_data[i] +
+                        self.voice_data[j] +
+                        self.pair_data[i][j]
+                    )
 
-    def convergence_level(self, assignment):
+            return data
 
-        data = []
-        for note, voices in assignment:
-            convergence_data = finder.generate(
-                convergence_level,
-                note,
-                voices,
-                active_voices
-            )
-
-            data.append(
-                self.chord_datum +
-                self.note_data[i] +
-                convergence_data
-            )
-
-        return data
-
-    def divergence_level(self, assignment):
-
-        data = []
-
-    def assignment_level(self, assignment):
-
-        return finder.generate(assignment_level, assignment)
+        # if level == Features.Level.CONVERGENCE:
+        #
+        #     data = []
+        #     for note, voices in assignment:
+        #         convergence_data = finder.generate(
+        #             convergence_level,
+        #             note,
+        #             voices,
+        #             active_voices
+        #         )
+        #
+        #         data.append(
+        #             self.chord_datum +
+        #             self.note_data[i] +
+        #             convergence_data
+        #         )
+        #
+        #     return data
+        #
+        # if level == Features.Level.DIVERGENCE:
+        #
+        #     data = []
+        #     return data
+        #
+        # if level == Features.Level.ASSIGNMENT:
+        #
+        #     return finder.generate(assignment_level, assignment)
 
     @staticmethod
-    def count(levels=None):
+    def count(level):
 
-        levels = levels or Features.LEVELS
+        if level == Features.Level.PAIR:
+
+            levels = [
+                Features.Level.PAIR,
+                Features.Level.NOTE,
+                Features.Level.CHORD,
+                Features.Level.VOICE
+            ]
+
+        elif level == Features.Level.CONVERGENCE:
+
+            levels = [
+                Features.Level.CONVERGENCE,
+                Features.Level.NOTE,
+                Features.Level.CHORD
+            ]
+
+        elif level == Features.Level.DIVERGENCE:
+
+            levels = [
+                Features.Level.DIVERGENCE,
+                Features.Level.VOICE,
+                Features.Level.CHORD
+            ]
+
+        elif level == Features.Level.ASSIGNMENT:
+
+            levels = [Features.Level.ASSIGNMENT]
+
+        else:
+            
+            levels = [level]
 
         return sum(finder.count(level) for level in levels)
 
     @staticmethod
     def pad(data, count):
 
-        for _ in range(count):
+        for _ in range(max(count - len(data), 0)):
             data.append(data[-1])
 
 
@@ -130,5 +158,6 @@ __all__ = [
     "pair_level",
     "voice_level",
 
-    "Feature"
+    "Feature",
+    "Features"
 ]
