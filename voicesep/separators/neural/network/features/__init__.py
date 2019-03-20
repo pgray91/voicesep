@@ -31,15 +31,15 @@ class Features:
         self.chord = chord
         self.voices = list(active_voices) + [None]
 
-        self.chord_datum = finder.generate(chord_level, chord)
+        self.chord_datum = finder.generate(Features.Level.CHORD, chord)
 
         self.note_data = [
-            finder.generate(note_level, note)
+            finder.generate(Features.Level.NOTE, note)
             for note in chord
         ]
 
         self.voice_data = [
-            finder.generate(voice_level, voice, active_voices)
+            finder.generate(Features.Level.VOICE, voice, active_voices)
             for voice in self.voices
         ]
 

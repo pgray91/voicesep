@@ -1,6 +1,7 @@
 import numpy as np
 
-from voicesep.separators.neural.note_level import features
+from voicesep.separators.neural.note_level.writer import Writer
+from voicesep.separators.separator import Separator
 
 
 class NoteLevel(Separator):
@@ -76,3 +77,8 @@ class NoteLevel(Separator):
                 continue
 
             assignment[i] = right_voices[i]
+
+__all__ = [
+    "NoteLevel",
+    "Writer"
+]

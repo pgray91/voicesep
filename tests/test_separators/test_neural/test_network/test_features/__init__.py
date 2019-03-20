@@ -53,6 +53,9 @@ class Test(unittest.TestCase):
         Features.pad(data, len(data) + 2)
 
         self.assertEqual(len(data), 12)
+        self.assertEqual(data[-1], data[-2])
+        self.assertEqual(data[-1], data[-3])
+        self.assertNotEqual(data[-1], data[-4])
 
 
 if __name__ == "__main__":
