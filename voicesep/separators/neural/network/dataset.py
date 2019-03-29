@@ -1,8 +1,9 @@
 import h5py
 import logging
 import numpy as np
-import random
-import theano
+
+import voicesep as vs
+
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +19,8 @@ class Dataset:
 
         self.fp = h5py.File("{}.hdf5".format(name), "w")
         self.writer = writer
+
+        self.groups = []
 
     def __del__(self):
 
@@ -35,40 +38,44 @@ class Dataset:
         group = self.fp.create_group(score.name)
 
         separators = [
-            ("true", one_to_many),
-            ("neural.{}.writer".format(self.writer), group)
+            {"Benchmark": {"one_to_many": one_to_many}},
+            {"neural.{}.Writer".format(self.writer): {"group": group}}
         ]
-        separate(score, separators, beat_horizon)
+        vs.separate(score, separators, beat_horizon)
 
         self.groups.append(group)
 
     def __getitem__(self, index):
 
-        if isinstance(slice, index):
+        if isinstance(index, slice):
             start = index.start if index.start else 0
-            stop = index.stop if index.stop else self.length
+            stop = index.stop
 
         else:
             start = index
             stop = index + 1
 
+        length = sum(len(next(iter(group.values()))) for group in self.groups)
+
+        stop = min(stop, length) if stop else length
+
         if start >= stop:
-            raise IndexError("only forward indexing allowed")
+            raise IndexError("start={}, stop={}".format(start, stop))
 
-        if start >= self.length:
-            raise IndexError("start index exceeds length of dataset")
+        if start >= length:
+            raise IndexError("start={}, length={}".format(start, length))
 
-        length = stop - start
+        chunk = stop - start
 
         inputs = {
-            name: np.empty((length, *input_.shape()[1:]), dtype=input_.dtype)
-            for name, input_ in self.groups[0].items()
+            name: np.empty((chunk, *input_.shape[1:]), dtype=input_.dtype)
+            for name, input_ in next(iter(self.groups)).items()
         }
 
         get_start = 0
         current_start = 0
         for group in self.groups:
-            current_stop = current_start + len(group["input0"])
+            current_stop = current_start + len(next(iter(group.values())))
 
             if start >= current_stop:
                 current_start = current_stop
@@ -79,13 +86,11 @@ class Dataset:
 
             get_stop = get_start + group_stop - group_start
 
-            for i in range(len(group)):
-                name = "input{}".format(i)
-                # flatten to 2d
-                inputs[name] = group[name][group_start:group_stop]
+            for name in group:
+                inputs[name][get_start:get_stop] = group[name][group_start:group_stop]
 
             get_start = get_stop
-            if get_start >= length:
+            if get_start >= chunk:
                 break
 
         return inputs

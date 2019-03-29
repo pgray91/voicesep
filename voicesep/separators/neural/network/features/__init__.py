@@ -68,7 +68,7 @@ class Features:
                         self.chord_datum +
                         self.note_data[i] +
                         self.voice_data[j] +
-                        self.pair_data[i * len(self.chord) + j]
+                        self.pair_data[i * len(self.voices) + j]
                     )
 
             return data

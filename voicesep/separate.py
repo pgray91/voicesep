@@ -1,3 +1,4 @@
+import functools
 import importlib
 import logging
 
@@ -14,10 +15,14 @@ def separate(score, waterfall, beat_horizon):
 
     separators = []
     for request in waterfall:
-        name = next(iter(request))
-        kwargs = request[name]
+        name, kwargs = next(iter(request.items()))
 
-        Separator = globals()[name]
+        path = name.split(".")
+        Separator = functools.reduce(
+            lambda a, b: getattr(a, b),
+            [globals()[path[0]], *path[1:]]
+        )
+
         separators.append(Separator(score, **kwargs))
 
     assignments = []

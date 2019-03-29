@@ -46,8 +46,10 @@ class Writer(Separator):
 
         active_count = len(active_voices) + 1
         for i, (note, voice)  in enumerate(zip(chord, assignment)):
+
+            j = -1
             for j, active_voice in enumerate(active_voices):
-                self.labels_dataset[data_slice.start + i * active_count + j] = [ 
+                self.labels_dataset[data_slice.start + i * active_count + j] = [
                     active_voice in voice.left
                 ]
 
