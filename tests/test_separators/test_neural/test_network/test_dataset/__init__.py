@@ -33,19 +33,106 @@ class Test(unittest.TestCase):
         }
         expected = self.dataset[2]
 
+        self.assertTrue(expected["input0"].any())
+        self.assertFalse((true["input0"] - expected["input0"]).any())
+        self.assertFalse((true["input1"] - expected["input1"]).any())
+
+    def test_index_slice_all(self):
+
+        self.score.name = "test2"
+        self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
+
+        true = {
+            "input0": np.concatenate(
+                (
+                    self.dataset.groups[0]["input0"][:],
+                    self.dataset.groups[1]["input0"][:]
+                )
+            ),
+            "input1": np.concatenate(
+                (
+                    self.dataset.groups[0]["input1"][:],
+                    self.dataset.groups[1]["input1"][:]
+                )
+            )
+        }
+        expected = self.dataset[:]
 
         self.assertFalse((true["input0"] - expected["input0"]).any())
         self.assertFalse((true["input1"] - expected["input1"]).any())
 
-        # self.writer.run(chord, active_voices, assignment)
-        #
-        # self.assertEqual(self.writer.length, 9)
-        #
-        # self.assertEqual(self.writer.features_dataset.shape, (9, 100))
-        # self.assertTrue(self.writer.features_dataset[7].any())
-        #
-        # labels = [[1], [1], [0], [1], [1], [0], [0], [0], [1]]
-        # self.assertFalse((self.writer.labels_dataset[:] - labels).any())
+    def test_index_slice_half(self):
+
+        self.score.name = "test2"
+        self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
+
+        true = {
+            "input0": np.concatenate(
+                (
+                    self.dataset.groups[0]["input0"][5:],
+                    self.dataset.groups[1]["input0"][:5]
+                )
+            ),
+            "input1": np.concatenate(
+                (
+                    self.dataset.groups[0]["input1"][5:],
+                    self.dataset.groups[1]["input1"][:5]
+                )
+            )
+        }
+        expected = self.dataset[5:16]
+
+        self.assertFalse((true["input0"] - expected["input0"]).any())
+        self.assertFalse((true["input1"] - expected["input1"]).any())
+
+    def test_index_slice_first_half(self):
+
+        self.score.name = "test2"
+        self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
+
+        true = {
+            "input0": self.dataset.groups[0]["input0"][1:5],
+            "input1": self.dataset.groups[0]["input1"][1:5],
+        }
+        expected = self.dataset[1:5]
+
+        self.assertFalse((true["input0"] - expected["input0"]).any())
+        self.assertFalse((true["input1"] - expected["input1"]).any())
+
+    def test_index_slice_first_half(self):
+
+        self.score.name = "test2"
+        self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
+
+        true = {
+            "input0": self.dataset.groups[1]["input0"][1:5],
+            "input1": self.dataset.groups[1]["input1"][1:5],
+        }
+        expected = self.dataset[1:5]
+
+        self.assertFalse((true["input0"] - expected["input0"]).any())
+        self.assertFalse((true["input1"] - expected["input1"]).any())
+
+    def test_length(self):
+
+        length = sum(len(next(iter(group.values()))) for group in self.dataset.groups)
+
+        self.assertEqual(length, 11)
+
+    def test_sort(self):
+
+        self.score.name = "test2"
+        self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
+
+        self.score.name = "test3"
+        self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
+
+        expected_order = ["test2", "test", "test3"]
+        self.dataset.sort(expected_order)
+
+        true_order = [os.path.basename(group.name) for group in self.dataset.groups]
+
+        self.assertEqual(true_order, expected_order)
 
 
 if __name__ == "__main__":

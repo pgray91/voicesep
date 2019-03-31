@@ -1,6 +1,7 @@
 import h5py
 import logging
 import numpy as np
+import os
 
 import voicesep as vs
 
@@ -77,20 +78,19 @@ class Dataset:
         for group in self.groups:
             current_stop = current_start + len(next(iter(group.values())))
 
-            if start >= current_stop:
-                current_start = current_stop
-                continue
+            if start < current_stop:
+                group_start = max(0, start - current_start)
+                group_stop = min(current_stop - current_start, stop - current_start)
 
-            group_start = max(0, start - current_start)
-            group_stop = min(current_stop - current_start, stop - current_start)
+                get_stop = get_start + group_stop - group_start
 
-            get_stop = get_start + group_stop - group_start
+                for name in group:
+                    inputs[name][get_start:get_stop] = group[name][group_start:group_stop]
 
-            for name in group:
-                inputs[name][get_start:get_stop] = group[name][group_start:group_stop]
+                get_start = get_stop
+                if get_start >= chunk:
+                    break
 
-            get_start = get_stop
-            if get_start >= chunk:
-                break
+            current_start = current_stop
 
         return inputs
