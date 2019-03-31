@@ -1,7 +1,8 @@
-from fractions import Fraction as F
 import logging
 import music21 as m21
 import os
+
+from fractions import Fraction as F
 
 from voicesep.chord import Chord
 from voicesep.note import Note
@@ -81,7 +82,7 @@ class Score:
 
                     chord_stepper = m21.chord.Chord(note_group)
 
-                    for note_index, note_part in enumerate(reversed(note_group)):
+                    for part_index, note_part in enumerate(reversed(note_group)):
 
                         ql_duration = F(note_part.duration.quarterLength)
                         if has_staccato:
@@ -111,7 +112,7 @@ class Score:
                             if chord_step.step == note_part.step:
                                 break
 
-                        lyric = lyrics[note_index] if lyrics else []
+                        lyric = lyrics[part_index] if lyrics else []
                         color = note_part.style.color
 
                         note = Note(
