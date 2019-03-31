@@ -9,6 +9,7 @@ def binary_crossentropy(y_hat_var):
 
     return cost_var, [y_var]
 
+
 def max(y_hat_var, assignment_limit, margin):
 
     scores = y_hat_var.reshape(

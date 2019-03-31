@@ -1,5 +1,4 @@
 import functools
-import importlib
 import logging
 
 from voicesep.active_voices import ActiveVoices

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class Dataset:
 
     class Writer:
-        
+
         NOTE_LEVEL = "note_level"
         CHORD_LEVEL = "chord_level"
 

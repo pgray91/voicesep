@@ -45,7 +45,7 @@ class Writer(Separator):
         )
 
         active_count = len(active_voices) + 1
-        for i, (note, voice)  in enumerate(zip(chord, assignment)):
+        for i, (note, voice) in enumerate(zip(chord, assignment)):
 
             j = -1
             for j, active_voice in enumerate(active_voices):

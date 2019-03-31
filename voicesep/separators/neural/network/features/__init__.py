@@ -134,7 +134,7 @@ class Features:
         #     levels = [Features.Level.ASSIGNMENT]
         #
         else:
-            
+
             levels = [level]
 
         return sum(finder.count(level) for level in levels)

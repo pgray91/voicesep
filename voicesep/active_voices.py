@@ -12,7 +12,7 @@ class ActiveVoices:
 
         unpaired_voices = []
         for right_voice in assignment:
-            
+
             if not right_voice.left:
                 unpaired_voices.append(right_voice)
                 continue

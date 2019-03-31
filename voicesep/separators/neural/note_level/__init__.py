@@ -97,6 +97,7 @@ class NoteLevel(Separator):
 
             assignment[i] = right_voices[i]
 
+
 __all__ = [
     "NoteLevel",
     "Writer"

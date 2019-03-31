@@ -67,7 +67,7 @@ class PseudoPolyphony(Separator):
                     break
 
                 repeat_count += 1
-            
+
             right_notes = []
             right_index = chord.index + 1
             repeat_count = 0

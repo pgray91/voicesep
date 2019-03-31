@@ -2,11 +2,9 @@ from fractions import Fraction as F
 import logging
 import music21 as m21
 import os
-import random
 
 from voicesep.chord import Chord
 from voicesep.note import Note
-from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 
@@ -82,7 +80,7 @@ class Score:
                     lyrics = [lyric.text.split(",") for lyric in chord_part.lyrics]
 
                     chord_stepper = m21.chord.Chord(note_group)
-          
+
                     for note_index, note_part in enumerate(reversed(note_group)):
 
                         ql_duration = F(note_part.duration.quarterLength)

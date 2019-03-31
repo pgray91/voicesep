@@ -14,7 +14,6 @@ class PitchDistance(Feature):
 
 class PitchDirection(Feature):
 
-    
     def generate(note, voice, active_voices):
 
         if not voice:
@@ -77,7 +76,7 @@ class DurationDifference(Feature):
             return [constants.MAX_DURATION]
 
         return [abs(note.duration - voice.note.duration)]
-    
+
 
 class PositionDifference(Feature):
 

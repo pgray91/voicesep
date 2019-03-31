@@ -14,6 +14,7 @@ class ChordPosition(Feature):
 
         return list(range(constants.MAX_CHORD_LENGTH))
 
+
 class DurationRange(Feature):
 
     def generate(note):
@@ -31,6 +32,7 @@ class DurationRange(Feature):
         interval = constants.MAX_DURATION / constants.GRANULARITY
 
         return list(np.arange(0, constants.MAX_DURATION, interval))
+
 
 class PitchRange(Feature):
 
