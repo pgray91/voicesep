@@ -18,10 +18,10 @@ class Dataset:
 
     def __init__(self, name, writer):
 
-        self.fp = h5py.File("{}.hdf5".format(name), "w")
+        self.fp = h5py.File("{}.hdf5".format(name), "a")
         self.writer = writer
 
-        self.groups = []
+        self.groups = list(self.fp.values())
 
     def __del__(self):
 
@@ -46,6 +46,10 @@ class Dataset:
 
         self.groups.append(group)
 
+    def __len__(self):
+
+        return sum(len(next(iter(group.values()))) for group in self.groups)
+
     def __getitem__(self, index):
 
         if isinstance(index, slice):
@@ -56,7 +60,7 @@ class Dataset:
             start = index
             stop = index + 1
 
-        length = sum(len(next(iter(group.values()))) for group in self.groups)
+        length = len(self)
 
         stop = min(stop, length) if stop else length
 
@@ -93,4 +97,4 @@ class Dataset:
 
             current_start = current_stop
 
-        return inputs
+        return [inputs[name] for name in sorted(inputs)]

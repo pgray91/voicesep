@@ -37,6 +37,24 @@ class Test(unittest.TestCase):
         self.assertEqual(len(data), 10)
         self.assertEqual(len(data[0]), Features.count(Features.Level.PAIR))
 
+    def test_count_chord(self):
+
+        Features = vs.separators.neural.network.Features
+
+        self.assertEqual(Features.count(Features.Level.CHORD), 10)
+
+    def test_count_note(self):
+
+        Features = vs.separators.neural.network.Features
+
+        self.assertEqual(Features.count(Features.Level.NOTE), 30)
+
+    def test_count_voice(self):
+
+        Features = vs.separators.neural.network.Features
+
+        self.assertEqual(Features.count(Features.Level.VOICE), 92)
+
     def test_count_pair(self):
 
         Features = vs.separators.neural.network.Features

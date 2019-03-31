@@ -53,7 +53,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(self.writer.length, 9)
 
-        self.assertEqual(self.writer.features_dataset.shape, (9, 100))
+        self.assertEqual(self.writer.features_dataset.shape, (9, 145))
         self.assertTrue(self.writer.features_dataset[7].any())
 
         labels = [[1], [1], [0], [1], [1], [0], [0], [0], [1]]

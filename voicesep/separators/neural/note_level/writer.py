@@ -15,14 +15,14 @@ class Writer(Separator):
         self.feature_count = Features.count(Features.Level.PAIR)
 
         self.features_dataset = group.create_dataset(
-            name="input0",
+            name="0",
             shape=(0, self.feature_count),
             maxshape=(None, self.feature_count),
             dtype=theano.config.floatX
         )
 
         self.labels_dataset = group.create_dataset(
-            name="input1",
+            name="1",
             shape=(0, 1),
             maxshape=(None, 1),
             dtype=np.int16
