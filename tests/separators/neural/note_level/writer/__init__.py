@@ -26,8 +26,8 @@ class Test(unittest.TestCase):
 
     def test_init(self):
 
-        self.assertTrue("input0" in self.group)
-        self.assertTrue("input1" in self.group)
+        self.assertTrue("0" in self.group)
+        self.assertTrue("1" in self.group)
 
     def test_run(self):
 
