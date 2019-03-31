@@ -1,3 +1,5 @@
+import numpy as np
+
 from voicesep.separators.neural.network.features import constants
 from voicesep.separators.neural.network.features.feature import Feature
 
@@ -7,13 +9,15 @@ class ActiveVoicesPosition(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(ActiveVoicesPosition.range()))
+            return [0] * len(ActiveVoicesPosition.range())
 
-        return [active_voices.index(voice) == i for i in ActiveVoicesPosition.range()]
+        index = active_voices.index(voice)
+
+        return [index == i for i in ActiveVoicesPosition.range()]
 
     def range():
 
-        return range(constants.MAX_ACTIVE_VOICES)
+        return list(range(constants.MAX_ACTIVE_VOICES))
 
 
 class AveragePitchRange(Feature):
@@ -21,7 +25,7 @@ class AveragePitchRange(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(AveragePitchRange.range()))
+            return [0] * len(AveragePitchRange.range())
 
         beat_horizon = active_voices.beat_horizon or constants.BEAT_HORIZON
         pitch = 0
@@ -32,19 +36,21 @@ class AveragePitchRange(Feature):
             pitch += voice.note.pitch
             count += 1
 
-        lowers = list(AveragePitchRange.range())
+        average = pitch / count
+
+        lowers = AveragePitchRange.range()
         uppers = lowers[1:] + [constants.MAX_PITCH]
 
         return [
-            lower <= pitch / count < uppers
+            lower <= average < upper
             for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL
+        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.GRANULARITY
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)
+        return list(np.arange(constants.MIN_PITCH, constants.MAX_PITCH, interval))
 
 
 class Blocked(Feature):
@@ -62,13 +68,13 @@ class ChordPosition(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(ChordPosition.range()))
+            return [0] * len(ChordPosition.range())
 
         return [voice.note.index == i for i in ChordPosition.range()]
 
     def range():
 
-        return range(constants.MAX_CHORD_LENGTH)
+        return list(range(constants.MAX_CHORD_LENGTH))
 
 
 class Divergence(Feature):
@@ -76,13 +82,13 @@ class Divergence(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(Divergence.range()))
+            return [0] * len(Divergence.range())
 
         return [len(voice.right) == i for i in Divergence.range()]
 
     def range():
 
-        return range(constants.MAX_DIVERGENCE)
+        return list(range(constants.MAX_DIVERGENCE))
 
 
 class DurationRange(Feature):
@@ -90,9 +96,9 @@ class DurationRange(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(DurationRange.range()))
+            return [0] * len(DurationRange.range())
 
-        lowers = list(DurationRange.range())
+        lowers = DurationRange.range()
         uppers = lowers[1:] + [constants.MAX_DURATION]
 
         return [
@@ -102,9 +108,9 @@ class DurationRange(Feature):
 
     def range():
 
-        interval = constants.MAX_DURATION / constants.INTERVAL
+        interval = constants.MAX_DURATION / constants.GRANULARITY
 
-        return range(0, constants.MAX_DURATION, interval)
+        return list(np.arange(0, constants.MAX_DURATION, interval))
 
 
 class NoteCount(Feature):
@@ -112,7 +118,7 @@ class NoteCount(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(NoteCount.range()))
+            return [0] * len(NoteCount.range())
 
         beat_horizon = active_voices.beat_horizon or constants.BEAT_HORIZON
         direction = "left"
@@ -123,7 +129,7 @@ class NoteCount(Feature):
 
     def range():
 
-        return range(constants.MAX_NOTE_COUNT)
+        return list(range(constants.MAX_NOTE_COUNT))
 
 
 class PitchRange(Feature):
@@ -131,9 +137,9 @@ class PitchRange(Feature):
     def generate(voice, active_voices):
 
         if not voice:
-            return [0] * len(list(PitchRange.range()))
+            return [0] * len(PitchRange.range())
 
-        lowers = list(PitchRange.range())
+        lowers = PitchRange.range()
         uppers = lowers[1:] + [constants.MAX_PITCH]
 
         return [
@@ -143,9 +149,9 @@ class PitchRange(Feature):
 
     def range():
 
-        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL
+        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.GRANULARITY
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)
+        return list(np.arange(constants.MIN_PITCH, constants.MAX_PITCH, interval))
 
 
 class Empty(Feature):

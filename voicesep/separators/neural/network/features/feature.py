@@ -10,4 +10,4 @@ class Feature(abc.ABC):
 
     def range():
 
-        return range(1)
+        return [0]

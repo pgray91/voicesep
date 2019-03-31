@@ -10,4 +10,4 @@ class ChordLength(Feature):
 
     def range():
 
-        return range(constants.MAX_CHORD_LENGTH)
+        return list(range(constants.MAX_CHORD_LENGTH))

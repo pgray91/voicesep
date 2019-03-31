@@ -1,3 +1,4 @@
+import numpy as np
 import os
 import unittest
 
@@ -34,10 +35,12 @@ class Test(unittest.TestCase):
 
         MIN_PITCH = vs.separators.neural.network.features.constants.MIN_PITCH
         MAX_PITCH = vs.separators.neural.network.features.constants.MAX_PITCH
-        INTERVAL = vs.separators.neural.network.features.constants.INTERVAL
+        GRANULARITY = vs.separators.neural.network.features.constants.GRANULARITY
 
-        true_data = [0] * len(range(MIN_PITCH, MAX_PITCH, INTERVAL))
-        true_data[4] = 1
+        interval = (MAX_PITCH - MIN_PITCH) / GRANULARITY
+
+        true_data = [0] * len(np.arange(MIN_PITCH, MAX_PITCH, interval))
+        true_data[5] = 1
 
         expected_data = feature.generate(voice2, active_voices)
 

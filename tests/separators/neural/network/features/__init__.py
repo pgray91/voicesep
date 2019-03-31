@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
 
         Features = vs.separators.neural.network.Features
 
-        self.assertEqual(Features.count(Features.Level.PAIR), 100)
+        self.assertEqual(Features.count(Features.Level.PAIR), 145)
 
     def test_pad(self):
 

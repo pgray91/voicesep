@@ -27,7 +27,8 @@ class PitchDirection(Feature):
         ]
 
     def range():
-        return range(3)
+
+        return [0, 1, 2]
 
 
 class InterOnset(Feature):
@@ -64,7 +65,8 @@ class Overlap(Feature):
         ]
 
     def range():
-        return range(3)
+
+        return [0, 1, 2]
 
 
 class DurationDifference(Feature):

@@ -1,3 +1,5 @@
+import numpy as np
+
 from voicesep.separators.neural.network.features import constants
 from voicesep.separators.neural.network.features.feature import Feature
 
@@ -10,13 +12,13 @@ class ChordPosition(Feature):
 
     def range():
 
-        return range(constants.MAX_CHORD_LENGTH)
+        return list(range(constants.MAX_CHORD_LENGTH))
 
 class DurationRange(Feature):
 
     def generate(note):
 
-        lowers = list(DurationRange.range())
+        lowers = DurationRange.range()
         uppers = lowers[1:] + [constants.MAX_DURATION]
 
         return [
@@ -26,15 +28,15 @@ class DurationRange(Feature):
 
     def range():
 
-        interval = constants.MAX_DURATION / constants.INTERVAL
+        interval = constants.MAX_DURATION / constants.GRANULARITY
 
-        return range(0, constants.MAX_DURATION, interval)
+        return list(np.arange(0, constants.MAX_DURATION, interval))
 
 class PitchRange(Feature):
 
     def generate(note):
 
-        lowers = list(PitchRange.range())
+        lowers = PitchRange.range()
         uppers = lowers[1:] + [constants.MAX_PITCH]
 
         return [
@@ -44,6 +46,6 @@ class PitchRange(Feature):
 
     def range():
 
-        interval = int((constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL)
+        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.GRANULARITY
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)
+        return list(np.arange(constants.MIN_PITCH, constants.MAX_PITCH, interval))
