@@ -170,6 +170,13 @@ class Network:
                 b = np.load(fp)
                 layer.set_weights(W, b)
 
+        y_hat_var = self.layers[-1].y_hat_var
+
+        self.predict_function = theano.function(
+            inputs=self.X_vars,
+            outputs=y_hat_var
+        )
+
     def write(self, name):
 
         with open(name, "wb") as fp:

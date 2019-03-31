@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
         )
 
         network.build(
-            dimensions=(count, 100, 1),
+            dimensions=(count, 150, 1),
             hidden_activations="relu",
             output_activation="sigmoid"
         )
@@ -38,14 +38,14 @@ class Test(unittest.TestCase):
             L2_reg=0.01
         )
 
-        network.train(dataset, epochs=20, batch_size=10)
+        network.train(dataset, epochs=100, batch_size=10)
 
         x, y = dataset[:]
         y_hat = network.predict([x])
 
-        result = np.sum(np.round(y_hat) == y) / len(y)
+        result = sum((y_hat > .7) == y) / len(y)
 
-        self.assertGreater(result, 0.9)
+        self.assertGreater(result, 0.85)
 
         os.remove("{}/test.hdf5".format(path))
 
