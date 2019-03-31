@@ -32,7 +32,6 @@ class Test(unittest.TestCase):
         Features = vs.separators.neural.network.Features
         features = Features(self.score[1], self.active_voices)
 
-
         data = features.level(Features.Level.PAIR)
 
         self.assertEqual(len(data), 10)

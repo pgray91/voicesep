@@ -32,14 +32,19 @@ class AveragePitchRange(Feature):
             pitch += voice.note.pitch
             count += 1
 
+        lowers = list(AveragePitchRange.range())
+        uppers = lowers[1:] + [constants.MAX_PITCH]
+
         return [
-            lower <= pitch / count < lower + constants.INTERVAL
-            for lower in AveragePitchRange.range()
+            lower <= pitch / count < uppers
+            for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, constants.INTERVAL)
+        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL
+
+        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)
 
 
 class Blocked(Feature):
@@ -87,14 +92,19 @@ class DurationRange(Feature):
         if not voice:
             return [0] * len(list(DurationRange.range()))
 
+        lowers = list(DurationRange.range())
+        uppers = lowers[1:] + [constants.MAX_DURATION]
+
         return [
-            lower <= voice.note.duration < lower + constants.INTERVAL
-            for lower in DurationRange.range()
+            lower <= voice.note.duration < upper
+            for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        return range(0, constants.MAX_DURATION, constants.INTERVAL)
+        interval = constants.MAX_DURATION / constants.INTERVAL
+
+        return range(0, constants.MAX_DURATION, interval)
 
 
 class NoteCount(Feature):
@@ -123,14 +133,19 @@ class PitchRange(Feature):
         if not voice:
             return [0] * len(list(PitchRange.range()))
 
+        lowers = list(PitchRange.range())
+        uppers = lowers[1:] + [constants.MAX_PITCH]
+
         return [
-            lower <= voice.note.pitch < lower + constants.INTERVAL
-            for lower in PitchRange.range()
+            lower <= voice.note.pitch < upper
+            for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, constants.INTERVAL)
+        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL
+
+        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)
 
 
 class Empty(Feature):

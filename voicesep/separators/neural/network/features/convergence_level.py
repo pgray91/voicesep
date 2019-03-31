@@ -6,11 +6,16 @@ class AveragePitchRange(Feature):
 
     def generate(note, voices, active_voices, **kwargs):
 
+        lowers = list(AveragePitchRange.range())
+        uppers = lowers[1:] + [constants.MAX_PITCH]
+
         return [
             lower <= sum(note.pitch - voice.note.pitch for voice in voices) / len(voices) < upper
-            for lower, upper in AveragePitchRange.range()
+            for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, constants.INTERVAL)
+        interval = (constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL
+
+        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)

@@ -16,24 +16,34 @@ class DurationRange(Feature):
 
     def generate(note):
 
+        lowers = list(DurationRange.range())
+        uppers = lowers[1:] + [constants.MAX_DURATION]
+
         return [
-            lower <= note.duration < lower + constants.INTERVAL
-            for lower in DurationRange.range()
+            lower <= note.duration < upper
+            for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        return range(0, constants.MAX_DURATION, constants.INTERVAL)
+        interval = constants.MAX_DURATION / constants.INTERVAL
+
+        return range(0, constants.MAX_DURATION, interval)
 
 class PitchRange(Feature):
 
     def generate(note):
 
+        lowers = list(PitchRange.range())
+        uppers = lowers[1:] + [constants.MAX_PITCH]
+
         return [
-            lower <= note.pitch < lower + constants.INTERVAL
-            for lower in PitchRange.range()
+            lower <= note.pitch < upper
+            for lower, upper in zip(lowers, uppers)
         ]
 
     def range():
 
-        return range(constants.MIN_PITCH, constants.MAX_PITCH, constants.INTERVAL)
+        interval = int((constants.MAX_PITCH - constants.MIN_PITCH) / constants.INTERVAL)
+
+        return range(constants.MIN_PITCH, constants.MAX_PITCH, interval)
