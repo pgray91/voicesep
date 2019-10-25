@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
 
         path = os.path.dirname(os.path.abspath(__file__))
         name = self._testMethodName
-        sheet = "{}/{}.musicxml".format(path, name)
+        sheet = f"{path}/{name}.musicxml"
 
         self.score = vs.Score(sheet)
 
@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
 
         chord = self.score[0]
         for note in chord:
-            with self.subTest("{}".format(note)):
+            with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, 1)
 
     def test_duration_in_quarter_denomination(self):
@@ -57,7 +57,7 @@ class Test(unittest.TestCase):
 
         chord = self.score[0]
         for note in chord:
-            with self.subTest("{}".format(note)):
+            with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, note.index + 1)
 
     def test_offset(self):
@@ -204,28 +204,28 @@ class Test(unittest.TestCase):
 
         chord = self.score[0]
         for note in chord:
-            with self.subTest("{}".format(note)):
+            with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, 0.5)
 
     def test_stacatto_in_split_chord(self):
 
         chord = self.score[0]
         for note in chord:
-            with self.subTest("{}".format(note)):
+            with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, 0.5)
 
     def test_tied_chord(self):
 
         chord = self.score[0]
         for note in chord:
-            with self.subTest("{}".format(note)):
+            with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, 2)
 
     def test_tied_split_chord(self):
 
         chord = self.score[0]
         for note in chord:
-            with self.subTest("{}".format(note)):
+            with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, 2)
 
     def test_tied_duration(self):
@@ -247,10 +247,10 @@ class Test(unittest.TestCase):
         note1 = self.score[0][0]
         note2 = self.score[1][0]
 
-        with self.subTest("{}".format(note1)):
+        with self.subTest(f"{note1}"):
             self.assertEqual(note1.duration, 2)
 
-        with self.subTest("{}".format(note2)):
+        with self.subTest(f"{note2}"):
             self.assertEqual(note2.duration, 4)
 
 

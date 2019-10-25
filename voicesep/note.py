@@ -14,7 +14,7 @@ class Note:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        logger.debug("{} | initializing".format(self))
+        logger.debug(f"{self} | initializing")
 
     def __eq__(self, other):
 
@@ -31,6 +31,5 @@ class Note:
 
     def __str__(self):
 
-        return "Note<M{},C{}>({}{})".format(
-            *self.location, self.name, self.octave
-        )
+        measure, chord = self.location
+        return f"Note<M{measure},C{chord}>({self.name}{self.octave})"

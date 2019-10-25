@@ -10,7 +10,7 @@ class Test(unittest.TestCase):
 
         path = os.path.dirname(os.path.abspath(__file__))
         name = self._testMethodName
-        sheet = "{}/{}.musicxml".format(path, name)
+        sheet = f"{path}/{name}.musicxml"
 
         score = vs.Score(sheet)
         waterfall = [

@@ -12,7 +12,7 @@ class Chord:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        logger.debug("{} | initializing".format(self))
+        logger.debug(f"{self} | initializing")
 
     def __len__(self):
 
@@ -28,4 +28,4 @@ class Chord:
 
     def __str__(self):
 
-        return "Chord({})".format(", ".join(map(str, self.notes)))
+        return f"Chord({', '.join(map(str, self.notes))})"

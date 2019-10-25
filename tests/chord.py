@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
 
     def test_str(self):
 
-        self.assertEqual(str(self.chord), "Chord({})".format(self.note))
+        self.assertEqual(str(self.chord), f"Chord({self.note})")
 
 
 if __name__ == "__main__":

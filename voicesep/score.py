@@ -18,7 +18,7 @@ class Score:
     def __init__(self, sheet):
 
         self.name = os.path.splitext(os.path.basename(sheet))[0]
-        logger.debug("{} | initializing".format(self.name))
+        logger.debug(f"{self.name} | initializing")
 
         self.score = m21.converter.parse(sheet)
         self.chords = []
@@ -40,7 +40,7 @@ class Score:
             top_measure = measure_group[0]
 
             if top_measure.getElementsByClass("TimeSignature"):
-                logger.debug("m{} | changing time signature".format(measure_index))
+                logger.debug(f"m{measure_index} | changing time signature")
 
                 ql_distance = top_measure.offset - ql_origin
 
@@ -51,7 +51,7 @@ class Score:
                 denomination = timesig.denominator
 
             if top_measure.getElementsByClass("KeySignature"):
-                logger.debug("m{} | changing key signature".format(measure_index))
+                logger.debug(f"m{measure_index} | changing key signature")
 
                 keysig = top_measure.getElementsByClass("KeySignature")[0]
                 scale = keysig.getScale()
@@ -93,7 +93,7 @@ class Score:
 
                         if note_part.tie and note_part.tie.type != "start":
                             note = tie_map[note_part.pitch.ps]
-                            logger.debug("{} | adjusting tied duration".format(note))
+                            logger.debug(f"{note} | adjusting tied duration")
 
                             note.duration += duration
                             note.offset += duration
@@ -137,7 +137,7 @@ class Score:
                         notes.append(note)
 
                         if note_part.tie:
-                            logger.debug("{} | inserting into tie map".format(note))
+                            logger.debug(f"{note} | inserting into tie map")
                             tie_map[note_part.pitch.ps] = note
 
                 if len(notes) == 0:

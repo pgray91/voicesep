@@ -65,7 +65,7 @@ class Test(unittest.TestCase):
 
     def test_str(self):
 
-        self.assertEqual(str(self.voice), "Voice({})".format(self.note))
+        self.assertEqual(str(self.voice), "Voice({self.note})")
 
 
 if __name__ == "__main__":

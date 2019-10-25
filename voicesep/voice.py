@@ -12,7 +12,7 @@ class Voice:
         self.left = set()
         self.right = set()
 
-        logger.debug("{} | initializing".format(self))
+        logger.debug(f"{self} | initializing")
 
     def link(self, right_voice):
 
@@ -37,4 +37,4 @@ class Voice:
 
     def __str__(self):
 
-        return "Voice({})".format(self.note)
+        return "Voice({self.note})"
