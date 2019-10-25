@@ -14,11 +14,11 @@ class PseudoPolyphony(Separator):
 
         self.repeat_limit = repeat_limit
 
-        logger.debug("{} | initialization".format(__name__))
+        logger.debug(f"{__name__} | initialization")
 
     def run(self, chord, active_voices, assignment):
 
-        logger.info("{} separation".format(__name__))
+        logger.info(f"{__name__} separation")
 
         for i, note in enumerate(chord):
             if assignment[i]:
@@ -109,12 +109,11 @@ class PseudoPolyphony(Separator):
 
             right_voice = Voice(note)
             if left_notes:
-                left_note = left_notes[0]
                 left_voice = next(
-                    voice for voice in active_voices.inactive if voice.note == left_note
+                    voice for voice in active_voices
+                    if voice.note == left_notes[0]
                 )
 
                 left_voice.link(right_voice)
 
-            active_voices.deactivate(right_voice)
             assignment[i] = right_voice
