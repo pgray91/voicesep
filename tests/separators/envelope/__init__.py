@@ -10,7 +10,7 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         path = os.path.dirname(os.path.abspath(__file__))
-        sheet = "{}/test.musicxml".format(path)
+        sheet = f"{path}/test.musicxml"
 
         score = vs.Score(sheet)
         waterfall = [
@@ -33,13 +33,13 @@ class Test(unittest.TestCase):
         ]
 
         for pair in expected_pairs:
-            with self.subTest("({}, {})".format(pair[0], pair[1])):
+            with self.subTest(f"({pair[0]}, {pair[1]})"):
                 self.assertTrue(pair[1] in pair[0].right)
 
     def test_count(self):
 
         for voice in self.voices:
-            with self.subTest("{}".format(voice)):
+            with self.subTest(f"{voice}"):
                 self.assertTrue(len(voice.left) <= 1)
 
 
