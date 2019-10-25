@@ -11,7 +11,7 @@ class Test(unittest.TestCase):
 
         path = os.path.dirname(os.path.abspath(__file__))
         name = self._testMethodName
-        sheet = "{}/{}.musicxml".format(path, name)
+        sheet = f"{path}/{name}.musicxml"
 
         score = vs.Score(sheet)
         waterfall = [
@@ -42,7 +42,7 @@ class Test(unittest.TestCase):
         ]
 
         for pair in expected_pairs:
-            with self.subTest("({}, {})".format(pair[0], pair[1])):
+            with self.subTest(f"({pair[0]}, {pair[1]})"):
                 self.assertTrue(pair[1] in pair[0].right)
 
     def test_one_to_many_convergence(self):
@@ -53,7 +53,7 @@ class Test(unittest.TestCase):
         ]
 
         for pair in expected_pairs:
-            with self.subTest("({}, {})".format(pair[0], pair[1])):
+            with self.subTest(f"({pair[0]}, {pair[1]})"):
                 self.assertTrue(pair[1] in pair[0].right)
 
     def test_one_to_many_divergence(self):
@@ -64,7 +64,7 @@ class Test(unittest.TestCase):
         ]
 
         for pair in expected_pairs:
-            with self.subTest("({}, {})".format(pair[0], pair[1])):
+            with self.subTest(f"({pair[0]}, {pair[1]})"):
                 self.assertTrue(pair[1] in pair[0].right)
 
     def test_one_to_one(self):
@@ -79,7 +79,7 @@ class Test(unittest.TestCase):
         ]
 
         for pair in expected_pairs:
-            with self.subTest("({}, {})".format(pair[0], pair[1])):
+            with self.subTest(f"({pair[0]}, {pair[1]})"):
                 self.assertTrue(pair[1] in pair[0].right)
 
 

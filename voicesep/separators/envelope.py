@@ -12,11 +12,11 @@ class Envelope(Separator):
 
         super().__init__(score)
 
-        logger.debug("{} | initialization".format(__name__))
+        logger.debug(f"{__name__} | initialization")
 
     def run(self, chord, active_voices, assignment):
 
-        logger.info("{} separation".format(__name__))
+        logger.info(f"{__name__} separation")
 
         left_voices = [
             voice for voice in active_voices

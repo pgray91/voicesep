@@ -3,9 +3,6 @@ class ActiveVoices:
     def __init__(self, beat_horizon=None):
 
         self.voices = []
-        self.inactive = set()
-        self.watch = set()
-
         self.beat_horizon = beat_horizon
 
     def insert(self, assignment):
@@ -67,11 +64,6 @@ class ActiveVoices:
 
             self.voices.insert(i, right_voice)
 
-        for voice in list(self.watch):
-            if voice in self.voices:
-                self.watch.remove(voice)
-                self.inactive.add(voice)
-
     def filter(self, onset):
 
         if not self.beat_horizon:
@@ -81,19 +73,6 @@ class ActiveVoices:
             voice for voice in self.voices
             if voice.note.onset >= onset - self.beat_horizon
         ]
-
-        self.inactive = {
-            voice for voice in self.inactive
-            if voice.note.onset >= onset - self.beat_horizon
-        }
-
-    def deactivate(self, voice):
-
-        if voice not in self.voices:
-            self.watch.add(voice)
-            return
-
-        self.inactive.add(voice)
 
     def blocked(self, note):
 
@@ -179,7 +158,7 @@ class ActiveVoices:
 
     def __len__(self):
 
-        return len(self.voices) - len(self.inactive)
+        return len(self.voices)
 
     def __getitem__(self, index):
 
@@ -187,6 +166,4 @@ class ActiveVoices:
 
     def __iter__(self):
 
-        return iter(
-            voice for voice in self.voices if voice not in self.inactive
-        )
+        return iter(self.voices)

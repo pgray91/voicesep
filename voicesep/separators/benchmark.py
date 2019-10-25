@@ -16,11 +16,11 @@ class Benchmark(Separator):
         self.voice_map = {}
         self.voiceid_map = {}
 
-        logger.debug("{} | initialization".format(__name__))
+        logger.debug(f"{__name__} | initialization")
 
     def run(self, chord, active_voices, assignment):
 
-        logger.debug("{} | separating".format(chord))
+        logger.debug(f"{chord} | separating")
 
         for i, note in enumerate(chord):
             right_voice = Voice(note)

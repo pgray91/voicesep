@@ -74,41 +74,9 @@ class Test(unittest.TestCase):
         right_voice = self.active_voices[5]
         self.assertFalse(self.active_voices.crossing(left_voice.note, right_voice.note))
 
-    def test_deactivate(self):
-
-        voice = self.active_voices[2]
-
-        self.active_voices.deactivate(self.active_voices[0])
-        self.active_voices.deactivate(self.active_voices[0])
-        self.active_voices.deactivate(self.active_voices[1])
-
-        with self.subTest("voice"):
-            self.assertEqual(self.active_voices[0], voice)
-
-        with self.subTest("length"):
-            self.assertEqual(len(self.active_voices), 1)
-
-        with self.subTest("inactive"):
-            self.assertEqual(len(self.active_voices.inactive), 3)
-
     def test_filter(self):
 
         voice = self.active_voices[-1]
-
-        self.active_voices.beat_horizon = 1
-        self.active_voices.filter(onset=2)
-
-        with self.subTest("voice"):
-            self.assertEqual(self.active_voices[0], voice)
-
-        with self.subTest("length"):
-            self.assertEqual(len(self.active_voices), 1)
-
-    def test_filter_inactive(self):
-
-        voice = self.active_voices[-1]
-
-        self.active_voices.deactivate(self.active_voices[0])
 
         self.active_voices.beat_horizon = 1
         self.active_voices.filter(onset=2)
