@@ -3,6 +3,7 @@ import os
 import unittest
 
 import voicesep as vs
+import voicesep.separators.neural.network as vs_network
 
 
 class Test(unittest.TestCase):
@@ -10,19 +11,17 @@ class Test(unittest.TestCase):
     def test_train(self):
 
         path = os.path.dirname(os.path.abspath(__file__))
-        score = vs.Score("{}/test.musicxml".format(path))
+        score = vs.Score(f"{path}/test.musicxml")
 
-        dataset = vs.separators.neural.network.Dataset(
-            "{}/test".format(path),
-            vs.separators.neural.network.Dataset.Writer.NOTE_LEVEL
+        dataset = vs_network.Dataset(
+            f"{path}/test",
+            vs_network.Dataset.Writer.NOTE_LEVEL
         )
         dataset.write(score, beat_horizon=4, one_to_many=True)
 
-        network = vs.separators.neural.Network()
+        network = vs_network.Network()
 
-        count = vs.separators.neural.network.Features.count(
-            vs.separators.neural.network.Features.Level.PAIR
-        )
+        count = vs_network.Features.count(vs_network.Features.Level.PAIR)
 
         network.build(
             dimensions=(count, 150, 1),
@@ -38,24 +37,24 @@ class Test(unittest.TestCase):
             L2_reg=0.01
         )
 
-        network.train(dataset, epochs=100, batch_size=10)
+        network.train(dataset, epochs=200, batch_size=10)
 
         x, y = dataset[:]
+        os.remove(f"{path}/test.hdf5")
+
         y_hat = network.predict([x])
 
         result = sum((y_hat > .7) == y) / len(y)
 
-        self.assertGreater(result, 0.85)
-
-        os.remove("{}/test.hdf5".format(path))
+        self.assertGreater(result, 0.89)
 
     def test_write_read(self):
 
-        network_file = "{}.test_write_read.npy".format(
-            os.path.splitext(os.path.abspath(__file__))[0]
+        network_file = (
+            f"{os.path.splitext(os.path.abspath(__file__))[0]}.test_write_read.npy"
         )
 
-        network = vs.separators.neural.Network()
+        network = vs_network.Network()
         network.build(
             dimensions=((10, 15, 4), 10, 20, 1),
             hidden_activations="relu",
@@ -74,9 +73,11 @@ class Test(unittest.TestCase):
 
         network.write(network_file)
 
-        network = vs.separators.neural.Network()
+        network = vs_network.Network()
 
         network.read(network_file)
+
+        os.remove(network_file)
 
         read_dimensions = network.dimensions
         read_hidden_activations = network.hidden_activations
@@ -96,8 +97,6 @@ class Test(unittest.TestCase):
 
         with self.subTest("params"):
             self.assertEqual(read_params, write_params)
-
-        os.remove(network_file)
 
 
 if __name__ == "__main__":

@@ -54,7 +54,7 @@ class Network:
             input_size, output_size, depth = convolution
 
             self.X_vars.append(
-                T.matrix("X_var{}".format(i + 1), dtype=theano.config.floatX)
+                T.matrix(f"X{i + 1}", dtype=theano.config.floatX)
             )
 
             self.layers.append(
@@ -87,7 +87,7 @@ class Network:
         activations = [hidden_activations] * (len(dimensions) - 2) + [output_activation]
 
         self.X_vars.append(
-            T.matrix("X_var{}".format(i + 1), dtype=theano.config.floatX)
+            T.matrix(f"X{i + 1}", dtype=theano.config.floatX)
         )
         next_input = T.concatenate([*convolutional_inputs, self.X_vars[-1]], axis=1)
         for i in range(len(dimensions) - 1):
@@ -147,9 +147,7 @@ class Network:
                 )
 
             if verbosity and int(time.time() - checkpoint) > verbosity:
-                logger.info(
-                    "epoch {}/{} | cost={}".format(epoch, epochs, cost / batch_count)
-                )
+                logger.info(f"epoch {epoch}/{epochs} | cost={cost / batch_count}")
                 checkpoint = time.time()
 
     def predict(self, X):
@@ -159,15 +157,15 @@ class Network:
     def read(self, name):
 
         with open(name, "rb") as fp:
-            dimensions = tuple(np.load(fp))
-            hidden_activations = str(np.load(fp))
-            output_activation = str(np.load(fp))
+            dimensions = tuple(np.load(fp, allow_pickle=True))
+            hidden_activations = str(np.load(fp, allow_pickle=True))
+            output_activation = str(np.load(fp, allow_pickle=True))
 
             self.build(dimensions, hidden_activations, output_activation)
 
             for layer in self.layers:
-                W = np.load(fp)
-                b = np.load(fp)
+                W = np.load(fp, allow_pickle=True)
+                b = np.load(fp, allow_pickle=True)
                 layer.set_weights(W, b)
 
         y_hat_var = self.layers[-1].y_hat_var
