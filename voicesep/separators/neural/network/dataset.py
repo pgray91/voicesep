@@ -65,10 +65,7 @@ class Dataset:
         stop = min(stop, length) if stop else length
 
         if start >= stop:
-            raise IndexError("start={}, stop={}".format(start, stop))
-
-        if start >= length:
-            raise IndexError("start={}, length={}".format(start, length))
+            raise IndexError(f"start={start}, stop={stop}")
 
         chunk = stop - start
 
@@ -97,4 +94,4 @@ class Dataset:
 
             current_start = current_stop
 
-        return [inputs[name] for name in sorted(inputs)]
+        return tuple(inputs[name] for name in sorted(inputs))

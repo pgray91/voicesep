@@ -9,7 +9,7 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         path = os.path.dirname(os.path.abspath(__file__))
-        score = vs.Score("{}/test.musicxml".format(path))
+        score = vs.Score(f"{path}/test.musicxml")
         note = score[0][0]
 
         name = "".join(part.title() for part in self._testMethodName.split("_")[1:])

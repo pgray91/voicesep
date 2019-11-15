@@ -4,7 +4,7 @@ import theano.tensor as T
 
 def binary_crossentropy(y_hat_var):
 
-    y_var = T.matrix("y_var", dtype=theano.config.floatX)
+    y_var = T.matrix("y", dtype=theano.config.floatX)
     cost_var = T.nnet.binary_crossentropy(y_hat_var, y_var).mean()
 
     return cost_var, [y_var]

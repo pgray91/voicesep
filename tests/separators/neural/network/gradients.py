@@ -14,20 +14,20 @@ class Test(unittest.TestCase):
 
         X_var = T.matrix("X", dtype=theano.config.floatX)
 
-        layer = vs.separators.neural.network.Layer(
+        self.layer = vs.separators.neural.network.Layer(
             X_var,
             input_size=1,
             output_size=1,
             activation="linear"
         )
 
-        y_hat_var = layer.y_hat_var
+        y_hat_var = self.layer.y_hat_var
         cost_var, cost_inputs = (
             vs.separators.neural.network.costs.binary_crossentropy(y_hat_var)
         )
 
         updates = getattr(vs.separators.neural.network.gradients, name)(
-            layer.params, cost_var
+            self.layer.params, cost_var
         )
 
         cost = theano.function(
@@ -36,9 +36,9 @@ class Test(unittest.TestCase):
             updates=updates
         )
 
-        self.W = np.array([[1]], dtype=theano.config.floatX)
+        W = np.array([[1]], dtype=theano.config.floatX)
         b = np.array([0], dtype=theano.config.floatX)
-        layer.set_weights(self.W, b)
+        self.layer.set_weights(W, b)
 
         X = np.array([[0.7]], dtype=theano.config.floatX)
         y = np.array([[1]], dtype=np.int16)
@@ -46,11 +46,13 @@ class Test(unittest.TestCase):
 
     def test_sgd(self):
 
-        self.assertEqual(float(self.W), 2)
+        W = self.layer.get_weights()[0]
+        self.assertEqual(float(W), 2)
 
     def test_adadelta(self):
 
-        self.assertAlmostEqual(float(self.W), 1.004472, places=5)
+        W = self.layer.get_weights()[0]
+        self.assertAlmostEqual(float(W), 1.004472, places=5)
 
 
 if __name__ == "__main__":

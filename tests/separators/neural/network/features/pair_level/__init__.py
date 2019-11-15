@@ -10,7 +10,7 @@ class Test(unittest.TestCase):
 
         pass
         # path = os.path.dirname(os.path.abspath(__file__))
-        # score = vs.Score("{}/test.musicxml".format(path))
+        # score = vs.Score(f"{path}/test.musicxml")
         # chord = score[0]
         #
         # name = "".join(part.title() for part in self._testMethodName.split("_")[1:])

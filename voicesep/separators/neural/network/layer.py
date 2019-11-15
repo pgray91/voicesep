@@ -12,9 +12,7 @@ class Layer:
 
     def __init__(self, X_var, input_size, output_size, activation):
 
-        logger.debug(
-            "input_size={}, output_size={} | initializing".format(input_size, output_size)
-        )
+        logger.debug(f"input_size={input_size}, output_size={output_size} | initializing")
 
         self.dimensions = (input_size, output_size)
 

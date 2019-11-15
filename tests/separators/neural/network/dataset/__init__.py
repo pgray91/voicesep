@@ -11,10 +11,10 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         self.path = os.path.dirname(os.path.abspath(__file__))
-        self.score = vs.Score("{}/test.musicxml".format(self.path))
+        self.score = vs.Score(f"{self.path}/test.musicxml")
 
         self.dataset = vs.separators.neural.network.Dataset(
-            "{}/test".format(self.path),
+            f"{self.path}/test",
             vs.separators.neural.network.Dataset.Writer.NOTE_LEVEL
         )
 
@@ -23,7 +23,7 @@ class Test(unittest.TestCase):
     def tearDown(self):
 
         del self.dataset
-        os.remove("{}/test.hdf5".format(self.path))
+        os.remove(f"{self.path}/test.hdf5")
 
     def test_length(self):
 
@@ -37,12 +37,12 @@ class Test(unittest.TestCase):
         del self.dataset
 
         self.dataset = vs.separators.neural.network.Dataset(
-            "{}/test".format(self.path),
+            f"{self.path}/test",
             vs.separators.neural.network.Dataset.Writer.NOTE_LEVEL
         )
 
-        expected = ["test"]
-        true = [os.path.basename(group.name) for group in self.dataset.groups]
+        expected = ["/test"]
+        true = [group.name for group in self.dataset.groups]
 
         self.assertEqual(true, expected)
 
@@ -120,7 +120,7 @@ class Test(unittest.TestCase):
         self.assertFalse((true[0] - expected[0]).any())
         self.assertFalse((true[1] - expected[1]).any())
 
-    def test_index_slice_first_half(self):
+    def test_index_slice_second_half(self):
 
         self.score.name = "test2"
         self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
@@ -129,7 +129,7 @@ class Test(unittest.TestCase):
             self.dataset.groups[1]["0"][1:5],
             self.dataset.groups[1]["1"][1:5]
         ]
-        expected = self.dataset[1:5]
+        expected = self.dataset[12:16]
 
         self.assertFalse((true[0] - expected[0]).any())
         self.assertFalse((true[1] - expected[1]).any())

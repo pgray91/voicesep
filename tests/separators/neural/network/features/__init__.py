@@ -9,7 +9,7 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         path = os.path.dirname(os.path.abspath(__file__))
-        self.score = vs.Score("{}/test.musicxml".format(path))
+        self.score = vs.Score(f"{path}/test.musicxml")
 
         voice1 = vs.Voice(self.score[0][0])
         voice2 = vs.Voice(self.score[0][1])
