@@ -11,9 +11,9 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         self.path = os.path.dirname(os.path.abspath(__file__))
-        self.score = vs.Score("{}/test.musicxml".format(self.path))
+        self.score = vs.Score(f"{self.path}/test.musicxml")
 
-        self.fp = h5py.File("{}/test.hdf5".format(self.path), "w")
+        self.fp = h5py.File(f"{self.path}/test.hdf5", "w")
 
         self.group = self.fp.create_group(self.score.name)
 
@@ -22,7 +22,7 @@ class Test(unittest.TestCase):
     def tearDown(self):
 
         self.fp.close()
-        os.remove("{}/test.hdf5".format(self.path))
+        os.remove(f"{self.path}/test.hdf5")
 
     def test_init(self):
 

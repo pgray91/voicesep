@@ -30,11 +30,11 @@ class NoteLevel(Separator):
         self.convergence_limit = convergence_limit
         self.divergence_limit = divergence_limit
 
-        logger.debug("{} | initialization".format(__name__))
+        logger.debug(f"{__name__} | initialization")
 
     def run(self, chord, active_voices, assignment):
 
-        logger.debug("{} | separating".format(chord))
+        logger.debug(f"{chord} | separating")
 
         features = Features(chord, active_voices)
 
@@ -66,6 +66,10 @@ class NoteLevel(Separator):
         while note_count:
             max_index = np.argmax(np.multiply(ranks, voice_mask))
             note_index, voice_index = np.unravel_index(max_index, ranks.shape)
+
+            if voice_mask[note_index][voice_index] == 0:
+                note_count -= 1
+                continue
 
             max_probability = ranks[note_index, voice_index]
 

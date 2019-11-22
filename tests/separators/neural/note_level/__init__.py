@@ -10,8 +10,8 @@ class Test(unittest.TestCase):
     def setUp(self):
 
         path = os.path.dirname(os.path.abspath(__file__))
-        score = vs.Score("{}/test.musicxml".format(path))
-        network = "{}/test.npy".format(path)
+        score = vs.Score(f"{path}/test.musicxml")
+        network = f"{path}/test.npy"
 
         waterfall = [
             {
@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
         ]
 
         for pair in expected_pairs:
-            with self.subTest("({}, {})".format(pair[0], pair[1])):
+            with self.subTest(f"({pair[0]}, {pair[1]})"):
                 self.assertTrue(pair[1] in pair[0].right)
 
     def test_count(self):
@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         counts = [0, 0, 1, 0, 1, 1, 1, 2]
 
         for voice, count in zip(self.voices, counts):
-            with self.subTest("{}".format(voice)):
+            with self.subTest(f"{voice}"):
                 self.assertEqual(len(voice.left), count)
 
 
