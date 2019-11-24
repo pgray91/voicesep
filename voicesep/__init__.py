@@ -1,6 +1,6 @@
 import logging
 
-from voicesep.separate import separate
+from voicesep.separators import separate
 from voicesep import separators
 
 from voicesep.active_voices import ActiveVoices
@@ -11,6 +11,7 @@ from voicesep.voice import Voice
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
+
 
 __all__ = [
     "separate",

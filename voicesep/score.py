@@ -156,7 +156,7 @@ class Score:
 
     # def write(self, sheet, assignments):
     #
-    #     logger.info("{} | {} | writing assignments to file".format(self.name, sheet))
+    #     logger.info("{}, {} | writing assignments to file".format(self.name, sheet))
     #
     #     rint = lambda: random.randint(0,255)
     #     lyric_map = {}

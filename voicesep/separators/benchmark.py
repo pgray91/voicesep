@@ -18,7 +18,7 @@ class Benchmark(Separator):
 
         logger.debug(f"{__name__} | initialization")
 
-    def run(self, chord, active_voices, assignment):
+    def run(self, chord, _, assignment):
 
         logger.debug(f"{chord} | separating")
 
