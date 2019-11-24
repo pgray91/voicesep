@@ -37,4 +37,4 @@ class Voice:
 
     def __str__(self):
 
-        return "Voice({self.note})"
+        return f"Voice({self.note})"

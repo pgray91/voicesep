@@ -18,7 +18,7 @@ class Dataset:
 
     def __init__(self, name, writer):
 
-        self.fp = h5py.File("{}.hdf5".format(name), "a")
+        self.fp = h5py.File(f"{name}.hdf5", "a")
         self.writer = writer
 
         self.groups = list(self.fp.values())
@@ -29,8 +29,7 @@ class Dataset:
 
     def sort(self, corpus):
 
-        self.groups = sorted(
-            self.groups,
+        self.groups.sort(
             key=lambda group: corpus.index(os.path.basename(group.name))
         )
 
@@ -40,7 +39,7 @@ class Dataset:
 
         separators = [
             {"Benchmark": {"one_to_many": one_to_many}},
-            {"neural.{}.Writer".format(self.writer): {"group": group}}
+            {f"neural.{self.writer}.Writer": {"group": group}}
         ]
         vs.separate(score, separators, beat_horizon)
 

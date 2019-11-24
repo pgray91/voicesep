@@ -36,12 +36,21 @@ class Benchmark(Separator):
             else:
                 voiceids = [note.color]
 
-            for voiceid in voiceids:
+            for voiceid in voiceids:  
+
+                clear = False
+                if "*" in voiceid:
+                    voiceid = voiceid[:-1]
+                    clear = True
+
                 if voiceid in self.voice_map:
                     left_voice = self.voice_map[voiceid]
                     if right_voice not in left_voice.right:
                         left_voice.link(right_voice)
 
                 self.voice_map[voiceid] = right_voice
+
+                if clear:
+                    self.voice_map.pop(voiceid)
 
             assignment[i] = right_voice
