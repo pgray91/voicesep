@@ -253,6 +253,11 @@ class Test(unittest.TestCase):
         with self.subTest(f"{note2}"):
             self.assertEqual(note2.duration, 4)
 
+    def test_note_order(self):
+
+        chord = self.score[0]
+        self.assertTrue(chord[0].pitch > chord[1].pitch)
+
 
 if __name__ == "__main__":
     unittest.main()

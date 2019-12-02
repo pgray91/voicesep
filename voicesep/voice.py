@@ -19,11 +19,6 @@ class Voice:
         self.right.add(right_voice)
         right_voice.left.add(self)
 
-    def unlink(self, left_voice):
-
-        self.left.remove(left_voice)
-        left_voice.right.remove(self)
-
     def __eq__(self, other):
 
         return (

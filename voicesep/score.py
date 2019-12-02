@@ -1,6 +1,7 @@
 import logging
 import music21 as m21
 import os
+import random
 
 from fractions import Fraction as F
 
@@ -126,7 +127,7 @@ class Score:
                             duration=duration,
                             offset=offset,
 
-                            index=len(notes),
+                            index=-1,
 
                             degree=degree,
                             chord_degree=chord_degree,
@@ -143,6 +144,10 @@ class Score:
                 if len(notes) == 0:
                     continue
 
+                notes.sort(key=lambda note: note.pitch, reverse=True)
+                for i, note in enumerate(notes):
+                    note.index = i
+
                 chord = Chord(
                     notes,
 
@@ -154,87 +159,141 @@ class Score:
                 )
                 self.chords.append(chord)
 
-    # def write(self, sheet, assignments):
-    #
-    #     logger.info("{}, {} | writing assignments to file".format(self.name, sheet))
-    #
-    #     rint = lambda: random.randint(0,255)
-    #     lyric_map = {}
-    #     color_map = {}
-    #     tie_map = {}
-    #     lyric_index = 1
-    #
-    #     chord_index = 0
-    #     chords = self.score.flat.notes.stream()
-    #     chord_groups = chords.groupElementsByOffset()
-    #     for chord_group in chord_groups:
-    #
-    #         note_index = 0
-    #         for chord_part in chord_group:
-    #             if chord_part.duration.isGrace:
-    #                 continue
-    #
-    #             assignment = assignments[chord_index]
-    #             show_lyrics = False
-    #             lyrics = []
-    #
-    #             note_group = chord_part if chord_part.isChord else [chord_part]
-    #
-    #             for note_part in sorted(note_group, reverse=True):
-    #
-    #                 if note_part.tie and note_part.tie.type != "start":
-    #
-    #                     note_part.color = tie_map[note_part.pitch.ps]
-    #                     lyrics.append("X")
-    #                     continue
-    #
-    #                 voice = assignment[note_index]
-    #                 note_index += 1
-    #
-    #                 note_lyric = []
-    #
-    #                 if len(voice.left) == 0:
-    #
-    #                     note_lyric.append(lyric_index)
-    #                     lyric_index += 1
-    #
-    #                 for left_voice in voice.left:
-    #
-    #                     note_lyric.append(
-    #                       lyric_map[left_voice][left_voice.right.index(voice)]
-    #                     )
-    #
-    #                 for _ in range(len(note_lyric), len(voice.right)):
-    #
-    #                     note_lyric.append(lyric_index)
-    #                     lyric_index += 1
-    #
-    #                 lyric_map[voice] = note_lyric
-    #
-    #                 note_part.color = color_map.setdefault(
-    #                     note_lyric[0], "#{:02X}#{:02X}#{:02X}".format(
-    #                         rint(), rint(), rint()
-    #                     )
-    #                 )
-    #                 if note_part.tie:
-    #                     tie_map[note_part.pitch.ps] = note_part.color
-    #
-    #                 show_lyrics = show_lyrics or (
-    #                   len(converged) != 1 or
-    #                   len(diverged) > 1 or
-    #                   len(converged[0].diverged(voiceid)) > 1 or
-    #                   (len(diverged) == 1 and len(diverged[0].converged(voiced)) > 1)
-    #                 )
-    #
-    #                 lyrics.append(",".join(lyric for lyric in note_lyric))
-    #
-    #           if show_lyrics:
-    #               map(chord_part.addLyric, lyrics)
-    #
-    #         chord_index += note_index > 0
-    #
-    #     self.score.write(fp=sheet)
-    #
+    def write(self, sheet, assignments):
+
+        logger.info(f"name={self.name}, sheet={sheet} | writing")
+
+        rgb = lambda: "".join(f"{random.randint(0,255):02x}".upper() for _ in range(3))
+        lyric_map = {}
+        color_map = {}
+        tie_map = {}
+        lyric_index = 1
+
+        chord_index = 0
+        chords = self.score.flat.notes.stream()
+        chord_groups = m21.stream.iterator.OffsetIterator(chords)
+        for chord_group in chord_groups:
+
+            for chord_part in chord_group:
+                if chord_part.duration.isGrace:
+                    continue
+
+                note_group = chord_part if chord_part.isChord else [chord_part]
+                tied = all(
+                    note_part.tie and note_part.tie.type != "start"
+                    for note_part in note_group
+                )
+                if not tied:
+                    break
+            else:
+                continue
+
+            note_parts = []
+            for chord_part in chord_group:
+                if chord_part.duration.isGrace:
+                    continue
+
+                chord_part.lyric = ""
+
+                note_group = chord_part if chord_part.isChord else [chord_part]
+                for note_part in note_group:
+                    note_parts.append(note_part)
+
+            note_parts.sort(key=lambda note_part: note_part.pitch.ps, reverse=True)
+
+            assignment = assignments[chord_index]
+
+            lyrics = [[] for _ in range(len(note_parts))]
+            note_index = 0
+            for lyric, note_part in zip(lyrics, note_parts):
+
+                if note_part.tie and note_part.tie.type != "start":
+                    note_part.style.color = tie_map[note_part.pitch.ps]
+                    lyric.append("X")
+                    continue
+
+                if note_part.tie:
+                    tie_map[note_part.pitch.ps] = note_part.style.color
+
+                voice = assignment[note_index]
+                note_index += 1
+
+                if len(voice.left) == 0:
+
+                    lyric.append(str(lyric_index))
+                    lyric_index += 1
+
+                left_voices = sorted(
+                    voice.left,
+                    key=lambda v: v.note.pitch,
+                    reverse=True
+                )
+                for left_voice in left_voices:
+
+                    # if left voice only connects to you
+                    left_lyric = lyric_map[left_voice]
+                    lyric.append(
+                        left_lyric[
+                            sorted(
+                                left_voice.right,
+                                key=lambda v: v.note.pitch,
+                                reverse=True
+                            ).index(voice)
+                        ]
+                    )
+
+                for _ in range(len(lyric), len(voice.right)):
+
+                    lyric.append(str(lyric_index))
+                    lyric_index += 1
+
+                lyric_map[voice] = lyric
+
+                note_part.style.color = color_map.setdefault(lyric[0], f"#{rgb()}")
+
+            for chord_part in chord_group:
+                if chord_part.duration.isGrace:
+                    continue
+
+                note_group = chord_part if chord_part.isChord else [chord_part]
+
+                note_index = 0
+                for note_part in note_parts:
+                    if note_part.tie and note_part.tie.type != "start":
+                        continue
+
+                    voice = assignment[note_index]
+                    note_index += 1
+
+                    if note_part not in note_group:
+                        continue
+
+                    show = (
+                        len(voice.left) != 1 or
+                        len(voice.right) > 1 or
+                        any(
+                            len(left_voice.right) > 1
+                            for left_voice in voice.left
+                        ) or
+                        any(
+                            len(right_voice.left) > 1
+                            for right_voice in voice.right
+                        )
+                    )
+                    if show:
+                        break
+
+                else:
+                    continue
+
+                for note_part in reversed(note_group):
+                    lyric = lyrics[note_parts.index(note_part)]
+                    chord_part.addLyric(",".join(lyric))
+
+            chord_index += 1
+
+        self.score.write(fp=sheet)
+
     def __len__(self):
         return len(self.chords)
 
