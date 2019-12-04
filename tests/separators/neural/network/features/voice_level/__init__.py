@@ -23,8 +23,8 @@ class Test(unittest.TestCase):
 
         feature = vs.separators.neural.network.features.voice_level.AveragePitchRange
 
-        note1 = vs.Note("C", 4, (0, 0), pitch=60, onset=0)
-        note2 = vs.Note("G", 4, (0, 0), pitch=65, onset=1)
+        note1 = vs.Note("C", 4, (0, 0), onset=0)
+        note2 = vs.Note("G", 4, (0, 0), onset=1)
 
         voice1 = vs.Voice(note1)
         voice2 = vs.Voice(note2)

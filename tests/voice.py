@@ -63,6 +63,17 @@ class Test(unittest.TestCase):
 
         self.assertNotEqual(self.voice, voice)
 
+    def test_less_than(self):
+
+        note_d = vs.Note(
+            name="D",
+            octave=4,
+            location=(0, 0)
+        )
+        voice_d = vs.Voice(note_d)
+
+        self.assertLess(self.voice, voice_d)
+
     def test_str(self):
 
         self.assertEqual(str(self.voice), "Voice({self.note})")

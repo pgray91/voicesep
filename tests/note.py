@@ -14,6 +14,10 @@ class Test(unittest.TestCase):
             attribute=True
         )
 
+    def test_pitch(self):
+
+        self.assertEqual(self.note.pitch, 60)
+
     def test_attribute(self):
 
         self.assertTrue(self.note.attribute)
@@ -41,6 +45,16 @@ class Test(unittest.TestCase):
         )
 
         self.assertNotEqual(self.note, note)
+
+    def test_less_than(self):
+
+        note_d = vs.Note(
+            name="D",
+            octave=4,
+            location=(0, 0)
+        )
+
+        self.assertLess(self.note, note_d)
 
     def test_str(self):
 

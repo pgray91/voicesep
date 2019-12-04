@@ -210,9 +210,6 @@ class Score:
                     lyric.append("X")
                     continue
 
-                if note_part.tie:
-                    tie_map[note_part.pitch.ps] = note_part.style.color
-
                 voice = assignment[note_index]
                 note_index += 1
 
@@ -221,22 +218,18 @@ class Score:
                     lyric.append(str(lyric_index))
                     lyric_index += 1
 
-                else:
-                    left_voices = sorted(voice.left, reverse=True)
-                    for left_voice in left_voices:
-                        right_voices = sorted(voice.right, reverse=True)
+                left_voices = sorted(voice.left, reverse=True)
+                for left_voice in left_voices:
+                    left_lyric = lyric_map[left_voice]
 
-                        # if left voice only connects to you
-                        left_lyric = lyric_map[left_voice]
-                        lyric.append(
-                            left_lyric[
-                                sorted(
-                                    left_voice.right,
-                                    key=lambda v: v.note.pitch,
-                                    reverse=True
-                                ).index(voice)
-                            ]
-                        )
+                    right_voices = sorted(left_voice.right, reverse=True)
+
+                    voice_index = right_voices.index(voice)
+                    if voice_index + 1 < len(right_voices):
+                        lyric.append(left_lyric[voice_index])
+
+                    else:
+                        lyric.extend(left_lyric[voice_index:])
 
                 for _ in range(len(lyric), len(voice.right)):
 
@@ -246,6 +239,9 @@ class Score:
                 lyric_map[voice] = lyric
 
                 note_part.style.color = color_map.setdefault(lyric[0], f"#{rgb()}")
+
+                if note_part.tie:
+                    tie_map[note_part.pitch.ps] = note_part.style.color
 
             for chord_part in chord_group:
                 if chord_part.duration.isGrace:

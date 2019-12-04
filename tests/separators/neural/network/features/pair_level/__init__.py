@@ -22,9 +22,9 @@ class Test(unittest.TestCase):
 
         feature = vs.separators.neural.network.features.pair_level.PositionDifference
 
-        note1 = vs.Note("C", 4, (0, 0), pitch=60, index=0)
-        note2 = vs.Note("D", 4, (0, 0), pitch=61, index=1)
-        note3 = vs.Note("E", 4, (0, 1), pitch=62, index=0)
+        note1 = vs.Note("C", 4, (0, 0), index=0)
+        note2 = vs.Note("D", 4, (0, 0), index=1)
+        note3 = vs.Note("E", 4, (0, 1), index=0)
 
         voice1 = vs.Voice(note1)
         voice2 = vs.Voice(note2)
