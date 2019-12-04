@@ -121,8 +121,6 @@ class Score:
                             octave=note_part.octave,
                             location=(measure_index, chord_index),
 
-                            pitch=int(note_part.pitch.ps),
-
                             onset=onset,
                             duration=duration,
                             offset=offset,
@@ -144,7 +142,7 @@ class Score:
                 if len(notes) == 0:
                     continue
 
-                notes.sort(key=lambda note: note.pitch, reverse=True)
+                notes.sort(reverse=True)
                 for i, note in enumerate(notes):
                     note.index = i
 
@@ -223,24 +221,22 @@ class Score:
                     lyric.append(str(lyric_index))
                     lyric_index += 1
 
-                left_voices = sorted(
-                    voice.left,
-                    key=lambda v: v.note.pitch,
-                    reverse=True
-                )
-                for left_voice in left_voices:
+                else:
+                    left_voices = sorted(voice.left, reverse=True)
+                    for left_voice in left_voices:
+                        right_voices = sorted(voice.right, reverse=True)
 
-                    # if left voice only connects to you
-                    left_lyric = lyric_map[left_voice]
-                    lyric.append(
-                        left_lyric[
-                            sorted(
-                                left_voice.right,
-                                key=lambda v: v.note.pitch,
-                                reverse=True
-                            ).index(voice)
-                        ]
-                    )
+                        # if left voice only connects to you
+                        left_lyric = lyric_map[left_voice]
+                        lyric.append(
+                            left_lyric[
+                                sorted(
+                                    left_voice.right,
+                                    key=lambda v: v.note.pitch,
+                                    reverse=True
+                                ).index(voice)
+                            ]
+                        )
 
                 for _ in range(len(lyric), len(voice.right)):
 
