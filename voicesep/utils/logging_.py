@@ -2,7 +2,7 @@ import datetime
 import logging
 
 
-def format(logger, debug=False, stdout=False):
+def format(logger, debug=True, stdout=True):
 
     if debug:
         logger.setLevel(logging.DEBUG)

@@ -13,3 +13,5 @@ build
 *.hdf5
 
 pat*
+
+experiments
