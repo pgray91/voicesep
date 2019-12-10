@@ -9,6 +9,8 @@ from voicesep.note import Note
 from voicesep.score import Score
 from voicesep.voice import Voice
 
+from voicesep import utils
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -21,5 +23,7 @@ __all__ = [
     "Chord",
     "Note",
     "Score",
-    "Voice"
+    "Voice",
+
+    "utils"
 ]
