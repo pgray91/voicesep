@@ -24,6 +24,11 @@ def separate(score, parameters, overrides):
 
 def main():
 
+    # evaluate give score files
+    # pass in two directories
+    # zip up files
+    # do an annotation separate
+
     parser = argparse.ArgumentParser()
 
     parser.add_argument(

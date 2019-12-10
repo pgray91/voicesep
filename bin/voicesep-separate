@@ -1,0 +1,42 @@
+#!/bin/python
+import argparse
+import json
+import logging
+import os
+
+import voicesep as vs
+
+logger = logging.getLogger()
+
+
+def main():
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--parameters", type=os.path.abspath)
+
+    args = parser.parse_args()
+
+    with open(args.parameters) as fp:
+        parameters = json.load(fp)
+
+    vs.utils.logging_.format(logger)
+
+    input_ = parameters["scores"]["input"]
+    output = parameters["scores"]["output"]
+
+    for file_ in input_["files"]:
+        input_path = os.path.join(input_["directory"], file_)
+        output_path = os.path.join(output["directory"], file_)
+
+        score = vs.Score(input_path)
+        waterfall = parameters["waterfall"]
+        beat_horizon = parameters["beat_horizon"]
+
+        assignments = vs.separate(score, waterfall, beat_horizon)
+
+        score.write(output_path, assignments)
+
+
+if __name__ == "__main__":
+    main()
