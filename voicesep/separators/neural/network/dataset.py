@@ -38,7 +38,7 @@ class Dataset:
         group = self.fp.create_group(score.name)
 
         separators = [
-            {"Benchmark": {"one_to_many": one_to_many}},
+            {"Annotation": {"one_to_many": one_to_many}},
             {f"neural.{self.writer}.Writer": {"group": group}}
         ]
         vs.separate(score, separators, beat_horizon)

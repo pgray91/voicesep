@@ -6,7 +6,7 @@ from voicesep.voice import Voice
 logger = logging.getLogger(__name__)
 
 
-class Benchmark(Separator):
+class Annotation(Separator):
 
     def __init__(self, score, one_to_many):
 

@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
         score = vs.Score(sheet)
         waterfall = [
             {
-                "Benchmark": {
+                "Annotation": {
                     "one_to_many": True
                 }
             }

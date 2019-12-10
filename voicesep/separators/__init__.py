@@ -3,7 +3,7 @@ import logging
 
 from voicesep.separators import neural
 
-from voicesep.separators.benchmark import Benchmark
+from voicesep.separators.annotation import Annotation
 from voicesep.separators.envelope import Envelope
 from voicesep.separators.pseudo_polyphony import PseudoPolyphony
 from voicesep.separators.separator import Separator
@@ -56,7 +56,7 @@ def separate(score, waterfall, beat_horizon):
 __all__ = [
     "neural",
 
-    "Benchmark",
+    "Annotation",
     "Envelope",
     "PseudoPolyphony",
     "Separator"

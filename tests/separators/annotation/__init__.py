@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
 
         waterfall = [
             {
-                "Benchmark": {
+                "Annotation": {
                     "one_to_many": True
                 }
             }
@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
         waterfall = [
             {
-                "Benchmark": {
+                "Annotation": {
                     "one_to_many": True
                 }
             }
@@ -72,7 +72,7 @@ class Test(unittest.TestCase):
 
         waterfall = [
             {
-                "Benchmark": {
+                "Annotation": {
                     "one_to_many": True
                 }
             }
@@ -94,7 +94,7 @@ class Test(unittest.TestCase):
 
         waterfall = [
             {
-                "Benchmark": {
+                "Annotation": {
                     "one_to_many": False
                 }
             }
@@ -120,7 +120,7 @@ class Test(unittest.TestCase):
 
         waterfall = [
             {
-                "Benchmark": {
+                "Annotation": {
                     "one_to_many": True
                 }
             }
