@@ -1,0 +1,78 @@
+#!/bin/pyton3.8
+import argparse
+import json
+import logging
+import os
+
+import voicesep as vs
+
+logger = logging.getLogger()
+
+
+def main():
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--parameters", type=os.path.abspath)
+    
+    subparsers = parser.add_subparsers(dest="subparser")
+
+    dataset_parser = subparsers.add_parser("dataset")
+    train_parser = subparsers.add_parser("train")
+
+    args = parser.parse_args()
+
+    with open(args.parameters) as fp:
+        parameters = json.load(fp)
+
+    vs.utils.logging_.format(logger)
+
+    globals()[args.subparser](parameters)
+
+
+def dataset(parameters):
+
+    dataset_parameters = parameters["dataset"]
+
+    dataset_path = parameters["dataset"]["path"]
+    writer = parameters["dataset"]["writer"]
+
+    dataset = vs.separators.neural.network.Dataset(dataset_path, writer, mode="w")
+    
+    beat_horizon = parameters["dataset"]["beat_horizon"]
+    one_to_many = parameters["dataset"]["one_to_many"]
+
+    score_parameters = parameters["dataset"]["scores"]
+    score_files = [f"{name}.musicxml" for name in score_parameters["names"]]
+    for score_file in score_files:
+        score_path = os.path.join(score_parameters["directory"], score_file)
+
+        score = vs.Score(score_path)
+
+        dataset.write(score, beat_horizon, one_to_many)
+
+
+# def train(parameters):
+#
+#     dimensions = parameters["dimensions"]
+#     hidden_activations = parameters["hidden_activations"]
+#     output_activations = parameters["output_activations"]
+#
+#     network = vs.separators.neural.note_level.Network()
+#
+#     network.build(dimensions, hidden_activations, output_activations)
+#
+#     cost = parameters["cost"]
+#     L2_reg = parameters["L2_reg"]
+#     gradient_type = parameters["gradient_type"]
+#     gradient_args = parameters["gradient_args"]
+#
+#     network.compile(cost, L2_reg, gradient_type, gradient_args)
+#
+#     dataset.sort(corpus)
+#     network.train(dataset, epochs, batch_size)
+#     network.write(output)
+
+
+if __name__ == "__main__":
+    main()

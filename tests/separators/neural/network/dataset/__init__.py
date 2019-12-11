@@ -15,7 +15,8 @@ class Test(unittest.TestCase):
 
         self.dataset = vs.separators.neural.network.Dataset(
             f"{self.path}/test",
-            vs.separators.neural.network.Dataset.Writer.NOTE_LEVEL
+            writer="note_level",
+            mode="w"
         )
 
         self.dataset.write(self.score, beat_horizon=4, one_to_many=True)
@@ -38,7 +39,8 @@ class Test(unittest.TestCase):
 
         self.dataset = vs.separators.neural.network.Dataset(
             f"{self.path}/test",
-            vs.separators.neural.network.Dataset.Writer.NOTE_LEVEL
+            writer="note_level",
+            mode="r"
         )
 
         expected = ["/test"]
@@ -148,6 +150,10 @@ class Test(unittest.TestCase):
         true_order = [os.path.basename(group.name) for group in self.dataset.groups]
 
         self.assertEqual(true_order, expected_order)
+
+    def test_writer_type(self):
+
+        self.assertEqual("note_level", self.dataset.fp.attrs["writer"])
 
 
 if __name__ == "__main__":

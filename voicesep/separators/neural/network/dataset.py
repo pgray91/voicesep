@@ -11,15 +11,12 @@ logger = logging.getLogger(__name__)
 
 class Dataset:
 
-    class Writer:
+    def __init__(self, name, writer, mode):
 
-        NOTE_LEVEL = "note_level"
-        CHORD_LEVEL = "chord_level"
+        self.fp = h5py.File(f"{name}.hdf5", mode)
 
-    def __init__(self, name, writer):
-
-        self.fp = h5py.File(f"{name}.hdf5", "a")
-        self.writer = writer
+        if mode == "w" or mode == "a" and "writer" not in self.fp.attrs:
+            self.fp.attrs["writer"] = writer
 
         self.groups = list(self.fp.values())
 
@@ -37,11 +34,11 @@ class Dataset:
 
         group = self.fp.create_group(score.name)
 
-        separators = [
+        waterfall = [
             {"Annotation": {"one_to_many": one_to_many}},
-            {f"neural.{self.writer}.Writer": {"group": group}}
+            {f"neural.{self.fp.attrs['writer']}.Writer": {"group": group}}
         ]
-        vs.separate(score, separators, beat_horizon)
+        vs.separate(score, waterfall, beat_horizon)
 
         self.groups.append(group)
 

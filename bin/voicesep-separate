@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3.8
 import argparse
 import json
 import logging
@@ -25,7 +25,8 @@ def main():
     input_ = parameters["scores"]["input"]
     output = parameters["scores"]["output"]
 
-    for file_ in input_["files"]:
+    files = [f"{name}.musicxml" for name in input_["names"]]
+    for file_ in files:
         input_path = os.path.join(input_["directory"], file_)
         output_path = os.path.join(output["directory"], file_)
 

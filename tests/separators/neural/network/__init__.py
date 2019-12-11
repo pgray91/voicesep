@@ -13,10 +13,7 @@ class Test(unittest.TestCase):
         path = os.path.dirname(os.path.abspath(__file__))
         score = vs.Score(f"{path}/test.musicxml")
 
-        dataset = vs_network.Dataset(
-            f"{path}/test",
-            vs_network.Dataset.Writer.NOTE_LEVEL
-        )
+        dataset = vs_network.Dataset(f"{path}/test", writer="note_level", mode="w")
         dataset.write(score, beat_horizon=4, one_to_many=True)
 
         network = vs_network.Network()
