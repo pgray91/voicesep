@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.1 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="3.1">
+  <work>
+    <work-title>invention09.musicxml</work-title>
+    </work>
+  <movement-title>invention09.musicxml</movement-title>
   <identification>
+    <creator type="composer">Music21</creator>
     <encoding>
       <software>MuseScore 3.3.0</software>
-      <encoding-date>2019-12-15</encoding-date>
+      <encoding-date>2019-12-17</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="yes" value="yes"/>
@@ -36,6 +41,12 @@
     <word-font font-family="FreeSerif" font-size="10"/>
     <lyric-font font-family="FreeSerif" font-size="11"/>
     </defaults>
+  <credit page="1">
+    <credit-words default-x="595.275" default-y="1627.09" justify="center" valign="top" font-size="24">invention09.musicxml</credit-words>
+    </credit>
+  <credit page="1">
+    <credit-words default-x="1133.86" default-y="1527.09" justify="right" valign="bottom" font-size="12">Music21</credit-words>
+    </credit>
   <part-list>
     <score-part id="P1">
       <part-name>Grand Piano</part-name>
@@ -45,7 +56,6 @@
       <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
-        <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
         </midi-instrument>
@@ -58,7 +68,6 @@
       <midi-device id="P2-I1" port="1"></midi-device>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
-        <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
         </midi-instrument>
@@ -72,7 +81,7 @@
             <left-margin>128.80</left-margin>
             <right-margin>0.00</right-margin>
             </system-margins>
-          <top-system-distance>70.00</top-system-distance>
+          <top-system-distance>170.00</top-system-distance>
           </system-layout>
         </print>
       <attributes>
@@ -89,9 +98,9 @@
           <line>2</line>
           </clef>
         </attributes>
-      <direction placement="above">
+      <direction placement="below">
         <direction-type>
-          <metronome parentheses="no" default-x="-35.96" default-y="5.65" relative-y="20.00">
+          <metronome parentheses="no" default-x="-35.96" default-y="-108.72" relative-y="-30.00">
             <beat-unit>quarter</beat-unit>
             <per-minute>100</per-minute>
             </metronome>
@@ -107,15 +116,16 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <lyric number="1" default-x="6.58" default-y="-40.00" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>RH</text>
           </lyric>
-        <lyric number="1" default-x="6.58" default-y="-40.00" relative-y="-30.00">
+        <lyric number="2" default-x="6.58" default-y="-66.92" relative-y="-30.00">
           <syllabic>single</syllabic>
-          <text>RH</text>
+          <text>1</text>
           </lyric>
         </note>
       <note default-x="141.42" default-y="-20.00" dynamics="71.11">
@@ -128,6 +138,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -141,6 +152,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -153,6 +165,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -166,6 +179,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="240.69" default-y="-35.00" dynamics="71.11">
@@ -177,6 +191,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="280.40" default-y="-10.00" dynamics="71.11">
@@ -191,6 +206,7 @@
         <type>quarter</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -208,6 +224,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -223,6 +240,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -236,6 +254,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -249,6 +268,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -262,6 +282,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="139.40" default-y="-30.00" dynamics="71.11">
@@ -273,6 +294,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="180.36" default-y="-5.00" dynamics="71.11">
@@ -286,12 +308,13 @@
         <type>quarter</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
         </note>
       </measure>
-    <measure number="3" width="301.47">
+    <measure number="3" width="301.46">
       <note default-x="10.00" default-y="-5.00" dynamics="71.11">
         <pitch>
           <step>E</step>
@@ -302,6 +325,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -317,6 +341,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -329,6 +354,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -342,6 +368,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -355,6 +382,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="151.98" default-y="5.00" dynamics="71.11">
@@ -366,6 +394,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         </note>
@@ -379,6 +408,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -393,6 +423,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="253.78" default-y="-15.00" dynamics="71.11">
@@ -404,6 +435,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -412,9 +444,9 @@
         <system-layout>
           <system-margins>
             <left-margin>0.00</left-margin>
-            <right-margin>-0.00</right-margin>
+            <right-margin>0.00</right-margin>
             </system-margins>
-          <system-distance>99.96</system-distance>
+          <system-distance>123.41</system-distance>
           </system-layout>
         </print>
       <note default-x="100.47" default-y="-20.00" dynamics="71.11">
@@ -427,6 +459,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -440,6 +473,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -452,6 +486,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -465,6 +500,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -478,6 +514,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -492,6 +529,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -504,6 +542,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -517,6 +556,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -530,6 +570,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -542,6 +583,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -554,6 +596,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -567,6 +610,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -582,6 +626,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="60.00" default-y="0.00" dynamics="71.11">
@@ -594,6 +639,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -609,6 +655,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -624,6 +671,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -637,6 +685,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -649,6 +698,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -661,6 +711,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -674,6 +725,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -688,6 +740,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -700,6 +753,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -715,6 +769,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="65.98" default-y="5.00" dynamics="71.11">
@@ -727,6 +782,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -742,6 +798,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -758,6 +815,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -771,6 +829,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -784,6 +843,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -796,6 +856,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -808,6 +869,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -821,6 +883,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -833,6 +896,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -844,7 +908,7 @@
             <left-margin>0.00</left-margin>
             <right-margin>0.00</right-margin>
             </system-margins>
-          <system-distance>99.96</system-distance>
+          <system-distance>123.41</system-distance>
           </system-layout>
         </print>
       <note default-x="98.88" default-y="-15.00" dynamics="71.11">
@@ -856,6 +920,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -868,6 +933,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -881,6 +947,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -893,6 +960,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -905,6 +973,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -918,6 +987,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -931,6 +1001,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -943,6 +1014,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -955,6 +1027,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -967,6 +1040,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -979,6 +1053,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -991,6 +1066,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1005,6 +1081,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="92.23" default-y="-15.00" dynamics="71.11">
@@ -1017,6 +1094,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -1032,6 +1110,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -1048,6 +1127,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1061,6 +1141,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1073,6 +1154,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1085,6 +1167,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -1098,6 +1181,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1111,6 +1195,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1123,6 +1208,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1137,6 +1223,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -1150,6 +1237,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1163,6 +1251,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1175,6 +1264,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1188,6 +1278,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="147.40" default-y="-35.00" dynamics="71.11">
@@ -1199,6 +1290,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="193.20" default-y="10.00" dynamics="71.11">
@@ -1212,6 +1304,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -1224,7 +1317,7 @@
             <left-margin>0.00</left-margin>
             <right-margin>0.00</right-margin>
             </system-margins>
-          <system-distance>99.96</system-distance>
+          <system-distance>123.41</system-distance>
           </system-layout>
         </print>
       <note default-x="109.99" default-y="10.00" dynamics="71.11">
@@ -1238,6 +1331,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -1253,6 +1347,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1265,6 +1360,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1278,6 +1374,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1290,6 +1387,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="261.39" default-y="-10.00" dynamics="71.11">
@@ -1301,6 +1399,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="311.14" default-y="-20.00" dynamics="71.11">
@@ -1314,6 +1413,7 @@
         <type>quarter</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -1330,6 +1430,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -1345,6 +1446,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1357,6 +1459,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1370,6 +1473,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1382,6 +1486,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="166.46" default-y="-10.00" dynamics="71.11">
@@ -1393,6 +1498,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         </note>
@@ -1406,6 +1512,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1419,6 +1526,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="270.29" default-y="-30.00" dynamics="71.11">
@@ -1431,6 +1539,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -1448,6 +1557,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -1463,6 +1573,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1476,6 +1587,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1488,6 +1600,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1501,6 +1614,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="172.00" default-y="-50.00" dynamics="71.11">
@@ -1512,6 +1626,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="221.40" default-y="-5.00" dynamics="71.11">
@@ -1525,6 +1640,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -1537,7 +1653,7 @@
             <left-margin>0.00</left-margin>
             <right-margin>0.00</right-margin>
             </system-margins>
-          <system-distance>99.96</system-distance>
+          <system-distance>123.41</system-distance>
           </system-layout>
         </print>
       <note default-x="111.78" default-y="-5.00" dynamics="71.11">
@@ -1551,6 +1667,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -1566,6 +1683,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1578,6 +1696,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1591,6 +1710,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1603,6 +1723,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="338.38" default-y="-25.00" dynamics="71.11">
@@ -1615,6 +1736,7 @@
         <type>eighth</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="413.92" default-y="5.00" dynamics="71.11">
@@ -1629,6 +1751,7 @@
         <type>quarter</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -1646,6 +1769,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -1662,6 +1786,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1675,6 +1800,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1688,6 +1814,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1700,6 +1827,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="259.49" default-y="10.00" dynamics="71.11">
@@ -1711,6 +1839,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         </note>
@@ -1725,6 +1854,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1738,6 +1868,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="425.81" default-y="-10.00" dynamics="71.11">
@@ -1749,17 +1880,18 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
     <measure number="15" width="544.07">
-      <print new-system="yes">
+      <print new-page="yes">
         <system-layout>
           <system-margins>
             <left-margin>0.00</left-margin>
             <right-margin>0.00</right-margin>
             </system-margins>
-          <system-distance>99.96</system-distance>
+          <top-system-distance>70.00</top-system-distance>
           </system-layout>
         </print>
       <note default-x="109.99" default-y="-20.00" dynamics="71.11">
@@ -1773,6 +1905,7 @@
         <dot/>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         </note>
       <note default-x="332.82" default-y="-20.00" dynamics="71.11">
         <pitch>
@@ -1783,6 +1916,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         </note>
       <note default-x="399.91" default-y="-15.00" dynamics="71.11">
         <pitch>
@@ -1793,6 +1927,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
@@ -1806,6 +1941,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">end</beam>
         <beam number="3">end</beam>
@@ -1820,6 +1956,7 @@
         <type>eighth</type>
         <dot/>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -1841,6 +1978,7 @@
         <type>32nd</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
@@ -1854,6 +1992,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -1868,6 +2007,7 @@
         <type>32nd</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">end</beam>
@@ -1881,6 +2021,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -1894,6 +2035,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -1906,6 +2048,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
@@ -1919,6 +2062,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -1933,6 +2077,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -1946,6 +2091,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -1960,6 +2106,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -1973,6 +2120,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -1987,6 +2135,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -2000,6 +2149,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <beam number="3">end</beam>
@@ -2014,6 +2164,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
@@ -2027,6 +2178,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -2041,6 +2193,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -2054,6 +2207,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">end</beam>
         <beam number="3">end</beam>
@@ -2067,6 +2221,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -2090,6 +2245,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -2104,6 +2260,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -2119,6 +2276,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2132,6 +2290,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2144,6 +2303,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2156,6 +2316,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2169,6 +2330,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2182,6 +2344,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2194,6 +2357,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2208,6 +2372,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="60.70" default-y="-10.00" dynamics="71.11">
@@ -2220,6 +2385,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -2235,6 +2401,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -2251,6 +2418,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2263,6 +2431,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2276,6 +2445,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2288,6 +2458,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2300,6 +2471,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2313,6 +2485,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2326,6 +2499,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2340,6 +2514,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2353,6 +2528,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2366,6 +2542,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2378,6 +2555,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2390,6 +2568,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2403,6 +2582,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2415,6 +2595,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2427,6 +2608,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2439,6 +2621,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2451,6 +2634,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2463,6 +2647,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2475,6 +2660,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2499,6 +2685,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -2513,6 +2700,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -2528,6 +2716,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2541,6 +2730,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2553,6 +2743,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2566,6 +2757,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -2582,6 +2774,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -2598,6 +2791,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2611,6 +2805,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2623,6 +2818,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2635,6 +2831,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="181.94" default-y="-35.00" dynamics="71.11">
@@ -2646,6 +2843,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="237.80" default-y="-5.00" dynamics="71.11">
@@ -2659,6 +2857,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -2676,6 +2875,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -2693,6 +2893,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2705,6 +2906,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2718,6 +2920,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2731,6 +2934,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2745,6 +2949,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2757,6 +2962,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2770,6 +2976,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2783,6 +2990,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2795,6 +3003,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2808,6 +3017,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2821,6 +3031,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2844,6 +3055,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="144.30" default-y="15.00" dynamics="71.11">
@@ -2857,6 +3069,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -2873,6 +3086,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -2889,6 +3103,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2901,6 +3116,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2913,6 +3129,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2926,6 +3143,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -2940,6 +3158,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2952,6 +3171,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -2965,6 +3185,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -2980,6 +3201,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="59.14" default-y="-15.00" dynamics="71.11">
@@ -2991,6 +3213,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="114.48" default-y="-5.00" dynamics="71.11">
@@ -3003,6 +3226,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="163.61" default-y="5.00" dynamics="71.11">
@@ -3014,6 +3238,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="212.75" default-y="10.00" dynamics="71.11">
@@ -3027,6 +3252,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -3044,6 +3270,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -3059,6 +3286,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3071,6 +3299,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3084,6 +3313,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3098,6 +3328,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3111,6 +3342,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">end</beam>
         </note>
@@ -3124,6 +3356,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="253.52" default-y="5.00" dynamics="71.11">
@@ -3136,6 +3369,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -3161,6 +3395,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -3176,6 +3411,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3189,6 +3425,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3203,6 +3440,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3215,6 +3453,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3228,6 +3467,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">end</beam>
         </note>
@@ -3242,6 +3482,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="348.12" default-y="0.00" dynamics="71.11">
@@ -3254,6 +3495,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -3270,6 +3512,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -3286,6 +3529,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3300,6 +3544,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3312,6 +3557,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3325,6 +3571,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3338,6 +3585,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3350,6 +3598,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3363,6 +3612,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3377,6 +3627,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -3394,6 +3645,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -3410,6 +3662,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3422,6 +3675,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3434,6 +3688,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3447,6 +3702,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3459,6 +3715,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3471,6 +3728,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3484,6 +3742,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3497,6 +3756,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3509,6 +3769,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3523,6 +3784,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3536,6 +3798,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3545,7 +3808,7 @@
         <system-layout>
           <system-margins>
             <left-margin>0.00</left-margin>
-            <right-margin>0.00</right-margin>
+            <right-margin>-0.00</right-margin>
             </system-margins>
           <system-distance>100.74</system-distance>
           </system-layout>
@@ -3559,6 +3822,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3572,6 +3836,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3585,6 +3850,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3597,6 +3863,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3610,6 +3877,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="241.56" default-y="-35.00" dynamics="71.11">
@@ -3621,6 +3889,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="288.59" default-y="-10.00" dynamics="71.11">
@@ -3635,6 +3904,7 @@
         <type>quarter</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -3652,6 +3922,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -3667,6 +3938,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3680,6 +3952,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3693,6 +3966,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3706,6 +3980,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="168.64" default-y="-30.00" dynamics="71.11">
@@ -3717,6 +3992,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="219.98" default-y="-5.00" dynamics="71.11">
@@ -3730,6 +4006,7 @@
         <type>quarter</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -3746,6 +4023,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -3761,6 +4039,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3773,6 +4052,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3786,6 +4066,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3799,6 +4080,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="187.06" default-y="5.00" dynamics="71.11">
@@ -3810,6 +4092,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3823,6 +4106,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3837,6 +4121,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="301.37" default-y="-15.00" dynamics="71.11">
@@ -3848,6 +4133,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -3871,6 +4157,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3884,6 +4171,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3896,6 +4184,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3909,6 +4198,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3922,6 +4212,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3936,6 +4227,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3948,6 +4240,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3961,6 +4254,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -3974,6 +4268,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -3986,6 +4281,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -3998,6 +4294,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4011,6 +4308,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -4026,6 +4324,7 @@
         <type>eighth</type>
         <dot/>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="109.58" default-y="-10.00" dynamics="71.11">
@@ -4039,6 +4338,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">backward hook</beam>
         </note>
@@ -4051,6 +4351,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
@@ -4065,6 +4366,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -4078,6 +4380,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -4092,6 +4395,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -4105,6 +4409,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -4119,6 +4424,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -4132,6 +4438,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -4146,6 +4453,7 @@
         <voice>1</voice>
         <type>32nd</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <beam number="3">end</beam>
@@ -4159,6 +4467,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="354.38" default-y="-35.00" dynamics="71.11">
@@ -4170,6 +4479,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -4184,6 +4494,7 @@
         <type>half</type>
         <dot/>
         <stem>up</stem>
+        <notehead color="#0000FF">normal</notehead>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
@@ -4194,7 +4505,7 @@
     <measure number="1" width="373.80">
       <print>
         <staff-layout number="1">
-          <staff-distance>68.88</staff-distance>
+          <staff-distance>120.07</staff-distance>
           </staff-layout>
         </print>
       <attributes>
@@ -4211,7 +4522,7 @@
           <line>4</line>
           </clef>
         </attributes>
-      <note default-x="121.57" default-y="-153.88" dynamics="71.11">
+      <note default-x="121.57" default-y="-205.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>2</octave>
@@ -4220,13 +4531,18 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <lyric number="1" default-x="6.58" default-y="-45.00" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>LH</text>
           </lyric>
+        <lyric number="2" default-x="6.58" default-y="-71.92" relative-y="-30.00">
+          <syllabic>single</syllabic>
+          <text>2</text>
+          </lyric>
         </note>
-      <note default-x="161.28" default-y="-118.88" dynamics="71.11">
+      <note default-x="161.28" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4236,12 +4552,13 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
           </notations>
         </note>
-      <note default-x="200.98" default-y="-118.88" dynamics="71.11">
+      <note default-x="200.98" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4251,13 +4568,14 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
           <tied type="stop"/>
           </notations>
         </note>
-      <note default-x="220.84" default-y="-113.88" dynamics="71.11">
+      <note default-x="220.84" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4266,10 +4584,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="240.69" default-y="-108.88" dynamics="71.11">
+      <note default-x="240.69" default-y="-160.07" dynamics="71.11">
         <pitch>
           <step>A</step>
           <alter>-1</alter>
@@ -4279,10 +4598,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="260.54" default-y="-113.88" dynamics="71.11">
+      <note default-x="260.54" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4291,10 +4611,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
-      <note default-x="280.40" default-y="-118.88" dynamics="71.11">
+      <note default-x="280.40" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4303,10 +4624,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
-      <note default-x="300.25" default-y="-123.88" dynamics="71.11">
+      <note default-x="300.25" default-y="-175.07" dynamics="71.11">
         <pitch>
           <step>E</step>
           <alter>-1</alter>
@@ -4316,10 +4638,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="329.19" default-y="-128.88" dynamics="71.11">
+      <note default-x="329.19" default-y="-180.07" dynamics="71.11">
         <pitch>
           <step>D</step>
           <alter>-1</alter>
@@ -4330,10 +4653,11 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="349.04" default-y="-133.88" dynamics="71.11">
+      <note default-x="349.04" default-y="-185.07" dynamics="71.11">
         <pitch>
           <step>C</step>
           <octave>3</octave>
@@ -4342,12 +4666,13 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
       </measure>
     <measure number="2" width="273.10">
-      <note default-x="10.00" default-y="-138.88" dynamics="71.11">
+      <note default-x="10.00" default-y="-190.07" dynamics="71.11">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
@@ -4357,9 +4682,10 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
-      <note default-x="50.95" default-y="-113.88" dynamics="71.11">
+      <note default-x="50.95" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4369,12 +4695,13 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
           </notations>
         </note>
-      <note default-x="98.45" default-y="-113.88" dynamics="71.11">
+      <note default-x="98.45" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4384,13 +4711,14 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
           <tied type="stop"/>
           </notations>
         </note>
-      <note default-x="118.93" default-y="-108.88" dynamics="71.11">
+      <note default-x="118.93" default-y="-160.07" dynamics="71.11">
         <pitch>
           <step>A</step>
           <alter>-1</alter>
@@ -4400,10 +4728,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="139.40" default-y="-103.88" dynamics="71.11">
+      <note default-x="139.40" default-y="-155.07" dynamics="71.11">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
@@ -4413,10 +4742,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="159.88" default-y="-108.88" dynamics="71.11">
+      <note default-x="159.88" default-y="-160.07" dynamics="71.11">
         <pitch>
           <step>A</step>
           <alter>-1</alter>
@@ -4426,10 +4756,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
-      <note default-x="180.36" default-y="-113.88" dynamics="71.11">
+      <note default-x="180.36" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4438,10 +4769,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
-      <note default-x="200.83" default-y="-118.88" dynamics="71.11">
+      <note default-x="200.83" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4450,10 +4782,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="227.85" default-y="-123.88" dynamics="71.11">
+      <note default-x="227.85" default-y="-175.07" dynamics="71.11">
         <pitch>
           <step>E</step>
           <octave>3</octave>
@@ -4463,10 +4796,11 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="248.33" default-y="-128.88" dynamics="71.11">
+      <note default-x="248.33" default-y="-180.07" dynamics="71.11">
         <pitch>
           <step>D</step>
           <octave>3</octave>
@@ -4475,12 +4809,13 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
       </measure>
-    <measure number="3" width="301.47">
-      <note default-x="10.00" default-y="-133.88" dynamics="71.11">
+    <measure number="3" width="301.46">
+      <note default-x="10.00" default-y="-185.07" dynamics="71.11">
         <pitch>
           <step>C</step>
           <octave>3</octave>
@@ -4489,10 +4824,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
-      <note default-x="32.92" default-y="-128.88" dynamics="71.11">
+      <note default-x="32.92" default-y="-180.07" dynamics="71.11">
         <pitch>
           <step>D</step>
           <octave>3</octave>
@@ -4501,10 +4837,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="59.94" default-y="-123.88" dynamics="71.11">
+      <note default-x="59.94" default-y="-175.07" dynamics="71.11">
         <pitch>
           <step>E</step>
           <octave>3</octave>
@@ -4514,10 +4851,11 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="82.87" default-y="-118.88" dynamics="71.11">
+      <note default-x="82.87" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4526,10 +4864,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
-      <note default-x="106.13" default-y="-113.88" dynamics="71.11">
+      <note default-x="106.13" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4538,10 +4877,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
-      <note default-x="129.05" default-y="-108.88" dynamics="71.11">
+      <note default-x="129.05" default-y="-160.07" dynamics="71.11">
         <pitch>
           <step>A</step>
           <alter>-1</alter>
@@ -4551,10 +4891,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="151.98" default-y="-103.88" dynamics="71.11">
+      <note default-x="151.98" default-y="-155.07" dynamics="71.11">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
@@ -4564,10 +4905,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="179.00" default-y="-113.88" dynamics="71.11">
+      <note default-x="179.00" default-y="-165.07" dynamics="71.11">
         <pitch>
           <step>G</step>
           <octave>3</octave>
@@ -4576,10 +4918,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
-      <note default-x="207.93" default-y="-118.88" dynamics="71.11">
+      <note default-x="207.93" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4588,10 +4931,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
-      <note default-x="230.85" default-y="-123.88" dynamics="71.11">
+      <note default-x="230.85" default-y="-175.07" dynamics="71.11">
         <pitch>
           <step>E</step>
           <octave>3</octave>
@@ -4600,10 +4944,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="253.78" default-y="-118.88" dynamics="71.11">
+      <note default-x="253.78" default-y="-170.07" dynamics="71.11">
         <pitch>
           <step>F</step>
           <octave>3</octave>
@@ -4612,10 +4957,11 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
-      <note default-x="276.70" default-y="-123.88" dynamics="71.11">
+      <note default-x="276.70" default-y="-175.07" dynamics="71.11">
         <pitch>
           <step>E</step>
           <octave>3</octave>
@@ -4624,6 +4970,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -4644,6 +4991,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -4658,6 +5006,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -4673,6 +5022,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4685,6 +5035,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4698,6 +5049,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -4710,6 +5062,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -4722,6 +5075,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4735,6 +5089,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4748,6 +5103,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -4762,6 +5118,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -4775,6 +5132,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4788,6 +5146,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4800,6 +5159,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -4813,6 +5173,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="152.41" default-y="-115.00" dynamics="71.11">
@@ -4824,6 +5185,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <attributes>
@@ -4844,6 +5206,7 @@
         <type>quarter</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -4861,6 +5224,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -4876,6 +5240,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4889,6 +5254,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4902,6 +5268,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -4915,6 +5282,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="180.93" default-y="-170.00" dynamics="71.11">
@@ -4926,6 +5294,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="236.91" default-y="-145.00" dynamics="71.11">
@@ -4939,6 +5308,7 @@
         <type>quarter</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -4960,6 +5330,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -4975,6 +5346,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -4987,6 +5359,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5000,6 +5373,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5013,6 +5387,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="257.76" default-y="-135.00" dynamics="71.11">
@@ -5024,6 +5399,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5037,6 +5413,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5051,6 +5428,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="366.47" default-y="-155.00" dynamics="71.11">
@@ -5062,6 +5440,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -5082,6 +5461,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5095,6 +5475,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5107,6 +5488,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5120,6 +5502,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5133,6 +5516,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5147,6 +5531,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5159,6 +5544,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5172,6 +5558,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5185,6 +5572,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5197,6 +5585,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5209,6 +5598,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5222,6 +5612,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5237,6 +5628,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="55.80" default-y="-115.00" dynamics="71.11">
@@ -5249,6 +5641,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -5264,6 +5657,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -5279,6 +5673,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5292,6 +5687,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5304,6 +5700,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5316,6 +5713,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5329,6 +5727,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5343,6 +5742,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5355,6 +5755,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5375,6 +5776,7 @@
         <type>eighth</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="159.74" default-y="-105.00" dynamics="71.11">
@@ -5388,6 +5790,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -5404,6 +5807,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -5419,6 +5823,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5431,6 +5836,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5444,6 +5850,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5456,6 +5863,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5468,6 +5876,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5480,6 +5889,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5493,6 +5903,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5507,6 +5918,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5520,6 +5932,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5533,6 +5946,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5545,6 +5959,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5557,6 +5972,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5570,6 +5986,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5582,6 +5999,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5594,6 +6012,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5606,6 +6025,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5618,6 +6038,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5630,6 +6051,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5642,6 +6064,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5657,6 +6080,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <attributes>
@@ -5675,6 +6099,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -5690,6 +6115,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -5705,6 +6131,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5718,6 +6145,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5730,6 +6158,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5742,6 +6171,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5761,6 +6191,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5774,6 +6205,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5786,6 +6218,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5807,6 +6240,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="187.31" default-y="-85.00" dynamics="71.11">
@@ -5820,6 +6254,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -5836,6 +6271,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -5851,6 +6287,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5863,6 +6300,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5876,6 +6314,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5889,6 +6328,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5902,6 +6342,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5914,6 +6355,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5927,6 +6369,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5941,6 +6384,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -5954,6 +6398,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5968,6 +6413,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -5981,6 +6427,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -5994,6 +6441,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6007,6 +6455,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6019,6 +6468,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6031,6 +6481,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6043,6 +6494,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6057,6 +6509,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6070,6 +6523,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6084,12 +6538,13 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
       </measure>
     <measure number="15" width="544.07">
-      <print new-system="yes">
+      <print new-page="yes">
         <staff-layout number="1">
           <staff-distance>65.00</staff-distance>
           </staff-layout>
@@ -6103,6 +6558,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6116,6 +6572,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6129,6 +6586,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6147,6 +6605,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6159,6 +6618,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6172,6 +6632,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6184,6 +6645,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6196,6 +6658,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6209,6 +6672,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6221,6 +6685,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6233,6 +6698,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6246,6 +6712,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6260,6 +6727,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6272,6 +6740,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6285,6 +6754,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6297,6 +6767,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6309,6 +6780,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6321,6 +6793,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6334,6 +6807,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6346,6 +6820,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6358,6 +6833,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6370,6 +6846,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6383,6 +6860,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6395,6 +6873,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6415,6 +6894,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6433,6 +6913,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6446,6 +6927,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6458,6 +6940,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6471,6 +6954,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="268.92" default-y="-130.00" dynamics="71.11">
@@ -6482,6 +6966,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="315.91" default-y="-105.00" dynamics="71.11">
@@ -6495,6 +6980,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -6512,6 +6998,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -6527,6 +7014,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6539,6 +7027,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6552,6 +7041,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6564,6 +7054,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="163.77" default-y="-125.00" dynamics="71.11">
@@ -6575,6 +7066,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="214.48" default-y="-100.00" dynamics="71.11">
@@ -6588,6 +7080,7 @@
         <type>quarter</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -6604,6 +7097,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -6625,6 +7119,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6637,6 +7132,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6650,6 +7146,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6662,6 +7159,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="183.66" default-y="-150.00" dynamics="71.11">
@@ -6673,6 +7171,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6692,6 +7191,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6705,6 +7205,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="297.22" default-y="-110.00" dynamics="71.11">
@@ -6716,6 +7217,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -6734,6 +7236,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6747,6 +7250,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6759,6 +7263,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6772,6 +7277,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6784,6 +7290,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6797,6 +7304,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6809,6 +7317,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6821,6 +7330,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6834,6 +7344,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6846,6 +7357,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6858,6 +7370,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6871,6 +7384,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6886,6 +7400,7 @@
         <type>eighth</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="70.22" default-y="-95.00" dynamics="71.11">
@@ -6898,6 +7413,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -6913,6 +7429,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -6929,6 +7446,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6942,6 +7460,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6954,6 +7473,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -6966,6 +7486,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -6979,6 +7500,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -6993,6 +7515,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7005,6 +7528,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7020,6 +7544,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="65.24" default-y="-125.00" dynamics="71.11">
@@ -7033,6 +7558,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="117.86" default-y="-115.00" dynamics="71.11">
@@ -7044,6 +7570,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="173.10" default-y="-105.00" dynamics="71.11">
@@ -7056,6 +7583,7 @@
         <type>eighth</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="225.71" default-y="-100.00" dynamics="71.11">
@@ -7069,6 +7597,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -7091,6 +7620,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7107,6 +7637,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7119,6 +7650,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7131,6 +7663,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7143,6 +7676,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="233.29" default-y="-120.00" dynamics="71.11">
@@ -7155,6 +7689,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <attributes>
@@ -7175,6 +7710,7 @@
         <type>quarter</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -7192,6 +7728,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7207,6 +7744,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7220,6 +7758,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7232,6 +7771,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7246,6 +7786,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7258,6 +7799,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7271,6 +7813,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7284,6 +7827,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7296,6 +7840,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7315,6 +7860,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7328,6 +7874,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7340,6 +7887,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7354,6 +7902,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <attributes>
@@ -7372,6 +7921,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -7387,6 +7937,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7403,6 +7954,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7417,6 +7969,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7429,6 +7982,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7448,6 +8002,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7461,6 +8016,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7473,6 +8029,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7486,6 +8043,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7506,6 +8064,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <attributes>
@@ -7525,6 +8084,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -7541,6 +8101,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7558,6 +8119,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7570,6 +8132,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7583,6 +8146,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7602,6 +8166,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7616,6 +8181,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7628,6 +8194,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7641,6 +8208,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7657,6 +8225,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <attributes>
@@ -7677,6 +8246,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -7693,6 +8263,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7708,6 +8279,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7721,6 +8293,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7734,6 +8307,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7752,6 +8326,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7764,6 +8339,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7777,6 +8353,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7789,6 +8366,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7804,6 +8382,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <notations>
           <tied type="start"/>
           </notations>
@@ -7818,6 +8397,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7833,6 +8413,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7846,6 +8427,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7858,6 +8440,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7870,6 +8453,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7883,6 +8467,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7896,6 +8481,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7908,6 +8494,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -7928,6 +8515,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -7941,6 +8529,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">end</beam>
         </note>
@@ -7954,6 +8543,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -7969,6 +8559,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -7985,6 +8576,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -7998,6 +8590,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8010,6 +8603,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8022,6 +8616,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8035,6 +8630,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8049,6 +8645,7 @@
         <type>16th</type>
         <accidental>flat</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8061,6 +8658,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8076,6 +8674,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8088,6 +8687,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">end</beam>
         </note>
@@ -8103,6 +8703,7 @@
         <type>eighth</type>
         <accidental>flat</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <notations>
           <tied type="start"/>
@@ -8119,6 +8720,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -8134,6 +8736,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8147,6 +8750,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8160,6 +8764,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8172,6 +8777,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8184,6 +8790,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8197,6 +8804,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8209,6 +8817,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8223,6 +8832,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8235,6 +8845,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8248,6 +8859,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8260,6 +8872,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8272,6 +8885,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8285,6 +8899,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8298,6 +8913,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8310,6 +8926,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8322,6 +8939,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8334,6 +8952,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8346,6 +8965,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8358,6 +8978,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8377,6 +8998,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         </note>
       <note>
         <rest/>
@@ -8393,6 +9015,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8405,6 +9028,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8418,6 +9042,7 @@
         <type>16th</type>
         <accidental>natural</accidental>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8430,6 +9055,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8442,6 +9068,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8454,6 +9081,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8466,6 +9094,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8481,6 +9110,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -8493,6 +9123,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8506,6 +9137,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -8519,6 +9151,7 @@
         <voice>1</voice>
         <type>16th</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -8531,6 +9164,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="225.76" default-y="-100.00" dynamics="71.11">
@@ -8543,6 +9177,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       <note default-x="308.74" default-y="-95.00" dynamics="71.11">
@@ -8554,6 +9189,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">begin</beam>
         </note>
       <note default-x="354.38" default-y="-130.00" dynamics="71.11">
@@ -8565,6 +9201,7 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notehead color="#00FF00">normal</notehead>
         <beam number="1">end</beam>
         </note>
       </measure>
@@ -8579,6 +9216,7 @@
         <type>half</type>
         <dot/>
         <stem>up</stem>
+        <notehead color="#00FF00">normal</notehead>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
