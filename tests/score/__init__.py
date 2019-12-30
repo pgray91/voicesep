@@ -1,3 +1,4 @@
+from fractions import Fraction as F
 import os
 import unittest
 
@@ -47,6 +48,11 @@ class Test(unittest.TestCase):
         for note in chord:
             with self.subTest(f"{note}"):
                 self.assertEqual(note.duration, 1)
+
+    def test_duration_triplet(self):
+
+        note = self.score[0][0]
+        self.assertEqual(note.duration, F(1,3))
 
     def test_duration_in_quarter_denomination(self):
 
