@@ -73,10 +73,6 @@ def dataset(parameters):
 #     network.train(dataset, epochs, batch_size)
 #     network.write(output)
 
-def separate(parameters):
-
-    pass
-
 
 if __name__ == "__main__":
     main()
